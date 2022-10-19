@@ -1,12 +1,11 @@
-package be.ifosup.boilerplate.config;
+package be.ifosup.learning.config;
 
-import be.ifosup.boilerplate.constants.RoleEnum;
+import be.ifosup.learning.constants.RoleEnum;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

@@ -1,7 +1,7 @@
-package be.ifosup.boilerplate.entities;
+package be.ifosup.learning.entities;
 
-import be.ifosup.boilerplate.constants.RoleEnum;
-import be.ifosup.boilerplate.utils.BCryptManagerUtil;
+import be.ifosup.learning.constants.RoleEnum;
+import be.ifosup.learning.utils.BCryptManagerUtil;
 import lombok.Data;
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,10 +1,10 @@
-package be.ifosup.boilerplate;
+package be.ifosup.learning;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BoilerplateApplicationTests {
+class LearningApplicationTests {
 
     @Test
     void contextLoads() {

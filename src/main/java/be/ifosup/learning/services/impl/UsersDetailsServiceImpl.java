@@ -1,7 +1,7 @@
-package be.ifosup.boilerplate.services.impl;
+package be.ifosup.learning.services.impl;
 
-import be.ifosup.boilerplate.entities.User;
-import be.ifosup.boilerplate.repositories.UserRepository;
+import be.ifosup.learning.entities.User;
+import be.ifosup.learning.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,6 +1,6 @@
 package db.migration;
 
-import be.ifosup.boilerplate.utils.BCryptManagerUtil;
+import be.ifosup.learning.utils.BCryptManagerUtil;
 import org.flywaydb.core.api.migration.BaseJavaMigration;
 import org.flywaydb.core.api.migration.Context;
 
