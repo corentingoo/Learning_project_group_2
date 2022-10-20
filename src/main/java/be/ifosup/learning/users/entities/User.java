@@ -1,4 +1,4 @@
-package be.ifosup.learning.entities;
+package be.ifosup.learning.users.entities;
 
 import be.ifosup.learning.constants.RoleEnum;
 import be.ifosup.learning.utils.BCryptManagerUtil;
