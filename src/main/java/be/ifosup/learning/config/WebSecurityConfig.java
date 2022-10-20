@@ -1,7 +1,7 @@
-package be.ifosup.boilerplate.config;
+package be.ifosup.learning.config;
 
-import be.ifosup.boilerplate.constants.RoleEnum;
-import be.ifosup.boilerplate.utils.BCryptManagerUtil;
+import be.ifosup.learning.constants.RoleEnum;
+import be.ifosup.learning.utils.BCryptManagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
