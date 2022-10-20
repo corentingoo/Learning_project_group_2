@@ -1,6 +1,6 @@
-package be.ifosup.learning.repositories;
+package be.ifosup.learning.users.repositories;
 
-import be.ifosup.learning.entities.User;
+import be.ifosup.learning.users.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
