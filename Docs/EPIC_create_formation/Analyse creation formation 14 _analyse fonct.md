@@ -1,4 +1,4 @@
-#Analyse creation formation #14
+#Analyse creation formation 14
 
 ##Analyse fonctionnelle (Solution proposée d'un point de vue du besoin utilisateur, contraintes, boutons):
 
@@ -23,3 +23,5 @@ Notre admin ou notre professeur fournit le nom de la formation, une description 
 Il indique si cette formation requiert un pré-requis pour y accéder (par exemple: "Programmation Niv 1" est requis pour participer au cours de 
 "Programmation Niv 2").
 Il mentionne aussi le nombre d'élèves qu'il peut former à cette session, la date de début et la date de fin de la formation.
+
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_UX%20UI%20_Fin.jpg)
