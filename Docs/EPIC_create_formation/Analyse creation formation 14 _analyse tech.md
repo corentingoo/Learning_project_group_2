@@ -1,6 +1,6 @@
-#Analyse creation formation #14
-##Analyse technique (càd le comment cela va être réalisé techniquement):
-###Pré-requis:
+#Analyse creation formation 14  
+##Analyse technique (càd le comment cela va être réalisé techniquement):  
+###Pré-requis:  
 Nous sommes dans une architecture client - server.
 Nous considérons que notre admin ou notre professeur est déjà connecté à notre site web "Learning Project - Gestion de formations".
 Nous considérons que notre projet fonctionne en design pattern MVC (selon le modèle: C - S - R, où C est le Controleur, S pour Service et R comme Repository).
