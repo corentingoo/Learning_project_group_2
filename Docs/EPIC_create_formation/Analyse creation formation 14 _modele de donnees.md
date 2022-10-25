@@ -1,9 +1,13 @@
-#Analyse creation formation #14
+#Analyse creation formation 14
 ##Modèle de données pour cet Epic
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LP%20_Learning%20DB%20_schema%20DB%20_table%20formation%20_Fin.jpg)
+
 Creation de la table "Formation":
 
 
-CREATE TABLE if not exists formation(
+> blockquote :
+>
+   CREATE TABLE if not exists formation(
    id_formation INT AUTO_INCREMENT PRIMARY KEY,
    titre VARCHAR(200) NOT NULL,
    description VARCHAR(255),
@@ -20,6 +24,8 @@ CREATE TABLE if not exists formation(
 
 Exemples d'insertion de formations:
 
+> blockquote :
+> 
 INSERT INTO `formation` (`id_formation`, `titre`, `description`, `nom_prof`, `prerequis`, `nbre_eleve`, `date_debut`, `date_fin`, `archive`) VALUES 
 (NULL, 'Veille Technologique', 'Ce cours nous apprend à manier les outils pour se tenir au courant de l évolution Hardware et Software en IT.', 'Mr Barmarin', '0','25','20220905','20221215','0'), 
 (NULL, 'Programmation Niv 1', 'Ce cours nous apprend les bases en programmation.', 'Mr Renard', '0','15','20180103','20180528','1'), 
@@ -31,6 +37,9 @@ INSERT INTO `formation` (`id_formation`, `titre`, `description`, `nom_prof`, `pr
 
 
 Si l'on veut supprimer la table "Formation":
+
+> blockquote :
+> 
 DROP TABLE formation
 
 
