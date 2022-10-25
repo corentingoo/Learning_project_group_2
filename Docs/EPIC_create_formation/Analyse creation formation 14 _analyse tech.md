@@ -50,27 +50,30 @@ Les champs sont les suivants:
    => Condition: vérification si ce professeur est autorisé à donner cette formation
       Par exemple: mettre un champ "Autorisé" dans la table User. (de type: booléen) 
       [ 0 = non autorisé]
-      [ 1 = autorisé]
+      [ 1 = autorisé]  
 
 - Si une formation est terminée, elle est mise avec le status "archivé", càd à 1 dans le champ "archive".
-Cette session de formation ne peut plus être modifiée.
+Cette session de formation ne peut plus être modifiée.  
 
 
 
 
 
-### C - S - R:
+###C - S - R:  
 Pour cet Epic, nous avons besoin d'une classe "CreateFormationForm" qui prendra juste les informations dont nous avons besoin depuis le formulaire de "Création d'une formation".
 Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin et le professeur   (... extends User( ) ...).
 
 Ensuite, nous allons dans notre "UserService" et on y crée un méthode "CreateFormationForm" qui permettra de construire notre objet et qui sera stocké dans la base de données.
 
-Nous passons par le controleur "FormulaireFormationController" pour créer la route qui nous redirigera vers la vue de remplissage du formulaire de "Création d'une formation".
+Nous passons par le controleur "FormulaireFormationController" pour créer la route qui nous redirigera vers la vue de remplissage du formulaire de "Création d'une formation".  
 
 
 Une fois le formulaire de formation complété et envoyé, nous repassons par le controleur "FormulaireFormationController" pour créer le mapping pour la sauvegarde des données de la formation, 
 que  l'on appelle "ValidateCreateFormation".
-En amont, nous aurons une vérification si les champs requis ont été correctement remplis. Si ce n'est pas le cas, l'admin ou le professeur sont invités a compléter les champs erronés ou manquants.
+En amont, nous aurons une vérification si les champs requis ont été correctement remplis. Si ce n'est pas le cas, l'admin ou le professeur sont invités a compléter les champs erronés ou manquants.  
+
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_MindMap%20_Path%20_Fin.jpg)
+
 Rmq: voir le Mockup pour un rendu de la présentation du formulaire de "Création d'une formation".
 
 
@@ -95,7 +98,9 @@ CSS Icon (FontAwesome Library - Sous license Open Font License OFL) => Source: h
 
 
 
-### Gérer les exceptions et problèmes qui pourraient être rencontrés:
+###Gérer les exceptions et problèmes qui pourraient être rencontrés:  
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
+
 - Code 200: Réussite d'une requête. Par exemple: Page Ok.
 
 Erreurs côté client (4xx):
