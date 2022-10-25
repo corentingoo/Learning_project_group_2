@@ -75,21 +75,21 @@ Rmq: voir le Mockup pour un rendu de la présentation du formulaire de "Créatio
 
 
 
-###Modules requis pour cet Epic:
-Java JDK 17  => Source: https://www.oracle.com/java/technologies/downloads/#jdk17-mac
-Spring 5.3.23 (Framework Java) => Source: https://spring.io/projects/spring-framework
-Spring Boot 2.7.5 => Source: https://spring.io/projects/spring-boot
-Spring Security 5.7.4 => Source: https://spring.io/projects/spring-security
-Spring Data JPA 2.7.5 (DAL) => Source: https://spring.io/projects/spring-data-jpa
-Spring Web MVC => Source: https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/mvc.html
-Spring Web Services 3.1.3 => Source: https://spring.io/projects/spring-ws
-Lombok 1.18.24 (Java Library - Automate the generation of Java Beans getters and setters) => Source: https://projectlombok.org/changelog
-Thymeleaf 3.0.15 (Moteur de template - interface) => Source: https://www.thymeleaf.org/
-Flyway 9.5.1 (outil de migration de db) => Source: https://flywaydb.org/
-WampServer 3.2.6 => Source: https://www.wampserver.com/
-MySQL 8.0.30 (gestion de bases de données relationnelles - Back end) => Source: https://www.mysql.com/
-Maven 3.8.6 (Java Project Builder - pom.xml) => Source: https://maven.apache.org/
-CSS Icon (FontAwesome Library - Sous license Open Font License OFL) => Source: https://fontawesome.com/
+###Modules requis pour cet Epic:  
+Java JDK 17  => Source: https://www.oracle.com/java/technologies/downloads/#jdk17-mac  
+Spring 5.3.23 (Framework Java) => Source: https://spring.io/projects/spring-framework  
+Spring Boot 2.7.5 => Source: https://spring.io/projects/spring-boot  
+Spring Security 5.7.4 => Source: https://spring.io/projects/spring-security  
+Spring Data JPA 2.7.5 (DAL) => Source: https://spring.io/projects/spring-data-jpa  
+Spring Web MVC => Source: https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/mvc.html  
+Spring Web Services 3.1.3 => Source: https://spring.io/projects/spring-ws  
+Lombok 1.18.24 (Java Library - Automate the generation of Java Beans getters and setters) => Source: https://projectlombok.org/changelog  
+Thymeleaf 3.0.15 (Moteur de template - interface) => Source: https://www.thymeleaf.org/  
+Flyway 9.5.1 (outil de migration de db) => Source: https://flywaydb.org/  
+WampServer 3.2.6 => Source: https://www.wampserver.com/  
+MySQL 8.0.30 (gestion de bases de données relationnelles - Back end) => Source: https://www.mysql.com/  
+Maven 3.8.6 (Java Project Builder - pom.xml) => Source: https://maven.apache.org/  
+CSS Icon (FontAwesome Library - Sous license Open Font License OFL) => Source: https://fontawesome.com/  
 
 
 
