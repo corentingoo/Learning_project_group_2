@@ -1,0 +1,4 @@
+nous avons besoin de :
+*créer un role user dans l'enumeration
+*ajouter un utilisateur dans la table avec le role teacher (sql)
+*créer une page pour l'user teacher (uniquement accessible pars lui pour l'instant , genre comme les autre page, mais avec TEACHER en titre)
