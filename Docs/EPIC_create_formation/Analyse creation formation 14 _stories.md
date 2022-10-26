@@ -50,6 +50,9 @@ Créer une méthode deleteFormation.
 
 
 Story 8  
-Créer une méthode archive, lorsque le champ "archive" est mis à 1 et que cette formation est entièrement terminée.
+Créer une méthode archive, lorsque le champ "archive" est mis à 1 et que cette formation est entièrement terminée.  
+
+Story9:
+Lorsqu'il y a plus que 24 formations sur la page de formations, il est proposé un bouton de pagination (page précedente et page suivante, par saut de 24).
 
 
