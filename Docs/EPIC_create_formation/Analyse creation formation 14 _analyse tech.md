@@ -1,11 +1,11 @@
-#Analyse creation formation 14  
-##Analyse technique (càd le comment cela va être réalisé techniquement):  
-###Pré-requis:  
+# Analyse creation formation 14  
+## Analyse technique (càd le comment cela va être réalisé techniquement):  
+### Pré-requis:  
 Nous sommes dans une architecture client - server.
 Nous considérons que notre admin ou notre professeur est déjà connecté à notre site web "Learning Project - Gestion de formations".
 Nous considérons que notre projet fonctionne en design pattern MVC (selon le modèle: C - S - R, où C est le Controleur, S pour Service et R comme Repository).
 
-###Déroulement:
+### Déroulement:
 Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin ou notre professeur appuye sur le bouton "Création d'une formation".
 Il arrive sur un formulaire appellé "Création d'une formation".
 Il rempli les champs fournis dans ce formulaire.
@@ -40,7 +40,7 @@ Les champs sont les suivants:
   [ 0 = pas archivé]
   [ 1 = archivé]
 
-###Déroulement caché:
+### Déroulement caché:
 - Création de la table "Formation"
   => Condition: vérification qu'elle n'existe pas déjà dans la base de données. Si non, la créer.
   => Condition: vérification qu'elle soit au standard innoDB (pour gérer les relations inter-tables).
@@ -59,7 +59,7 @@ Cette session de formation ne peut plus être modifiée.
 
 
 
-###C - S - R:  
+### C - S - R:  
 Pour cet Epic, nous avons besoin d'une classe "CreateFormationForm" qui prendra juste les informations dont nous avons besoin depuis le formulaire de "Création d'une formation".
 Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin et le professeur   (... extends User( ) ...).
 
@@ -78,7 +78,7 @@ Rmq: voir le Mockup pour un rendu de la présentation du formulaire de "Créatio
 
 
 
-###Modules requis pour cet Epic:  
+### Modules requis pour cet Epic:  
 Java JDK 17  => Source: https://www.oracle.com/java/technologies/downloads/#jdk17-mac  
 Spring 5.3.23 (Framework Java) => Source: https://spring.io/projects/spring-framework  
 Spring Boot 2.7.5 => Source: https://spring.io/projects/spring-boot  
@@ -98,7 +98,7 @@ CSS Icon (FontAwesome Library - Sous license Open Font License OFL) => Source: h
 
 
 
-###Gérer les exceptions et problèmes qui pourraient être rencontrés:  
+### Gérer les exceptions et problèmes qui pourraient être rencontrés:  
 ![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
 
 - Code 200: Réussite d'une requête. Par exemple: Page Ok.
