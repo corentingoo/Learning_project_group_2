@@ -1,5 +1,5 @@
-#Analyse creation formation 14  
-##Stories  
+# Analyse creation formation 14  
+## Stories  
 Story 1  
 En tant qu'utilisateur de la plateforme, un admin ou un professeur (uniquement ces deux rôles-là) doivent pouvoir gérer les données en rapport avec la formation :
 Sur la page Formulaire de "creation d'une formation", 
@@ -24,13 +24,13 @@ Créer le lien inter-table avec user, rôle, formation (clé primaire, clé étr
 
 Story 4  
 Vérifier que, lorsque qu'un admin ou un professeur crée une formation, il fournit les champs marqué comme requis : 
-`titre`
-`nom_prof`
-`prerequis`
-`nbre_eleve`
-`date_debut`
-`date_fin`
-`archive`
+titre
+nom_prof
+prerequis
+nbre_eleve
+date_debut
+date_fin
+archive  (Cela viendra plus tard)
 
 
 
