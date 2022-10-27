@@ -115,6 +115,8 @@ Erreurs côté server (5xx):
 - Erreur 505: Version HTTP non supportée.
 
 - Les champs à remplir dans le formulaire ne sont pas encodé correctement. 
-Solution: afficher un message d'erreur adéquat (voir erreur de 1 à 7) et corriger la donnée jusqu'a ce qu'elle soit Ok.
+Solution: afficher un message d'erreur adéquat (voir erreur de 1 à 7) et corriger la donnée jusqu'a ce qu'elle soit Ok.  
+
+
 Source: IANA (RFC ...) https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
 
