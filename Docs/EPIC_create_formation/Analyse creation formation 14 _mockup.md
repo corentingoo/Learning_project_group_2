@@ -1,5 +1,5 @@
-#Analyse creation formation 14
-##Mockup (càd comment cela va être représenté)
+# Analyse creation formation 14
+## Mockup (càd comment cela va être représenté)
 - Avant
 ![Visual display](https://user-images.githubusercontent.com/90777424/197619188-40e7143b-6eb7-408e-9c71-2870835725f3.jpg)
 
