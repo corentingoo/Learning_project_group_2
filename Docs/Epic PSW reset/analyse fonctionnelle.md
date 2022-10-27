@@ -1,2 +1,2 @@
 Analyse fonctionnelle 
-lien pour demander le reset du mot de passe
+Ajouter un lien dans la page de login pour demander le reset du mot de passe
