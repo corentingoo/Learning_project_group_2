@@ -1,5 +1,5 @@
 # Analyse create user 
-## Analyse technique stories 1
+## Analyse technique création d'un user
 
 ### prérequis:
 - champ e-mail(format e-mail taille 50) à ajouter dans la table 'users'
@@ -9,7 +9,7 @@
 - le compte est créé avec la mention expiré(' credentials_non_expired'), non verrouillé
 
 
-## Analyse technique stories 2
+## Analyse technique première connexion
 
 ### prérequis:
 - récupération de l'info compte expiré(' credentials_non_expired')
