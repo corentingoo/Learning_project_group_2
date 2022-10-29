@@ -18,42 +18,38 @@ Les champs sont les suivants:
 - Nom du professeur (de type: char 180)  
   => Condition: Le nom du professeur peut-être rajouté plus tard, mais avant que la formation ne commence.  
   => Condition: Seuls les professeurs autorisés à donner le cours peuvent associer leur nom à cette formation.
-- pré-requis (de type: booléen) 
-  [ 0 = pas de préquis exigé]
-  [ 1 = préquis exigé]
-- nombre d'élèves (de type: int)
-  => Condition: ne peut pas etre null.
-     Min = 1
-     Max = 35
+
+- nombre d'élèves (de type: int)  
+  => Condition: ne peut pas etre null.  
+     Min = 1  
+     Max = 35  
   => Condition: Si plus que 35 participants, alors la formation sera étalée en deux salles de classes.
-- date de début (de type: date)
-  => Condition: la date de début ne peut pas etre vide ou null.
-  => Condition: la date de début ne peut pas etre crée à une date antérieure à celle du jour actuel lors de la création de la formation.
-  => Condition: la date de début ne peut pas être après la date de fin de la formation.
+- date de début (de type: date)  
+  => Condition: la date de début ne peut pas etre vide ou null.  
+  => Condition: la date de début ne peut pas etre crée à une date antérieure à celle du jour actuel lors de la création de la formation.  
+  => Condition: la date de début ne peut pas être après la date de fin de la formation.  
   => Condition: Si le cours a commencé, la date de début et de fin ne peuvent plus être modifiées.
-- date de fin (de type: date)
-  => Condition: la date de fin ne peut pas etre vide ou null.
-   => Condition: la date de fin ne peut pas etre crée à une date antérieure à celle du jour actuel lors de la création de la formation
-  => Condition: la date de fin ne peut pas être avant la date de début de la formation.
+- date de fin (de type: date)  
+  => Condition: la date de fin ne peut pas etre vide ou null.  
+   => Condition: la date de fin ne peut pas etre crée à une date antérieure à celle du jour actuel lors de la création de la formation  
+  => Condition: la date de fin ne peut pas être avant la date de début de la formation.  
   => Condition: Si le cours a commencé, la date de début et de fin ne peuvent plus être modifiées.
-- archive (de type: booléen) 
-  [ 0 = pas archivé]
-  [ 1 = archivé]
+
 
 ### Déroulement caché:
-- Création de la table "Formation"
-  => Condition: vérification qu'elle n'existe pas déjà dans la base de données. Si non, la créer.
-  => Condition: vérification qu'elle soit au standard innoDB (pour gérer les relations inter-tables).
+- Création de la table "Formation"  
+  => Condition: vérification qu'elle n'existe pas déjà dans la base de données. Si non, la créer.  
+  => Condition: vérification qu'elle soit au standard innoDB (pour gérer les relations inter-tables).  
   => Condition: vérification que les polices de charactères soient au standard UTF-8.
 
-- pour ramener le nom du professeur, il faut une liaison avec la table User et la table Rôle vers la table Formation.
-   => Condition: vérification si ce professeur est autorisé à donner cette formation
-      Par exemple: mettre un champ "Autorisé" dans la table User. (de type: booléen) 
+Rmq: Voir le fichier "Analyse creation formation 14 _modele de donnees.md" en annexe à ce dossier.
+
+- pour ramener la fk (clé étrangère) du nom du professeur, il faut une liaison avec la table User et la table Rôle vers la table Formation.  
+   => Condition: vérification si ce professeur est autorisé à donner cette formation.  
+      Par exemple: mettre un champ "Autorisé" dans la table User. (de type: booléen)   
       [ 0 = non autorisé]
       [ 1 = autorisé]  
 
-- Si une formation est terminée, elle est mise avec le status "archivé", càd à 1 dans le champ "archive".
-Cette session de formation ne peut plus être modifiée.  
 
 
 
@@ -74,7 +70,8 @@ En amont, nous aurons une vérification si les champs requis ont été correctem
 
 ![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_MindMap%20_Path%20_Fin.jpg)
 
-Rmq: voir le Mockup pour un rendu de la présentation du formulaire de "Création d'une formation".
+Rmq: Voir le fichier Mockup "Analyse creation formation 14 _mockup.md" pour un rendu UX/UI de la présentation du formulaire de "Création d'une formation" (étapes Avant, Pendant et Après).  
+Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Formation _UX UI _Fin.jpg"
 
 
 

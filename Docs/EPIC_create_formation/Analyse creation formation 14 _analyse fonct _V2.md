@@ -19,9 +19,12 @@ Rôle 2: Un professeur peut lui même créer une formation dont il va donner le 
 - Une formation ne peut pas être crée en même temps par deux personnes différentes. (Par exemple: un admin ne peut pas créer une formation, 
 si un professeur est en train d'écrire dans le formulaire de création de cette formation. Et inversément.
 
-Notre admin ou notre professeur fournit le nom de la formation, une description et le nom du professeur qui donnera le cours.
+Notre admin ou notre professeur fournit le nom de la formation, une description et la fk du nom du professeur (clé étrangère) qui donnera le cours.
 Il indique si cette formation requiert un pré-requis pour y accéder (par exemple: "Programmation Niv 1" est requis pour participer au cours de 
 "Programmation Niv 2").
 Il mentionne aussi le nombre d'élèves qu'il peut former à cette session, la date de début et la date de fin de la formation.
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_UX%20UI%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_UX%20UI%20_Fin.jpg)  
+
+
+Rmq: Voir les fichiers joints en annexe dans ce repertoire "Docs" pour en savoir plus sur cet epic.
