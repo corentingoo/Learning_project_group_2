@@ -22,7 +22,7 @@ Rôle 2: Un professeur peut lui même consulter la ou les formation(s) dont il v
 
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-analyse-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_UX%20UI%20_read%20formation%20_Fin.jpg)  
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_UX%20UI%20_read%20formation%20_Fin.jpg)  
 
 
 Rmq: Voir les fichiers joints en annexe dans ce repertoire "Docs" pour en savoir plus sur cet epic.

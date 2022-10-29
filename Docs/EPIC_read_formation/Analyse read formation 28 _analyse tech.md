@@ -48,7 +48,7 @@ Contrainte : Une fiche d'une formation peut être consultée, par plusieurs util
 Une fois ces vérifications ok, nous repassons par le controleur "ReadFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-analyse-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20read%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20read%20_Fin.jpg)
 
 Rmq: Voir le fichier Mockup "Analyse read formation 28 _mockup.md" pour un rendu UX/UI de la lecture d'une ou plusieurs formation(s) (Etape: Pendant).  
 Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Formation _UX UI _read formation _Fin.jpg"
@@ -76,7 +76,7 @@ CSS Icon (FontAwesome Library - Sous license Open Font License OFL) => Source: h
 
 
 ### Gérer les exceptions et problèmes qui pourraient être rencontrés:  
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-analyse-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
 
 - Code 200: Réussite d'une requête. Par exemple: Page Ok.
 
