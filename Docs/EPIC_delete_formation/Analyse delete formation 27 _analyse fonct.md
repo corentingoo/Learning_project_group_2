@@ -6,7 +6,7 @@
 Pour supprimer une formation, notre admin ou notre professeur a besoin d'un bouton "Supprimer ou une icone de corbeille" qui effacera la formation selectionnée.  
 Sur la ligne de la formation à supprimer:
 - un bouton "Supprimer ou une icone de corbeille"
-- un bouton "Enregistrer"  
+ 
 Des contraintes (règles de validation) sont mises en place pour garantir que cette formation peut bien être supprimée (par exemple: ne pas encore avoir eu lieu, ni d'élèves inscrits).
 Après le clic sur le bouton supprimer, cela efface la formation voulue et cela revient sur la page de read des formations.
 
