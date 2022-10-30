@@ -54,7 +54,7 @@ Une autre vérification est l'interdiction de pouvoir modifier une formation dep
 Une fois ces vérifications ok, nous repassons par le controleur "UpdateFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-27-delete-formation/Docs/EPIC_delete_formation/LProject _Formation _MindMap _Path du update _Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-26-update-formation/Docs/EPIC_update_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20update%20_Fin.jpg)
 
 Rmq: Voir le fichier Mockup "Analyse update formation 26 _mockup.md" pour un rendu UX/UI de la modification d'une formation (étapes Avant, Pendant et Après).  
 Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Formation _UX UI _update formation _Fin.jpg"
@@ -81,7 +81,7 @@ CSS Icon (FontAwesome Library - Sous license Open Font License OFL) => Source: h
 
 
 ### Gérer les exceptions et problèmes qui pourraient être rencontrés:  
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-27-delete-formation/Docs/EPIC_delete_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-26-update-formation/Docs/EPIC_update_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
 
 - Code 200: Réussite d'une requête. Par exemple: Page Ok.
 

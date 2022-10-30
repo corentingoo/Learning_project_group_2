@@ -30,7 +30,7 @@ Notre admin ou notre professeur modifie les champs de la formation qu'il souhait
 
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject _Formation _UX UI _update formation _Fin.jpg)  
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-26-update-formation/Docs/EPIC_update_formation/LProject%20_Formation%20_UX%20UI%20_update%20formation%20_Fin.jpg)  
 
 
 Rmq: Voir les fichiers joints en annexe dans ce repertoire "Docs" pour en savoir plus sur cet epic.
