@@ -36,6 +36,11 @@ Exemples d'insertion de formations:
 
 
 
+
+
+Exemple de delete :  
+> DELETE FROM `formation` WHERE `formation`.`id_formation` = 1
+
 Si l'on veut supprimer la table "Formation":
 
 

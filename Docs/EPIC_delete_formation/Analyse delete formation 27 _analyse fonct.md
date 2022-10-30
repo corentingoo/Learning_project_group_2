@@ -13,6 +13,7 @@ Après le clic sur le bouton supprimer, cela efface la formation voulue et cela 
 ### Rôles:
 Rôle 1: Notre admin a besoin de pouvoir supprimer une formation, lorsqu'il a reçu une demande de suppression d'une formation de la part d'un professeur.  
 Rôle 2: Un professeur peut lui même supprimer une formation dont il va donner le cours, s'il a reçu l'accord de la Direction et que ce cours n'a pas encore commencé, ni d'èlèves inscrits).
+Rmq: Seuls ces deux rôles-là peuvent effectuer un delete.
 
 ### Contraintes:
 - Une formation ne peut pas être supprimée, si elle est déjà en cours d'être donnée.

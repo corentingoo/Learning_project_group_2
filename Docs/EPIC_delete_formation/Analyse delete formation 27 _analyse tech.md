@@ -6,8 +6,8 @@ Nous considérons que notre admin ou notre professeur est déjà connecté à no
 Nous considérons que notre projet fonctionne en design pattern MVC (selon le modèle: C - S - R, où C est le Controleur, S pour Service et R comme Repository).
 
 ### Déroulement:
-Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin ou notre professeur est sur sa page des read des formations et il appuye sur le bouton "Création d'une formation".  
-Il arrive sur un formulaire appellé "Supprimer ou une icone de corbeille" sur la formation à effacer.  
+Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin ou notre professeur est sur sa page des read des formations et il appuye sur le bouton "Suppression d'une formation ou une icone de corbeille".  
+La manipulation supprime la ligne souhaitée.  
 Il est renvoyé sur la page des read de formations.  
 
   => Condition: la formation ne peut pas avoir commencé.  
