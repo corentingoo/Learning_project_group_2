@@ -6,22 +6,29 @@ Nous considérons que notre admin ou notre professeur est déjà connecté à no
 Nous considérons que notre projet fonctionne en design pattern MVC (selon le modèle: C - S - R, où C est le Controleur, S pour Service et R comme Repository).
 
 ### Déroulement:
-Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin ou notre professeur est sur sa page des read des formations et il appuye sur le bouton "Création d'une formation".  
-Il arrive sur un formulaire appellé "Supprimer ou une icone de corbeille" sur la formation à effacer.  
-Il est renvoyé sur la page des read de formations.  
+Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin ou notre professeur est sur sa page des read des formations et il appuye sur le bouton "Modification d'une formation ou une icône de crayon".  
+Il arrive sur un formulaire appellé "Modification de la formation" à rectifier.  
+Une fois que la modification est faite, il est renvoyé sur la page des read de formations.  
 
-  => Condition: la formation ne peut pas avoir commencé.  
-  => Condition: la formation ne peut pas posséder d'élève(s) inscrit(s). 
-  => Condition: la formation ne peut pas être effacée depuis deux comptes différents en même temps (par exemple: un compte admin et un compte professeur.) 
+  => Condition: Une formation ne peut pas être mise à jour, si elle n'existe pas encore dans la base de données. 
+  => Condition: Seuls les rôles admin et professeur peuvent modifier une formation.
+  => Condition: Une formation ne peut pas être mise à jour en même temps par deux personnes différentes. (Par exemple: un admin ne peut pas mettre à jour une formation,
+  si un professeur est en train de faire des modifications dans le formulaire de mise à jour de cette formation. Et inversément.   
+  => Condition: Les champs date de début et date de fin ne peuvent plus être modifiés si la formation a déjà commencé.  
+  => Condition: Le champ "titre" de la formation ne peut pas être modifié si la formation a déjà commencé, sauf s'il s'agit d'une erreur de syntaxe sans que cela n'affecte le sens du titre originel.
+  => Condition: Le champ "description" de la formation peut être modifié si la formation a déjà commencé, s'il s'agit d'une erreur de syntaxe sans que cela n'affecte le sens du message descriptif à transmettreo.
+  => Condition: Le champ "nom du professeur" (qui est une foreign key, clé étrangère) de la formation peut être modifié si la formation a déjà commencé, en cas de remplacement (dde longue durée) par un autre professeur et avec l'accord de la Direction.
+  => Condition: Tous les champs peuvent être modifiés, tant que la formation n'a pas encore eu lieu ou tant qu'il n'y a aucuns élèves inscrits.
+
 
 
 
 ### Déroulement caché:
-- Suppression de la formation souhaitée dans la table "Formation"  
-  => Condition: vérification qu'elle existe bien dans la base de données et qu'elle n'a pas encore commencé, ni n'a d'élève(s).  
+- Modification de la formation souhaitée dans la table "Formation"  
+
   
 
-Rmq: Voir le fichier "Analyse delete formation 27 _modele de donnees.md" en annexe à ce dossier.
+Rmq: Voir le fichier "Analyse update formation 26 _modele de donnees.md" en annexe à ce dossier.
 
 
 
@@ -31,27 +38,26 @@ Rmq: Voir le fichier "Analyse delete formation 27 _modele de donnees.md" en anne
 
 
 ### C - S - R:  
-Pour cet Epic, nous avons besoin d'une classe "DeleteFormationForm" qui prendra juste les informations dont nous avons besoin depuis le clic sur le bouton "suppression ou en forme d icon de corbeille" de la formation que l'on souhaite supprimer".
+Pour cet Epic, nous avons besoin d'une classe "UpdateFormationForm" qui prendra juste les informations dont nous avons besoin depuis le clic sur le bouton "modification ou en forme d icone de crayon" de la formation que l'on souhaite rectifier".
 Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin et le professeur   (... extends User( ) ...).
 
-Ensuite, nous allons dans notre "UserService" et on y crée un méthode "DeleteFormation" qui permettra d'effacer notre objet de la base de données.
+Ensuite, nous allons dans notre "UserService" et on y crée un méthode "UpdateFormation" qui permettra de mettre à jour notre objet de la base de données.
 
 
 
-Une fois le bouton "suppression ou l'icone de corbeille" cliqué, nous passons par le controleur "DeleteFormationController" pour créer le mapping pour la suppression des données de la formation, 
-que  l'on appelle "ValidateDeleteFormation".
-En amont, nous aurons une vérification si la formation à supprimer n'a pas déjà lieu et si aucun(s) élève(s) n'est inscrit.  
-Si ce n'est pas le cas, l'admin ou le professeur sont invités à vérifier les dates de la formation, les élèves inscrits.
-Une autre vérification est l'interdiction de pouvoir effacer une formation depuis deux comptes en même temps (par exemple: un compte admin et un compte professeur).
+Une fois le bouton "modification ou l'icone de crayon" cliqué, nous passons par le controleur "UpdateFormationController" pour créer le mapping pour la modification des données de la formation, 
+que  l'on appelle "ValidateUpdateFormation".
+En amont, nous aurons une vérification si la formation à modifier n'est pas déja terminée et voir selon les autres conditions ci-haut.  
+Si ce n'est pas le cas, l'admin ou le professeur sont invités à vérifier les champs qui ne respectent pas ces conditions ci-haut.
+Une autre vérification est l'interdiction de pouvoir modifier une formation depuis deux comptes en même temps (par exemple: un compte admin et un compte professeur).
 
-Une fois ces vérifications ok, nous repassons par le controleur "DeleteFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
+Une fois ces vérifications ok, nous repassons par le controleur "UpdateFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-27-delete-formation/Docs/EPIC_delete_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20delete%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-27-delete-formation/Docs/EPIC_delete_formation/LProject _Formation _MindMap _Path du update _Fin.jpg)
 
-Rmq: Voir le fichier Mockup "Analyse delete formation 27 _mockup.md" pour un rendu UX/UI de la suppression d'une formation (étapes Avant et Après).  
-Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Formation _UX UI _delete formation _Fin.jpg"
-
+Rmq: Voir le fichier Mockup "Analyse update formation 26 _mockup.md" pour un rendu UX/UI de la modification d'une formation (étapes Avant, Pendant et Après).  
+Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Formation _UX UI _update formation _Fin.jpg"
 
 
 ### Modules requis pour cet Epic:  
