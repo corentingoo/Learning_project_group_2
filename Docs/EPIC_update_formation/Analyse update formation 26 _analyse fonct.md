@@ -24,7 +24,6 @@ si un professeur est en train de faire des modifications dans le formulaire de m
 - Le champ "description" de la formation peut être modifié si la formation a déjà commencé, s'il s'agit d'une erreur de syntaxe sans que cela n'affecte le sens du message descriptif à transmettreo.
 - Le champ "nom du professeur" (qui est une foreign key, clé étrangère) de la formation peut être modifié si la formation a déjà commencé, en cas de remplacement (dde longue durée) par un autre professeur et avec l'accord de la Direction.
 - Tous les champs peuvent être modifiés, tant que la formation n'a pas encore eu lieu ou tant qu'il n'y a aucuns élèves inscrits.
-- Si le champ "archive" est sur 1, càd en statut archivé, la fiche de la formation ne peut pas etre modifiée. [fonctionalité archive qui sera implémenté dans un autre Epic]
 
 Notre admin ou notre professeur modifie les champs de la formation qu'il souhaite rééditer, ensuite il clique sur le bouton "Enregistrer". Et il se retrouve sur la page des read de ses formations.  
 

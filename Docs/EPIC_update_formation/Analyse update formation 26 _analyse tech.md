@@ -38,20 +38,21 @@ Rmq: Voir le fichier "Analyse update formation 26 _modele de donnees.md" en anne
 
 
 ### C - S - R:  
-Pour cet Epic, nous avons besoin d'une classe "UpdateFormationForm" qui prendra juste les informations dont nous avons besoin depuis le clic sur le bouton "modification ou en forme d icone de crayon" de la formation que l'on souhaite rectifier".
+Pour cet Epic, nous avons besoin d'une classe "Formation" qui prendra juste les informations dont nous avons besoin depuis le clic sur le bouton "modification ou en forme d icone de crayon" de la formation que l'on souhaite rectifier".
 Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin et le professeur   (... extends User( ) ...).
 
-Ensuite, nous allons dans notre "UserService" et on y crée un méthode "UpdateFormation" qui permettra de mettre à jour notre objet de la base de données.
+Ensuite, nous allons dans notre "FormationService" et on y crée une méthode "Update" qui permettra de mettre à jour notre objet de la base de données.
 
 
 
-Une fois le bouton "modification ou l'icone de crayon" cliqué, nous passons par le controleur "UpdateFormationController" pour créer le mapping pour la modification des données de la formation, 
-que  l'on appelle "ValidateUpdateFormation".
+Une fois le bouton "modification ou l'icone de crayon" cliqué, nous passons par le controleur "FormationController" pour créer le mapping pour la modification des données de la formation, 
+
 En amont, nous aurons une vérification si la formation à modifier n'est pas déja terminée et voir selon les autres conditions ci-haut.  
 Si ce n'est pas le cas, l'admin ou le professeur sont invités à vérifier les champs qui ne respectent pas ces conditions ci-haut.
 Une autre vérification est l'interdiction de pouvoir modifier une formation depuis deux comptes en même temps (par exemple: un compte admin et un compte professeur).
 
-Une fois ces vérifications ok, nous repassons par le controleur "UpdateFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
+Une fois ces vérifications ok, nous repassons par le controleur "UpdateFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.  
+Cette vérification se fait via "FormationService", méthode "Validate". Une fois validé par ce service, nous passons par le FormationController qui envoie à la Db via Flyway.
 
 
 ![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-26-update-formation/Docs/EPIC_update_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20update%20_Fin.jpg)
