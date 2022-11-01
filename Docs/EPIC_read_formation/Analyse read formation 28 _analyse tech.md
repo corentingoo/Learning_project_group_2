@@ -2,7 +2,7 @@
 ## Analyse technique (càd le comment cela va être réalisé techniquement):  
 ### Pré-requis:  
 Nous sommes dans une architecture client - server.  
-Nous considérons que notre admin ou notre professeur est déjà connecté à notre site web "Learning Project - Gestion de formations".  
+Nous considérons que notre admin ou notre professeur ou notre élève est déjà connecté à notre site web "Learning Project - Gestion de formations".  
 Nous considérons que notre projet fonctionne en design pattern MVC (selon le modèle: C - S - R, où C est le Controleur, S pour Service et R comme Repository).
 
 ### Déroulement:
@@ -11,7 +11,8 @@ Sur le poste client, depuis la page internet de son navigateur (le Front), notre
 
   => Condition: Pour l'admin, il s'agit d'un read all des formations dans la base de données, càd qu'il voit toutes les formations de la base de données.   
   => Condition: Le professeur est dirigé vers la vue qui contient uniquement ses formations à lui. Il s'agit d'un read partiel.
-  => Condition: Une fiche d'une formation peut être consultée, par plusieurs utilisateurs en même temps (par exemple: un admin peut regarder une fiche de formations en même qu'un professeur ou un élève).
+  => Condition: L'élève voit les formations qu'il est en train de suivre et les formations qu'il a déjà terminées.
+  => Condition: Une formation peut être consultée, par plusieurs utilisateurs en même temps (par exemple: un admin peut regarder une fiche de formations en même qu'un professeur ou un élève).
 
 
 
@@ -30,22 +31,22 @@ Rmq: Voir le fichier "Analyse read formation 28 _modele de donnees.md" en annexe
 
 
 ### C - S - R:  
-Pour cet Epic, nous avons besoin d'une classe "ReadFormation" qui prendra juste les informations dont nous avons besoin depuis le clic sur l'onglet "Formation(s)".
+Pour cet Epic, nous avons besoin d'une classe "Formation" qui prendra juste les informations dont nous avons besoin depuis le clic sur l'onglet "Formation(s)".
 Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin  à faire un read all de toutes les formations.  
 Tandis que pour le professeur et les élèves, il s'agit d'un read partiel   (... extends User( ) ...).
 
-Ensuite, nous allons dans notre "UserService" et on y crée un méthode "ReadFormation" qui permettra de lire notre objet depuis la base de données.
+Ensuite, nous allons dans notre "FormationService" et on y crée un méthode "Read" qui permettra de lire notre objet depuis la base de données.
 
 
 
-Une fois le l'onglet "Formation(s)" cliqué et la méthode ReadFormation appellée, nous passons par le controleur "ReadFormationController" pour créer le mapping pour la lecture des données de la formation ou des formations à afficher, 
-que  l'on appelle "ValidateReadFormation".
+Une fois le l'onglet "Formation(s)" cliqué et la méthode Read appellée, nous passons par le controleur "FormationController" pour créer le mapping pour la lecture des données de la formation ou des formations à afficher.  
 En amont, nous aurons une vérification si la formation ou les formations sont à lire selon le role de l'utilisateur qui se connecte, càd un read all pour l'admin et un read partiel pour les professeurs et élèves.  
+Cette vérification se fait via "FormationService".
 
-Contrainte : Une fiche d'une formation peut être consultée, par plusieurs utilisateurs en même temps (par exemple: un admin peut regarder une fiche de formations en même qu'un professeur ou un élève).  
+Contrainte : Une formation peut être consultée, par plusieurs utilisateurs en même temps (par exemple: un admin peut regarder une fiche de formations en même qu'un professeur ou un élève).  
 
 
-Une fois ces vérifications ok, nous repassons par le controleur "ReadFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
+Une fois ces vérifications ok, nous repassons par le controleur "FormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
 
 
 ![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20read%20_Fin.jpg)

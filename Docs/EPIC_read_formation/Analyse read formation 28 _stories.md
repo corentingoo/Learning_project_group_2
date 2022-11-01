@@ -3,7 +3,7 @@
 Story 1  
 En tant qu'utilisateur de la plateforme, un admin doit pouvoir visionner toutes les formations qui sont en base de données.  
 En tant que professeur, il doit pouvoir voir les formations dont ils donnent cours.  
-En tant ou élève, il doit pouvoir regarder les cours qu'il suit.
+En tant ou élève, il doit pouvoir regarder les cours qu'il suit et les cours qu'il a terminé.
 
 
 Sur la page des reads de formations, 
@@ -15,7 +15,8 @@ Contrainte: Une fiche d'une formation peut être consultée, par plusieurs utili
 
 
 
-Créer une méthode readFormationAll() pour le rôle admin.
+Créer une méthode readAll() pour le rôle admin.
+
 
 
 
@@ -30,7 +31,7 @@ Story 3
 L'utilisateur, càd l'admin ou le professeur ou l'élève doit être sur qu'il visionne bien la ou les formation(s) voulue(s).
 Vérifier que, lorsque un admin ou un professeur ou un élève regarde une formation:
 - que cette formation soit bien en autorisation de lecture pour ce rôle d'utilisateur
-- que l'élément que l'on veut afficher soit bien existant dans la base données
+- que l'élément que l'on veut afficher soit bien existant dans la base de données.
 
 
 
