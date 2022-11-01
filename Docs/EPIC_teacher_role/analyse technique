@@ -1,6 +1,6 @@
 ## analyste du besoin : 
 nous avons besoin de :
-- créer un role teacher et student dans l'enumeration qui lui est dédié
+- créer un role teacher et student dans l'enumeration qui lui est dédié (modifier le role user vers student)
 - ajouter un utilisateur dans la table avec le role teacher et un avec le role student (dans la création des tables sql)
 - créer une page pour l'user teacher et une page pour le student (uniquement accessible selon leurs roles pour l'instant , comme les autre page, mais avec TEACHER ou STUDENT en titre)
-ces pages seront à créer dans les ressources dans des dossiers "teacher" et "student"
+ces pages seront à créer dans les ressources dans des dossiers "teacher" et "student" (changer la page user vers staudent)
