@@ -19,10 +19,10 @@ Pour cet Epic, nous passons par Thymeleaf, le moteur de template - interface.
 Nous modifions le fichier index.html selon les éléments repris dans l'analyse fonctionnelle de cet Epic.
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-27-delete-formation/Docs/EPIC_delete_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20delete%20_Fin.jpg)
 
-Rmq: Voir le fichier Mockup "Analyse delete formation 27 _mockup.md" pour un rendu UX/UI de la suppression d'une formation (étapes Avant et Après).  
-Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Formation _UX UI _delete formation _Fin.jpg"
+
+Rmq: Voir le fichier Mockup "Analyse FrontEnd Page Accueil 18 _mockup.md" pour un rendu UX/UI de la suppression d'une formation (Pendant).  
+Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Page Accueil _UX UI _Fin.jpg"
 
 
 

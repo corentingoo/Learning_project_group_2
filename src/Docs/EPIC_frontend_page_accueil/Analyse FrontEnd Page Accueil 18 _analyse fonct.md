@@ -21,6 +21,6 @@ Tout le monde à accès à la page accueil mais ne peut pas aller plus loin sur 
 Respect de la maquette UX/UI, de la palette de couleurs et de la police à utiliser.
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-27-delete-formation/Docs/EPIC_delete_formation/LProject%20_Formation%20_UX%20UI%20_delete%20formation%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-18-Frontend-PageAccueil/src/Docs/EPIC_frontend_page_accueil/LProject%20_Page%20Accueil%20_UX%20UI%20_Fin.jpg)
 
 Rmq: Voir les fichiers joints en annexe dans ce repertoire "Docs" pour en savoir plus sur cet epic.
