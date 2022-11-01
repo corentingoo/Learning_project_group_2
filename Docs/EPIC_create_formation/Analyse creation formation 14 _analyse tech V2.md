@@ -2,11 +2,11 @@
 ## Analyse technique (càd le comment cela va être réalisé techniquement):  
 ### Pré-requis:  
 Nous sommes dans une architecture client - server.  
-Nous considérons que notre admin ou notre professeur est déjà connecté à notre site web "Learning Project - Gestion de formations".  
+Nous considérons que notre admin est déjà connecté à notre site web "Learning Project - Gestion de formations".  
 Nous considérons que notre projet fonctionne en design pattern MVC (selon le modèle: C - S - R, où C est le Controleur, S pour Service et R comme Repository).
 
 ### Déroulement:
-Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin ou notre professeur appuye sur le bouton "Création d'une formation".  
+Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin appuye sur le bouton "Création d'une formation".  
 Il arrive sur un formulaire appellé "Création d'une formation".  
 Il rempli les champs fournis dans ce formulaire.  
 Les champs sont les suivants:
@@ -34,6 +34,10 @@ Les champs sont les suivants:
    => Condition: la date de fin ne peut pas etre crée à une date antérieure à celle du jour actuel lors de la création de la formation  
   => Condition: la date de fin ne peut pas être avant la date de début de la formation.  
   => Condition: Si le cours a commencé, la date de début et de fin ne peuvent plus être modifiées.
+- archive (de type: booléen)  
+  Pour gerer le softdelete.
+    [ 0 = pas archivé]
+    [ 1 = archivé]
 
 
 ### Déroulement caché:
@@ -56,17 +60,17 @@ Rmq: Voir le fichier "Analyse creation formation 14 _modele de donnees.md" en an
 
 
 ### C - S - R:  
-Pour cet Epic, nous avons besoin d'une classe "CreateFormationForm" qui prendra juste les informations dont nous avons besoin depuis le formulaire de "Création d'une formation".
-Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin et le professeur   (... extends User( ) ...).
+Pour cet Epic, nous avons besoin d'une classe "Formation" qui prendra juste les informations dont nous avons besoin depuis le formulaire de "Création d'une formation".
+Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin (... extends User( ) ...).
 
-Ensuite, nous allons dans notre "UserService" et on y crée un méthode "CreateFormationForm" qui permettra de construire notre objet et qui sera stocké dans la base de données.
+Ensuite, nous allons dans notre "FormationService" et on y crée un méthode "Create" qui permettra de construire notre objet et qui sera stocké dans la base de données.
 
-Nous passons par le controleur "FormulaireFormationController" pour créer la route qui nous redirigera vers la vue de remplissage du formulaire de "Création d'une formation".  
+Nous passons par le controleur "FormationController" pour créer la route qui nous redirigera vers la vue de remplissage du formulaire de "Création d'une formation".  
 
 
-Une fois le formulaire de formation complété et envoyé, nous repassons par le controleur "FormulaireFormationController" pour créer le mapping pour la sauvegarde des données de la formation, 
-que  l'on appelle "ValidateCreateFormation".
-En amont, nous aurons une vérification si les champs requis ont été correctement remplis. Si ce n'est pas le cas, l'admin ou le professeur sont invités a compléter les champs erronés ou manquants.  
+Une fois le formulaire de formation complété et envoyé, nous repassons par le controleur "FormationController" pour créer le mapping pour la sauvegarde des données de la formation.  
+En amont, nous aurons une vérification si les champs requis ont été correctement remplis. Si ce n'est pas le cas, l'admin est invité a compléter les champs erronés ou manquants.  
+Cette vérification se fait via "FormationService", méthode "Validate". Une fois validé par ce service, nous passons par le FormationController qui envoie à la Db via Flyway.
 
 ![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-14-analyse-creation-formation/Docs/EPIC_create_formation/LProject%20_Formation%20_MindMap%20_Path%20_Fin.jpg)
 
