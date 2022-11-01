@@ -2,22 +2,22 @@
 ## Analyse technique (càd le comment cela va être réalisé techniquement):  
 ### Pré-requis:  
 Nous sommes dans une architecture client - server.  
-Nous considérons que notre admin ou notre professeur est déjà connecté à notre site web "Learning Project - Gestion de formations".  
+Nous considérons que notre admin est déjà connecté à notre site web "Learning Project - Gestion de formations".  
 Nous considérons que notre projet fonctionne en design pattern MVC (selon le modèle: C - S - R, où C est le Controleur, S pour Service et R comme Repository).
 
 ### Déroulement:
-Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin ou notre professeur est sur sa page des read des formations et il appuye sur le bouton "Suppression d'une formation ou une icone de corbeille".  
-La manipulation supprime la ligne souhaitée.  
+Sur le poste client, depuis la page internet de son navigateur (le Front), notre admin est sur sa page des read des formations et il appuye sur le bouton "Suppression d'une formation ou une icone de corbeille".  
+La manipulation supprime la ligne souhaitée et la met en mode archive (en cas d'enquête judiciaire).  
 Il est renvoyé sur la page des read de formations.  
 
   => Condition: la formation ne peut pas avoir commencé.  
   => Condition: la formation ne peut pas posséder d'élève(s) inscrit(s). 
-  => Condition: la formation ne peut pas être effacée depuis deux comptes différents en même temps (par exemple: un compte admin et un compte professeur.) 
+  => Condition: la formation ne peut pas être effacée depuis deux comptes admins différents en même temps. 
 
 
 
 ### Déroulement caché:
-- Suppression de la formation souhaitée dans la table "Formation"  
+- Suppression de la formation souhaitée dans la table "Formation" qui devient un status archive (en cas d'enquête judiciaire).
   => Condition: vérification qu'elle existe bien dans la base de données et qu'elle n'a pas encore commencé, ni n'a d'élève(s).  
   
 
@@ -31,20 +31,20 @@ Rmq: Voir le fichier "Analyse delete formation 27 _modele de donnees.md" en anne
 
 
 ### C - S - R:  
-Pour cet Epic, nous avons besoin d'une classe "DeleteFormationForm" qui prendra juste les informations dont nous avons besoin depuis le clic sur le bouton "suppression ou en forme d icon de corbeille" de la formation que l'on souhaite supprimer".
-Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin et le professeur   (... extends User( ) ...).
+Pour cet Epic, nous avons besoin d'une classe "Formation" qui prendra juste les informations dont nous avons besoin depuis le clic sur le bouton "suppression ou en forme d icon de corbeille" de la formation que l'on souhaite supprimer".
+Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin (... extends User( ) ...).
 
-Ensuite, nous allons dans notre "UserService" et on y crée un méthode "DeleteFormation" qui permettra d'effacer notre objet de la base de données.
+Ensuite, nous allons dans notre "FormationService" et on y crée un méthode "softDelete" qui permettra de mettre notre objet en status archive (en cas d'enquête judiciaire) de la base de données.
 
 
 
-Une fois le bouton "suppression ou l'icone de corbeille" cliqué, nous passons par le controleur "DeleteFormationController" pour créer le mapping pour la suppression des données de la formation, 
-que  l'on appelle "ValidateDeleteFormation".
-En amont, nous aurons une vérification si la formation à supprimer n'a pas déjà lieu et si aucun(s) élève(s) n'est inscrit.  
-Si ce n'est pas le cas, l'admin ou le professeur sont invités à vérifier les dates de la formation, les élèves inscrits.
-Une autre vérification est l'interdiction de pouvoir effacer une formation depuis deux comptes en même temps (par exemple: un compte admin et un compte professeur).
+Une fois le bouton "suppression ou l'icone de corbeille" cliqué, nous passons par le controleur "FormationController" pour créer le mapping pour la suppression des données de la formation.  
+En amont, nous aurons une vérification si la formation à supprimer n'est pas déjà en cours et si aucun(s) élève(s) n'est inscrit.  
+Si ce n'est pas le cas, l'admin est invité à vérifier les dates de la formation, les élèves inscrits.
+Une autre vérification est l'interdiction de pouvoir effacer une formation depuis deux comptes admins différents en même temps.
+Cette vérification se fait via "FormationService".
 
-Une fois ces vérifications ok, nous repassons par le controleur "DeleteFormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
+Une fois ces vérifications ok, nous repassons par le controleur "FormationController" pour avoir la route qui nous redirigera vers la page des reads des formations.
 
 
 ![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-27-delete-formation/Docs/EPIC_delete_formation/LProject%20_Formation%20_MindMap%20_Path%20du%20delete%20_Fin.jpg)
