@@ -38,6 +38,9 @@ Rmq: Voir le fichier "Analyse update formation 26 _modele de donnees.md" en anne
 
 
 ### C - S - R:  
+
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-26-update-formation/Docs/EPIC_update_formation/LProject%20_Formation%20_Logique%20_update%20_Fin.jpg)  
+
 Pour cet Epic, nous avons besoin d'une classe "Formation" qui prendra juste les informations dont nous avons besoin depuis le clic sur le bouton "modification ou en forme d icone de crayon" de la formation que l'on souhaite rectifier".
 Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin et le professeur   (... extends User( ) ...).
 
