@@ -31,6 +31,10 @@ Rmq: Voir le fichier "Analyse read formation 28 _modele de donnees.md" en annexe
 
 
 ### C - S - R:  
+
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-28-read-formation/Docs/EPIC_read_formation/LProject%20_Formation%20_Logique%20_read%20_Fin.jpg)  
+
+
 Pour cet Epic, nous avons besoin d'une classe "Formation" qui prendra juste les informations dont nous avons besoin depuis le clic sur l'onglet "Formation(s)".
 Cette classe hérite de la classe User avec un constructeur spécial qui n'autorise uniquement l'Admin  à faire un read all de toutes les formations.  
 Tandis que pour le professeur et les élèves, il s'agit d'un read partiel   (... extends User( ) ...).
