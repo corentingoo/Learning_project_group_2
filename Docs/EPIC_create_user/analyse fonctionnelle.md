@@ -1,6 +1,6 @@
 # Analyse create user
 
-## Analyse fonctionnelle stories 1
+## Analyse fonctionnelle création d'un user
 
 ### Besoins:
 - un bouton "Ajout d'un utilisateur" sur la page admin (ouverture du formulaire) 
@@ -24,7 +24,7 @@
 - l'identifiant correspond à l'identifiant générique des autres systèmes informatiques de la société,  
   il aura systématiquement le format suivant: 4 lettres(2 premières prénom + 2 premières nom) suivi de 4 chiffres
 
-## Analyse fonctionnelle stories 2
+## Analyse fonctionnelle première connexion
 
 ### Besoins: 
 - deux champs supplémentaires légendés sur la page login pour le choix d'un autre mot de passe(+ confirmation)   
