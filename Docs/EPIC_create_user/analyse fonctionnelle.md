@@ -1,6 +1,6 @@
 # Analyse create user
 
-## Analyse fonctionnelle création d'un user
+## Analyse fonctionnelle creation d'un user
 
 ### Besoins:
 - un bouton "Ajout d'un utilisateur" sur la page admin (ouverture du formulaire) 
