@@ -5,3 +5,4 @@ nous avons besoin de :
 - créer une page pour l'user teacher et une page pour le student (uniquement accessible selon leurs roles pour l'instant , comme les autre page, mais avec TEACHER ou STUDENT en titre)
 ces pages seront à créer dans les ressources dans des dossiers "teacher" et "student" (changer la page user vers student)
 - modifier les valeurs déjà existentes du user vers student (db.migration)
+- modifier les accès d'autenthification dans websecurity et CustomAuthentificationSuccessHandler
