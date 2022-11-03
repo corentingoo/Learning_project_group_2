@@ -25,7 +25,7 @@
   il aura systématiquement le format suivant: 4 lettres(2 premières prénom + 2 premières nom) suivi de 4 chiffres
 
 ## Analyse fonctionnelle première connexion
-
+___ce point sera géré via un autre épic___
 ### Besoins: 
 - deux champs supplémentaires légendés sur la page login pour le choix d'un autre mot de passe(+ confirmation)   
   apparaissant en cas d'utilisation d'un compte temporaire

@@ -14,8 +14,10 @@
 
 ## Analyse technique première connexion
 
+___ce point sera géré via un autre épic___
+
 ### prérequis:
 - récupération de l'info compte expiré(' credentials_non_expired')
 ### comportement:
 - lors de la vérification de connexion, un compte expiré déclenche l'ajout de l'obligation de changer de mot de passe sur la page login
-    
+
