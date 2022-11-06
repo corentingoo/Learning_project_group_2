@@ -7,7 +7,6 @@ Sur cette page acceuil, je dois mettre:
 - une barre de menu contenant: 
 	- un lien "Accueil et/ou une icone de Maison"
 	- un lien "Connexion et/ou une cione de flèche droite en direction d'un bracket"
-	- un lien "Créer un compte et/ou une icone de Personnage à ajouter"
 - une zone de contenu principal:
 	- avec un encadré pour les news
 	- un encadré pour le compteur de formations realisées.
