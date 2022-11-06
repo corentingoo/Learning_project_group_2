@@ -16,7 +16,7 @@ Rôle 1: Notre admin a besoin de pouvoir créer une formation, lorsqu'il a reçu
 
 ### Contraintes:
 - Une formation ne peut pas être crée, si elle existe déjà dans la base de données.
-- Une formation ne peut pas être crée en même temps par deux personnes différentes. (Par exemple: deux admins ne peuvent pas créer une même formation en même temps.)
+- Une formation ne peut pas être crée en même temps par deux personnes différentes. (Par exemple: deux admins ne peuvent pas créer une même formation en même temps.) => A venir dans un autre Epic
 
 
 Notre admin fournit le nom de la formation, une description et le nom du professeur qui donnera le cours.

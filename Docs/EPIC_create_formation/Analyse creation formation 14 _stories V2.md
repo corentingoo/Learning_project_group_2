@@ -24,7 +24,7 @@ Story 3
 L'utilisateur, càd l'admin doit être sur qu'il n'envoit pas des données arronnées ou partiellement incorrect.
 Vérifier que, lorsque un admin crée une formation, il fournit les champs marqué comme requis : 
 titre
-fk_nom_prof
+fk_prof
 prerequis (Cela viendra plus tard)
 nbre_eleve
 date_debut
@@ -35,4 +35,4 @@ archive  (Cela viendra plus tard pour gérer le softdelete) => (pour avoir une t
 
 Story 4  
 En tant qu'utilisateur, un professeur doit pouvoir gérer le quotidien d'un formation auquel il est assigné, il doit pouvoir faire un update.
-Sécurité: Deux admins ne peuvent pas créer une même formation en même temps dans la base de données.
+Sécurité: Deux admins ne peuvent pas créer une même formation en même temps dans la base de données. => A venir dans un autre Epic

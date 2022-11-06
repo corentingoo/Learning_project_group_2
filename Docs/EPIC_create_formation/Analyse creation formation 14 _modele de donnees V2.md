@@ -10,7 +10,7 @@ Creation de la table "Formation":
    id_formation INT AUTO_INCREMENT PRIMARY KEY,  
    titre VARCHAR(200) NOT NULL,  
    description VARCHAR(255),  
-   fk_nom_prof VARCHAR(180) NOT NULL,  
+   fk_prof VARCHAR(180) NOT NULL,  
    prerequis TINYINT(1),  
    nbre_eleve INT(2) NOT NULL,  
    date_debut DATE NOT NULL,  
@@ -18,7 +18,7 @@ Creation de la table "Formation":
    archive TINYINT(1)  
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;  
 
-Rmq: fk_nom_prof à rajouter selon la structure du modèle de donnée de l'analyse d'un user, lorsqu'elle sera terminée.
+Rmq: fk_prof à rajouter selon la structure du modèle de donnée de l'analyse d'un user, lorsqu'elle sera terminée.
 
 
 
@@ -26,7 +26,7 @@ Exemples d'insertion de formations:
 
 
 
-> INSERT INTO `formation` (`id_formation`, `titre`, `description`, `fk_nom_prof`, `prerequis`, `nbre_eleve`, `date_debut`, `date_fin`, `archive`) VALUES   
+> INSERT INTO `formation` (`id_formation`, `titre`, `description`, `fk_prof`, `prerequis`, `nbre_eleve`, `date_debut`, `date_fin`, `archive`) VALUES   
 (NULL, 'Veille Technologique', 'Ce cours nous apprend à manier les outils pour se tenir au courant de l évolution Hardware et Software en IT.', 'Mr Barmarin', '0','25','20220905','20221215','0'),  
 (NULL, 'Programmation Niv 1', 'Ce cours nous apprend les bases en programmation.', 'Mr Renard', '0','15','20180103','20180528','1'),   
 (NULL, 'Programmation Niv 2', 'Ce cours nous apprend l orienté Objet, le design pattern MVC ...', 'Mr Delbard', '1','28','20190909','20191218','1'),   
