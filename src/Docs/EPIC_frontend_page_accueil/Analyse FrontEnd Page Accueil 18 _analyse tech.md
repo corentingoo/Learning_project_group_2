@@ -22,7 +22,7 @@ Nous modifions le fichier index.html selon les éléments repris dans l'analyse 
 
 
 Rmq: Voir le fichier Mockup "Analyse FrontEnd Page Accueil 18 _mockup.md" pour un rendu UX/UI de la suppression d'une formation (Pendant).  
-Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Page Accueil _UX UI _Fin.jpg"
+Pour le respect de la charte graphique et de la police, voir le fichier "LProject _Page Accueil _UX UI Fin.jpg"
 
 
 
