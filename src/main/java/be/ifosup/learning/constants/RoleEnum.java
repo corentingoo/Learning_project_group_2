@@ -1,9 +1,14 @@
 package be.ifosup.learning.constants;
 
-/*
-* Définit la liste des rpoles pour les users
-* */
+/**
+* Définit la liste des roles pour les users
+*/
+
+/**
+ * V2 update pour ajout teacher et student et retrait user pour clarification
+ */
 public enum RoleEnum {
-    USER,
-    ADMIN
+    ADMIN,
+    TEACHER,
+    STUDENT
 }

@@ -15,6 +15,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
  * Gestion de la sécurité de l'application
  */
 
+/**
+ * V2 update pour ajout teacher et student et retrait user pour clarification
+ */
+
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -22,7 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      * Définition des rôles sous forme de constantes
      */
     private final String ADMIN_ROLE = RoleEnum.ADMIN.name();
-    private final String USER_ROLE = RoleEnum.USER.name();
+    private final String TEACHER_ROLE = RoleEnum.TEACHER.name();
+    private final String STUDENT_ROLE = RoleEnum.STUDENT.name();
 
     /**
      * On déclare les services / utilitaires que l'on va utiliser
@@ -56,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * Règle pour l'authentification
-     * On déclare que pour /admin et /user, il faut être authentifié
+     * On déclare que pour /admin ,/teacher et /student, il faut être authentifié
      * On définit les rôles par pattern d'url
      * On définit que le /* est authorisé à tous
      * On définit la page de login et le succesHandler, qui utilise indirectement le CustomAuthentificationSuccesHandler pour rediriger sur le bon pattern en fonction du rôle
@@ -68,9 +74,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**", "/user/**").authenticated()
+                .antMatchers("/admin/**", "/teacher/**", "/student/**").authenticated()
                 .antMatchers("/admin/**").hasAuthority(ADMIN_ROLE)
-                .antMatchers("/user/**").hasAuthority(USER_ROLE)
+                .antMatchers("/teacher/**").hasAuthority(TEACHER_ROLE)
+                .antMatchers("/student/**").hasAuthority(STUDENT_ROLE)
                 .antMatchers("/*").permitAll()
             .and()
                 .formLogin().loginPage("/login").successHandler(authenticationSuccessHandler).failureUrl("/login")

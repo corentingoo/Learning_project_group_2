@@ -1,18 +1,18 @@
-package be.ifosup.learning.webservice.controller.user;
+package be.ifosup.learning.webservice.controller.student;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * User controller
+ * Student controller
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/student")
+public class StudentController {
 
     @GetMapping
-    public String userPage() {
-        return "user/index";
+    public String studentPage() {
+        return "student/index";
     }
 }
