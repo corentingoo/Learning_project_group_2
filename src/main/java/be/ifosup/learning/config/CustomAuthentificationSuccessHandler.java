@@ -16,6 +16,9 @@ import java.util.Set;
  * Permet de rediriger l'utilisateur sur un controller ou l'autre en fonction de son rôle
  */
 
+/**
+ * V2 update pour ajout teacher et student et retrait user pour clarification
+ */
 @Configuration
 public class CustomAuthentificationSuccessHandler implements AuthenticationSuccessHandler {
 
@@ -25,8 +28,10 @@ public class CustomAuthentificationSuccessHandler implements AuthenticationSucce
 
         if(roles.contains(RoleEnum.ADMIN.name())) {
             httpServletResponse.sendRedirect("/admin");
+        } else if(roles.contains(RoleEnum.TEACHER.name())) {
+            httpServletResponse.sendRedirect("/teacher");
         } else {
-            httpServletResponse.sendRedirect("/user");
+            httpServletResponse.sendRedirect("/student");
         }
     }
 }
