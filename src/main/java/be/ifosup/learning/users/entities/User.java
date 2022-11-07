@@ -19,9 +19,20 @@ import java.util.stream.Collectors;
  */
 
 @Entity
-@Table(name = "users")
+
+
+/**
+*  @Data = pour avoir les getters et setters
+*/
 @Data
+@Table(name = "users")
 public class User implements UserDetails {
+
+    /**
+     * En mettant:
+     *  @Id = j'annote et je dis qu'est-ce qui va où
+     *  Donc, j'ai juste redéclaré les colonnes.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user")
