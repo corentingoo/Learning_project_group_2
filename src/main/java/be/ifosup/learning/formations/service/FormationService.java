@@ -12,21 +12,21 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class FormationService {
     @Autowired
-    private FormationRepository repo;
+    private FormationRepository formationRepository;
 
     public List<Formation> listAll() {
-        return repo.findAll();
+        return formationRepository.findAll();
     }
 
     public void save(Formation product) {
-        repo.save(product);
+        formationRepository.save(product);
     }
 
     public Formation get(Long id) {
-        return repo.findById(id).get();
+        return formationRepository.findById(id).get();
     }
 
     public void delete(Long id) {
-        repo.deleteById(id);
+        formationRepository.deleteById(id);
     }
 }

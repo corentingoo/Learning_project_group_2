@@ -1,18 +1,9 @@
 package be.ifosup.learning.formations.entities;
 
-import be.ifosup.learning.constants.RoleEnum;
-import be.ifosup.learning.utils.BCryptManagerUtil;
 import lombok.Data;
-import org.hibernate.annotations.Cascade;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "formations")
@@ -39,5 +30,9 @@ public class Formation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
