@@ -14,7 +14,7 @@ public class FormationController {
     @Autowired
     private FormationService formationservice;
 
-    // RESTful API methods for Retrieval operations
+    // REST API methods for Retrieval operations
     @GetMapping("/formations")
     public List<Formation> list() {
         return formationservice.listAll();
@@ -30,14 +30,14 @@ public class FormationController {
         }
     }
 
-    // RESTful API method for Create operation
+    // REST API method for Create operation
 
     @PostMapping("/formations")
     public void add(@RequestBody Formation formation) {
         formationservice.save(formation);
     }
 
-    // RESTful API method for Update operation
+    // REST API method for Update operation
 
     @PutMapping("/formations/{id}")
     public ResponseEntity<?> update(@RequestBody Formation formation, @PathVariable Long id) {
@@ -50,7 +50,7 @@ public class FormationController {
         }
     }
 
-    // RESTful API method for Delete operation
+    // REST API method for Delete operation
 
     @DeleteMapping("/formations/{id}")
     public void delete(@PathVariable Long id) {

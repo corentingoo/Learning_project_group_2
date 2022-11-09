@@ -11,16 +11,16 @@ import javax.validation.constraints.NotNull;
 public class Formation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "prof_id")
+    private Long prof_id;
 
     @NotNull
     @Column(name = "titre", nullable = false, unique = true)
     private String titre;
 
     @NotNull
-    @Column(name = "profNom", nullable = false)
-    private String profNom;
+    @Column(name = "prof_nom", nullable = false)
+    private String prof_nom;
 
     @NotNull
     @Column(name = "num_eleve")
@@ -28,11 +28,11 @@ public class Formation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Integer getId() {
-        return id;
+    public Long getProf_id() {
+        return prof_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProf_id(Long prof_id) {
+        this.prof_id = prof_id;
     }
 }
