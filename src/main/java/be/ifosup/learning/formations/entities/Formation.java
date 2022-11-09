@@ -19,10 +19,6 @@ public class Formation {
     private String titre;
 
     @NotNull
-    @Column(name = "prof_nom", nullable = false)
-    private String prof_nom;
-
-    @NotNull
     @Column(name = "num_eleve")
     private Integer num_eleve;
 
