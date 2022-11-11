@@ -1,3 +1,5 @@
+<!-- IFOSUP Wavre | Cours IPID avec Mr Sebastien LEJEUNE | Année académique: 2022 - 2023 -->
+<!-- Groupe: Learning Project -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -5,8 +7,11 @@
     <title>LP: Admin</title>
 </head>
 <body>
+    <!-- <img src="../img/LProject_Logo_Final.png" alt="Learning Project Logo"> -->
+    <!-- <img th:src=@{${'../img/img/LProject_Logo_Final.png'}}" /> -->
+    <img th:src="@{/admin/img/LProject_Logo_Final.jpg}" alt="Learning Project Logo" />
     <h1>Learning Project</h1>
     <h2>Page Admin:</h2>
-    <button type="button">Ajouter un utilisateur</button>
+    <button type="button" name="ajouterUtilisateur">Ajouter un utilisateur</button>
 </body>
 </html>
