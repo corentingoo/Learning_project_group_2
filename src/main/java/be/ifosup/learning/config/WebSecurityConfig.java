@@ -80,6 +80,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/teacher/**").hasAuthority(TEACHER_ROLE)
                 .antMatchers("/student/**").hasAuthority(STUDENT_ROLE)
                 .antMatchers("/*").permitAll()
+                /* Test */
+                /* .antMatchers("/admin/users/create/*").permitAll() */
             .and()
                 .formLogin().loginPage("/login").successHandler(authenticationSuccessHandler).failureUrl("/login")
                 .usernameParameter("username").passwordParameter("password")
