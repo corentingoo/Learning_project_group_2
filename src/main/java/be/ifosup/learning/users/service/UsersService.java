@@ -1,9 +1,8 @@
 package be.ifosup.learning.users.service;
 
 
-import be.ifosup.learning.users.entities.User;
-import be.ifosup.learning.users.repositories.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import be.ifosup.learning.users.in.UserIn;
+import be.ifosup.learning.users.out.UserOut;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
@@ -20,27 +19,29 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class UsersService  {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    public List<User> listAll(){
-        return userRepository.findAll();
-    }
+public interface UsersService  {
 
 
-    public void save(User creation){
-        userRepository.save(creation);
-    }
-
-    public User get(Long id){
-        return userRepository.findById(id).get();
-    }
-
-    public void delete(Long id){
-        userRepository.deleteById(id);
-    }
+    /* read all */
+    public List<UserOut> listAll();
 
 
+    /* create */
+    UserOut save(UserIn creationIn);
+
+
+
+    /* update */
+    UserOut update(Long id, UserIn creationIn);
+
+
+
+
+    /* read 1 by id */
+    UserOut get(Long id);
+
+
+
+    /* delete by id */
+    public void delete(Long id);
 }

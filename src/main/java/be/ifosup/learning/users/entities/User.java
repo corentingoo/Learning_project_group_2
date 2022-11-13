@@ -2,7 +2,10 @@ package be.ifosup.learning.users.entities;
 
 import be.ifosup.learning.constants.RoleEnum;
 import be.ifosup.learning.utils.BCryptManagerUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -26,6 +29,25 @@ import java.util.stream.Collectors;
 */
 @Data
 @Table(name = "users")
+
+
+/**
+ *  @BUILDER, càd qu'il permet le construction d'objets complexes
+ */
+@Builder
+
+/**
+ *  @NoArgsConstructor, càd qu'il génère notre constructeur sans argument et en accès public
+ */
+@NoArgsConstructor
+
+
+
+/**
+ *  @AllArgsConstructor,  càd qu'il génère notre constructeur avec tous les arguments sous forme de liste
+ *  qui ira supplanter la liste initiale et en accès public.
+ */
+@AllArgsConstructor
 public class User implements UserDetails {
 
     /**
@@ -76,6 +98,11 @@ public class User implements UserDetails {
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    /* ajout du champ email de notre table user */
+    @NotNull
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
