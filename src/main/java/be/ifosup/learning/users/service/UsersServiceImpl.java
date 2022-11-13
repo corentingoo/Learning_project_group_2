@@ -22,7 +22,7 @@ public class UsersServiceImpl implements UsersService{
 
     @Override
     /** read all */
-    public List<UserOut> listAll() {
+    public List<User> listAll() {
         List<User> userRepositoryALL = userRepository.findAll();
 
 
@@ -106,9 +106,11 @@ public class UsersServiceImpl implements UsersService{
 
 
 
-    /** read 1 */
+    /**
+     * read 1
+     */
     @Override
-    public UserOut get(Long id) {
+    public User get(Long id) {
         /** récupération de notre info depuis la base de données */
         User user = userRepository.findById(id).get();
 

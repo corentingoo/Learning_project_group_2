@@ -1,12 +1,12 @@
 package be.ifosup.learning.config;
 
 import be.ifosup.learning.constants.RoleEnum;
+import be.ifosup.learning.users.service.UsersService;
 import be.ifosup.learning.utils.BCryptManagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -34,19 +34,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     /**
      * On déclare les services / utilitaires que l'on va utiliser
      */
+
     private final UserDetailsService userDetailsService;
     private final AuthenticationSuccessHandler authenticationSuccessHandler;
+    private  final UsersService usersService;
 
     /**
      * Définition du constructeur avec l'instance des services utilisés
+     *
      * @param userDetailsService
      * @param authenticationSuccessHandler
+     * @param usersService
      */
     @Autowired
     public WebSecurityConfig(UserDetailsService userDetailsService,
-                             AuthenticationSuccessHandler authenticationSuccessHandler) {
+                             AuthenticationSuccessHandler authenticationSuccessHandler, UsersService usersService) {
         this.userDetailsService = userDetailsService;
         this.authenticationSuccessHandler = authenticationSuccessHandler;
+        this.usersService = usersService;
     }
 
     /**
