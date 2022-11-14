@@ -27,6 +27,8 @@ public class FormationServiceImpl implements FormationService {
                 .map(formation -> getFormationOut(formation))
                 .collect(Collectors.toList());
 
+        //2eme méthode pour lister toutes les formations avec une méthode de boucle
+
         List<FormationOut> formationOuts1 = new ArrayList<>();
         for (Formation formation :formationRepositoryAll) {
             formationOuts1.add(getFormationOut(formation));
@@ -37,7 +39,11 @@ public class FormationServiceImpl implements FormationService {
     }
 
     public FormationOut save(CreateFormationIn formationIn) {
-        Formation formation = Formation.builder().titre(formationIn.getTitre()).num_eleve(formationIn.getNum_eleve()).build();
+        Formation formation = Formation.builder()
+                        .titre(formationIn
+                        .getTitre())
+                        .num_eleve(formationIn.getNum_eleve())
+                        .build();
         Formation save = formationRepository.save(formation);
         return getFormationOut(save);
     }
@@ -46,7 +52,11 @@ public class FormationServiceImpl implements FormationService {
     public FormationOut update(Long id, CreateFormationIn formationIn) {
         Formation formation = formationRepository.findById(id).get();
 
-        Formation toSave = Formation.builder().formation_id(formation.getFormation_id()).num_eleve(formationIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIn.getNum_eleve()).titre(formationIn.getTitre()).build();
+        Formation toSave = Formation.builder()
+                .formation_id(formation.getFormation_id())
+                .num_eleve(formationIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIn.getNum_eleve())
+                .titre(formationIn.getTitre() == null ? formation.getTitre() : formationIn.getTitre())
+                .build();
 
         Formation saved = formationRepository.save(toSave);
         return getFormationOut(saved);
@@ -59,7 +69,10 @@ public class FormationServiceImpl implements FormationService {
     }
 
     private static FormationOut getFormationOut(Formation formation) {
-        return FormationOut.builder().formation_id(formation.getFormation_id()).num_eleve(formation.getNum_eleve()).titre(formation.getTitre()).build();
+        return FormationOut.builder()
+                .formation_id(formation.getFormation_id())
+                .num_eleve(formation.getNum_eleve())
+                .titre(formation.getTitre()).build();
     }
 
     public void delete(Long id) {

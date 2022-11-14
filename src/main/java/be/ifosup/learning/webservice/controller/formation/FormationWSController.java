@@ -20,16 +20,10 @@ public class FormationWSController {
     // REST API methods for Retrieval operations
     @GetMapping()
     public List<FormationOut> list() {
+
         return formationservice.listAll();
     }
 
-
-    @GetMapping()
-    public String list(Model model) {
-        List<FormationOut> formationOuts = formationservice.listAll();
-        model.addAttribute("formations", formationOuts);
-        return "formationList";
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<FormationOut> get(@PathVariable Long id) {
