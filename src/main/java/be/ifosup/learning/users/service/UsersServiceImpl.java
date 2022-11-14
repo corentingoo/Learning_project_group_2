@@ -20,9 +20,11 @@ public class UsersServiceImpl implements UsersService{
     @Autowired
     private UserRepository userRepository;
 
-    @Override
-    /** read all */
-    public List<User> listAll() {
+
+    /**
+     * read all
+     */
+    public List<UserOut> listAll() {
         List<User> userRepositoryALL = userRepository.findAll();
 
 
@@ -34,7 +36,7 @@ public class UsersServiceImpl implements UsersService{
                 .map(user -> getUserOut(user))
                 .collect(Collectors.toList());
 
-        return  userOuts;
+        return userOuts;
     }
 
 
@@ -110,7 +112,7 @@ public class UsersServiceImpl implements UsersService{
      * read 1
      */
     @Override
-    public User get(Long id) {
+    public UserOut get(Long id) {
         /** récupération de notre info depuis la base de données */
         User user = userRepository.findById(id).get();
 

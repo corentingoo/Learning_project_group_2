@@ -3,10 +3,12 @@ package be.ifosup.learning.webservice.controller.admin;
 
 import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.in.UserIn;
+import be.ifosup.learning.users.out.UserOut;
 import be.ifosup.learning.users.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +20,15 @@ import java.util.NoSuchElementException;
 @RestController
 public class UserController {
 
-    /** le controller est lié au service (qui est une interface, sorte de boîte à outils) */
+    /** Le controller est lié au service (qui est une interface, sorte de boîte à outils) */
     @Autowired
     private UsersService usersService;
 
-    /** API read */
+    /**
+     * API read
+     */
     @GetMapping("/users")
-    public List<User> list(){
+    public List<UserOut> list(){
         return usersService.listAll();
     }
 
@@ -33,8 +37,8 @@ public class UserController {
     /** @PathVariable càd récupère une valeur dans le chemin de la ressource. */
     public ResponseEntity<User> get(@PathVariable Long id){
         try{
-            User user = usersService.get(id);
-            return new ResponseEntity<User>(user, HttpStatus.OK);
+            UserOut user = usersService.get(id);
+            return new ResponseEntity<User>((MultiValueMap<String, String>) user, HttpStatus.OK);
         } catch (NoSuchElementException e){
             return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
         }
@@ -51,7 +55,7 @@ public class UserController {
     @PutMapping("/users/{id}")
     public ResponseEntity<?> update(@RequestBody UserIn user, @PathVariable Long id){
         try{
-            User existUser = usersService.get(id);
+            UserOut existUser = usersService.get(id);
             usersService.save(user);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (NoSuchElementException e){
