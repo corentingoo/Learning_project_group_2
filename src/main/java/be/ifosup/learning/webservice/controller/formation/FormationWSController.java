@@ -44,7 +44,7 @@ public class FormationWSController {
 
     // REST API method for Update operation
 
-    @PatchMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> update(@RequestBody CreateFormationIn formation, @PathVariable Long id) {
         try {
             FormationOut save = formationservice.update(id, formation);

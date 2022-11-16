@@ -74,11 +74,17 @@ public class FormationController {
     public String update(@PathVariable("id") String id, Model model) {
         model.addAttribute("formations", formationservice.get(Long.valueOf(id)));
 
+
         return "/admin/formation/update";
     }
 
-    @PatchMapping("/update")
-    public String updateFormation(@Valid @ModelAttribute("formations") CreateFormationIn formationIn, @PathVariable Long id, Model model) {
+    @PutMapping("/toupdate")
+    public String updateFormation(@Valid @ModelAttribute("formations") CreateFormationIn formationIn, Long id, Model model) {
+        Long formation_id = id;
+        String formationTitre = formationIn.getTitre();
+        String formationNumeleve = formationIn.getNum_eleve().toString();
+
+
         try {
             formationservice.update(id, formationIn);
         }
