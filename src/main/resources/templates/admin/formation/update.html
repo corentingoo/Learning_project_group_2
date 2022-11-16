@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <form th:action="@{/admin/formation/update}" th:object="${formations}" method="post" role="form">
+        <div class="row">
+            <input type="hidden" th:field="*{formation_id}">
+            <div class="col-lg-4 col-md-6 form-group mt-3 php-email-form">
+                <input type="text" th:field="*{titre}" class="form-control"
+                       placeholder="Titre*">
+            </div>
+
+
+            <div class="col-lg-4 col-md-6 form-group mt-3 php-email-form">
+                <input type="number" th:field="*{num_eleve}" class="form-control"
+                       placeholder="Nombre d'élèves*">
+
+            </div>
+        <br>
+        <div class="text-center">
+            <button type="submit">Confirmer</button>
+        </div>
+        </div>
+    </form>
+
+
+
+</body>
+</html>

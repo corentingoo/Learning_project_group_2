@@ -8,7 +8,7 @@
 <h1>Ajouter une formation</h1>
 <section id="create-formation" class="create-formation">
 
-        <form th:action="@{/formation/create}" th:object="${formations}" method="post" role="form">
+        <form th:action="@{/admin/formation/create}" th:object="${formations}" method="post" role="form">
             <div class="row">
                 <div class="col-lg-4 col-md-6 form-group mt-3 php-email-form">
                     <input type="text" th:field="*{titre}" class="form-control"

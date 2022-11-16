@@ -23,11 +23,11 @@
             <td>[[${formation.titre}]]</td>
             <td>[[${formation.num_eleve}]]</td>
             <td>
-                <a th:href="@{'/formation/update/' + ${formation.formation_id}}">edit</a>
+                <a th:href="@{'/admin/formation/update/' + ${formation.formation_id}}">edit</a>
 
             </td>
             <td>
-                <a th:href="@{'/formation/delete/' + ${formation.formation_id}}">delete</a>
+                <a th:href="@{'/admin/formation/delete/' + ${formation.formation_id}}">delete</a>
             </td>
             </tr>
         </th:block>
@@ -35,7 +35,7 @@
         </tbody>
     </table>
     <div class="add-formation">
-        <a th:href="@{/formation/create}">
+        <a th:href="@{/admin/formation/create}">
             <button type="button"> Rajouter une formation</button>
         </a>
     </div>

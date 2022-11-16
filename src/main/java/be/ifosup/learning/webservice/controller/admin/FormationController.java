@@ -1,14 +1,12 @@
-package be.ifosup.learning.webservice.controller.formation;
+package be.ifosup.learning.webservice.controller.admin;
 
 
 import be.ifosup.learning.formations.service.FormationService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.util.*;
@@ -24,7 +22,7 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/formation")
+@RequestMapping("/admin/formation")
 public class FormationController {
 
     @Autowired
@@ -34,13 +32,13 @@ public class FormationController {
     @GetMapping()
     public String formationpage(Model model) {
         model.addAttribute("formations", formationservice.listAll());
-        return "formation/index";
+        return "admin/formation/index";
     }
 
     @GetMapping("/create")
     public String formationcreatepage(Model model) {
         model.addAttribute("formations", new CreateFormationIn());
-        return "/formation/create.html";
+        return "/admin/formation/create.html";
     }
 
     @PostMapping("/create")
@@ -55,10 +53,40 @@ public class FormationController {
         }
 
         catch(Exception e){
-            return "redirect:/formation/create.html";
+            return "redirect:/admin/formation/create.html";
         }
 
-        return "redirect:/formation/";
+        return "redirect:/admin/formation/";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteFormation(@PathVariable("id") Long id) {
+        try {
+            formationservice.delete(id);
+        } catch (Exception e) {
+
+        }
+
+        return "redirect:/admin/formation/";
+    }
+
+    @GetMapping("/update/{id}")
+    public String update(@PathVariable("id") String id, Model model) {
+        model.addAttribute("formations", formationservice.get(Long.valueOf(id)));
+
+        return "/admin/formation/update";
+    }
+
+    @PatchMapping("/update")
+    public String updateFormation(@Valid @ModelAttribute("reservations") CreateFormationIn formationIn, @PathVariable Long id, Model model) {
+        try {
+            formationservice.update(id, formationIn);
+        }
+        catch(Exception e){
+            return "redirect:/admin/formation/";
+        }
+
+        return "redirect:/admin/formation/";
     }
 
 
