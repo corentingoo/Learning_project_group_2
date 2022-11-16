@@ -78,7 +78,7 @@ public class FormationController {
     }
 
     @PatchMapping("/update")
-    public String updateFormation(@Valid @ModelAttribute("reservations") CreateFormationIn formationIn, @PathVariable Long id, Model model) {
+    public String updateFormation(@Valid @ModelAttribute("formations") CreateFormationIn formationIn, @PathVariable Long id, Model model) {
         try {
             formationservice.update(id, formationIn);
         }
