@@ -71,8 +71,7 @@ public class FormationController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, @PathVariable long id , Model model) {
-
+    public String updateFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, @PathVariable("id") Long id , Model model) {
         try {
             formationservice.update(id , formationIn);
         }

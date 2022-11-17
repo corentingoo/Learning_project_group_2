@@ -6,9 +6,8 @@
 </head>
 <body>
 
-    <form th:action="@{/admin/formation/update/*{formation_id}}" th:object="${formations}" method="post" role="form">
+    <form th:action="@{/admin/formation/update/{id}(id = *{formation_id})}" th:object="${formations}" method="post" role="form">
         <div class="row">
-            <input type="hidden" th:field="*{formation_id}">
             <div>
                 <input type="text" th:field="*{titre}" class="form-control"
                        placeholder="Titre*">
