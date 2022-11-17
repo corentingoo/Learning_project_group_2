@@ -78,15 +78,14 @@ public class FormationController {
         return "/admin/formation/update";
     }
 
-    @PutMapping("/toupdate")
-    public String updateFormation(@Valid @ModelAttribute("formations") CreateFormationIn formationIn, Long id, Model model) {
-        Long formation_id = id;
-        String formationTitre = formationIn.getTitre();
-        String formationNumeleve = formationIn.getNum_eleve().toString();
-
+    @PostMapping("/update")
+    public String updateFormation(@Valid @ModelAttribute("formations") FormationOut formationOut, Model model) {
 
         try {
-            formationservice.update(id, formationIn);
+            CreateFormationIn from = CreateFormationIn.builder()
+                    .num_eleve(formationOut.getNum_eleve())
+                    .titre(formationOut.getTitre()).build();
+            formationservice.update(formationOut.getFormation_id(), from);
         }
         catch(Exception e){
             return "redirect:/admin/formation/";

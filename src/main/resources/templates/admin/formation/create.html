@@ -10,18 +10,14 @@
 
         <form th:action="@{/admin/formation/create}" th:object="${formations}" method="post" role="form">
             <div class="row">
-                <div class="col-lg-4 col-md-6 form-group mt-3 php-email-form">
+                <div>
                     <input type="text" th:field="*{titre}" class="form-control"
                            placeholder="Titre*">
-                    <div th:if="${#fields.hasErrors('titre')}" th:errors="*{titre}"
-                         class="alert alert-danger text-center"></div>
                 </div>
 
-                <div class="col-lg-4 col-md-6 form-group mt-3 php-email-form">
+                <div>
                     <input type="number" th:field="*{num_eleve}" class="form-control"
                            placeholder="Nombre d'élèves*">
-                    <div th:if="${#fields.hasErrors('num_eleve')}" th:errors="*{num_eleve}"
-                         class="alert alert-danger text-center"></div>
                 </div>
             </div>
             <br>

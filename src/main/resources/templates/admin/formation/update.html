@@ -6,16 +6,16 @@
 </head>
 <body>
 
-    <form th:action="@{/admin/formation/toupdate}" th:object="${formations}" method="post" role="form">
+    <form th:action="@{/admin/formation/update}" th:object="${formations}" method="post" role="form">
         <div class="row">
-            <input type="hidden" name="${formation_id}" value="*{formation_id}">
-            <div class="col-lg-4 col-md-6 form-group mt-3 php-email-form">
+            <input type="hidden" th:field="*{formation_id}">
+            <div>
                 <input type="text" th:field="*{titre}" class="form-control"
                        placeholder="Titre*">
             </div>
 
 
-            <div class="col-lg-4 col-md-6 form-group mt-3 php-email-form">
+            <div>
                 <input type="number" th:field="*{num_eleve}" class="form-control"
                        placeholder="Nombre d'élèves*">
 
