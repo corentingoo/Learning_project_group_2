@@ -1,6 +1,7 @@
 package be.ifosup.learning.formations.service;
 
-import be.ifosup.learning.formations.in.FormationIn;
+import be.ifosup.learning.formations.entities.Formation;
+import be.ifosup.learning.formations.in.CreateFormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.List;
 public interface FormationService {
     List<FormationOut> listAll();
 
-    FormationOut save(FormationIn formationIn);
+    FormationOut save(CreateFormationIn formationIn);
 
-    FormationOut update(Long id, FormationIn formationIn);
+    FormationOut update(Long id, CreateFormationIn formationIn);
 
     FormationOut get(Long id) ;
 
