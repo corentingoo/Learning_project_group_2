@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateFormationIn {
+public class FormationIn {
     @NotNull
     private String titre;
     @NotNull
