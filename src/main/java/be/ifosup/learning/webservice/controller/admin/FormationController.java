@@ -2,21 +2,13 @@ package be.ifosup.learning.webservice.controller.admin;
 
 
 import be.ifosup.learning.formations.service.FormationService;
-import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.UnsupportedEncodingException;
-import java.util.*;
-
-import be.ifosup.learning.formations.in.CreateFormationIn;
-import be.ifosup.learning.formations.out.FormationOut;
-import org.springframework.http.*;
+import be.ifosup.learning.formations.in.FormationIn;
 
 import org.springframework.ui.Model;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -37,19 +29,19 @@ public class FormationController {
 
     @GetMapping("/create")
     public String formationcreatepage(Model model) {
-        model.addAttribute("formations", new CreateFormationIn());
+        model.addAttribute("formations", new FormationIn());
         return "/admin/formation/create.html";
     }
 
     @PostMapping("/create")
-    public String createFormation(@Valid @ModelAttribute("formations") CreateFormationIn createFormationIn, Model model) {
+    public String createFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, Model model) {
 
         //Informations de la formation
-        String formationTitre = createFormationIn.getTitre();
-        String formationNumeleve = createFormationIn.getNum_eleve().toString();
+        String formationTitre = formationIn.getTitre();
+        String formationNumeleve = formationIn.getNum_eleve().toString();
 
         try {
-            formationservice.save(createFormationIn);
+            formationservice.save(formationIn);
         }
 
         catch(Exception e){
@@ -78,14 +70,11 @@ public class FormationController {
         return "/admin/formation/update";
     }
 
-    @PostMapping("/update")
-    public String updateFormation(@Valid @ModelAttribute("formations") FormationOut formationOut, Model model) {
+    @PostMapping("/update/{id}")
+    public String updateFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, @PathVariable long id , Model model) {
 
         try {
-            CreateFormationIn from = CreateFormationIn.builder()
-                    .num_eleve(formationOut.getNum_eleve())
-                    .titre(formationOut.getTitre()).build();
-            formationservice.update(formationOut.getFormation_id(), from);
+            formationservice.update(id , formationIn);
         }
         catch(Exception e){
             return "redirect:/admin/formation/";

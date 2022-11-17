@@ -6,12 +6,11 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 import be.ifosup.learning.formations.entities.Formation;
-import be.ifosup.learning.formations.in.CreateFormationIn;
+import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.util.StringUtils;
 
 @Service
 @Transactional
@@ -38,7 +37,7 @@ public class FormationServiceImpl implements FormationService {
         return formationOuts;
     }
 
-    public FormationOut save(CreateFormationIn formationIn) {
+    public FormationOut save(FormationIn formationIn) {
         Formation formation = Formation.builder()
                         .titre(formationIn
                         .getTitre())
@@ -49,7 +48,7 @@ public class FormationServiceImpl implements FormationService {
     }
 
     @Override
-    public FormationOut update(Long id, CreateFormationIn formationIn) {
+    public FormationOut update(Long id, FormationIn formationIn) {
         Formation formation = formationRepository.findById(id).get();
 
         Formation toSave = Formation.builder()
