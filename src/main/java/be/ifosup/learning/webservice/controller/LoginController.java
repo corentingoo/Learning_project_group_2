@@ -8,10 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 * Controller pour la page admin
 * */
 @Controller
-@RequestMapping("/login")
+/** @RequestMapping renvoit un array de string
+ * */
+@RequestMapping({"/index", "/login"})
 public class LoginController {
     @GetMapping
     public String loginPage() {
-        return "login";
+        if ("index"){
+            return "index";
+        }
+        else return "login"; */
+
+
     }
 }
