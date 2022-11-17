@@ -2,62 +2,227 @@
 <!-- Groupe: Learning Project -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>LP: Accueil</title>
-    <style>
-        *{font-family: Arial;}
-        h1 {color:black;}
-        .createbtn{
-            padding: 6px 50px;
-            background-color:rgba(51,153,152,1);
-            color: white;
-            border: dashed;
-            border-color: rgb(0,102,51);
-            border-radius: 2px;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <title>LP: Accueil</title>
+        <link rel="icon" type="image/x-icon" href="./img/favicon.png">
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <script src="/js/"></script>
 
-        .createbtn:hover{
-            background-color:rgba(53,229,172,1);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <div>
-            <img th:src="@{./img/LProject_Logo_Final.jpg}" alt="Learning Project Logo" />
-            <h1>Learning Project</h1>
-        </div>
-    </header>
-    <nav>
-        <div>
-            <a th:href="@{/}">Accueil</a>
-        </div>
-        <div>
-            <p> | </p>
-        </div>
-        <div>
-            <a th:href="@{/login}">Connexion</a>
-        </div>
-    </nav>
-    <section>
-        Bienvenue sur LP, la plateforme de gestion de formations.
-        <div>News: 16/12/2022: Soirée Alumni avec les anciens élèves et professeurs.</div>
-        <div>A ce jour, 3 formations se sont terminées via notre site.</div>
-    </section>
-    <footer>
-        <div>
-            <a th:href="@{/}">Accueil</a>
-        </div>
-        <div>  | </div>
-        <div>Learning Project</div>
-        <div>|</div>
-        <div>Project d'intégration de dev (Professeur: Sebastien LEJEUNE)</div>
-        <div>|</div>
-        <div>IFOSUP</div>
-        <div>|</div>
-        <div>Année académique 2022 - 2023</div>
-    </footer>
-    <!-- <footer th:replace="fragments/footer"></footer> -->
-</body>
+        <!-- href="/css/style.css" car on fait un chemin absolu depuis notre dossier public -->
+        <!-- Donc quand on commence par un slash '/', cela veut dire que l'on fait de l'absolu. -->
+        <link rel="stylesheet" href="./css/style.css" type="text/css">
+
+        <!-- font-awesome : Ajouts de fonts libres de droits -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+        <style>
+            *{
+                font-family: Arial;
+                background-color:rgba(252,252,252,1);
+            }
+
+
+            .createbtn{
+                padding: 6px 50px;
+                background-color:rgba(51,153,152,1);
+                color: white;
+                border: dashed;
+                border-color: rgb(0,102,51);
+                border-radius: 2px;
+            }
+
+
+            a {
+                text-decoration: none;
+            }
+
+
+            a:visited {
+                color: rgb(102,153,255);
+            }
+
+
+            .titreHeader{
+                display: inline;
+                font-size: 250%;
+            }
+
+
+            .navFloat {
+                display: inline;
+                margin: 10px 5px;
+                font-size: 22px;
+            }
+
+
+            .navFloat:hover{
+                background-color: rgb(0,51,153);
+                color: white;
+            }
+
+            .liensNav:hover {
+                background-color: rgb(0,51,153);
+                color: white;
+            }
+
+
+            .createbtn:hover{
+                background-color:rgba(53,229,172,1);
+            }
+
+
+            #img1{
+                height: 30px;
+                padding: 1px 5px;
+            }
+
+
+            #bienvenue{
+                text-align: center;
+                margin: 30px auto 5px auto;
+                padding: 5px 250px;
+                font-size: larger;
+            }
+
+            .row{
+                display: flex;
+            }
+
+
+            .col{
+                flex: 1;
+                padding: 1em;
+            }
+
+
+
+            #news {
+                text-align: center;
+                border: 2px solid black;
+                overflow: auto;
+                background-color:rgba(253,253,253,0.7);
+            }
+
+
+
+            #img2{
+                margin: 0px 10px;
+                padding: 30px;
+                border: 2px solid black;
+                background-color:rgba(253,253,253,0.7);
+            }
+
+
+            .divParent{
+                position: relative;
+            }
+
+
+            .divEnfant{
+                position: absolute;
+                left: 35px;
+                margin-top: 5px;
+                padding-top:15px;
+            }
+
+
+            footer {
+                height: 65px;
+                text-align: center;
+                margin-top: 20px;
+                clear: both;
+                background: url(./img/LProject_Accueil_Footer_Fin.png) repeat-x center;
+                overflow: hidden;
+            }
+
+            .divFooter{
+                display: inline;
+                margin: auto;
+                padding-bottom: 3px;
+                background-color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div>
+                <!-- <img th:src="@{./img/LProject_Logo_Final.jpg}" alt="Learning Project Logo" /> -->
+                <div class="titreHeader">
+                    <img id="img1" src="./img/LProject_Logo_Final.png" alt="Learning Project Logo" >
+                </div>
+
+                <div class="titreHeader">
+                    Learning Project
+                </div>
+
+            </div>
+        </header>
+        <nav>
+            <!-- <a th:href="@{/}">Accueil</a> -->
+            <a href="/"><div style="font-size:20px" class="navFloat fa">&#xf015;</div></a>
+            <div id="navAccueil" class="navFloat"><a href="/" class="liensNav" title="Accueil"> Accueil</a></div>
+
+
+            <div class="navFloat">
+                |
+            </div>
+
+
+            <!-- <a th:href="@{/login}">Connexion</a> -->
+            <div id="navConnexion" class="navFloat"><a href="/login" class="liensNav" title="Connexion">Connexion</a></div>
+            <a href="/login"><div style="font-size:20px" class="navFloat fa">&#xf2f6;</div></a>
+        </nav>
+        <section>
+            <div id="bienvenue">
+                Bienvenue sur LP, la plateforme de gestion de formations.
+            </div>
+
+            <div class="row">
+                <div class="divParent">
+                    <img id="img2" src="./img/LProject_Accueil_Pexels_Fin.jpg" alt="LP Compteur de formations finies" >
+                </div>
+                <!-- <div style="position:absolute; font-size:200%; top:30px; width:600px; height:400px; z-index:2"> -->
+                <div class="divEnfant">
+                    A ce jour, 3 formations se sont terminées via notre site.
+                </div>
+                <!-- News -->
+                <div id="news" class="col">
+                    <strong>News:</strong> 16/12/2022: Soirée Alumni avec les anciens élèves et professeurs.
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="divFooter">
+                <!-- <a th:href="@{/}">Accueil</a> -->
+                <a href="/" title="Accueil"> Accueil </a>
+            </div>
+            <div class="divFooter">
+                |
+            </div>
+            <div class="divFooter">
+                Learning Project
+            </div>
+            <div class="divFooter">
+                |
+            </div>
+            <div class="divFooter">
+                Project d'intégration de dev (Professeur: Sebastien LEJEUNE)
+            </div>
+            <div class="divFooter">
+                |
+            </div>
+            <div class="divFooter">
+                IFOSUP
+            </div>
+            <div class="divFooter">
+                |
+            </div>
+            <div class="divFooter">
+                Année académique 2022 - 2023
+            </div>
+            <!-- <img id="imgFooter" src="./img/LProject_Accueil_Footer_Fin.jpg" alt="Learning Project Footer Img" > -->
+        </footer>
+
+        <!-- <footer th:replace="fragments/footer"></footer> -->
+    </body>
 </html>
