@@ -3,4 +3,4 @@ CREATE TABLE IF NOT EXISTS `formations` (
     `titre` varchar(250) NOT NULL,
     `num_eleve` int(20) NOT NULL,
     PRIMARY KEY (`formation_id`)
-    ) ENGINE=InnoDB;
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,10 +1,10 @@
-create table roles (
+create table if not exists roles (
     id_user bigint not null,
     role varchar(255) not null
-) engine=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-create table users (
-    id_user bigint not null,
+create table if not exists users (
+    id_user bigint not null AUTO_INCREMENT,
     account_non_expired bit,
     account_non_locked bit,
     credentials_non_expired bit,
@@ -14,7 +14,7 @@ create table users (
     password varchar(255) not null,
     username varchar(255) not null,
     primary key (id_user)
-) engine=InnoDB;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 create index INDEX_USER_ROLE on roles (id_user);
 
