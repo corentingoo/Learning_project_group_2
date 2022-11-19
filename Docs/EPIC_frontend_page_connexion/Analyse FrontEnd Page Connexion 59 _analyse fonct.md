@@ -24,6 +24,6 @@ Tout le monde à accès à la page Connexion mais ne peut pas aller plus loin su
 Respect de la maquette UX/UI, de la palette de couleurs et de la police à utiliser.
 
 
-![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-59-Frontend-PageConnexion/src/Docs/EPIC_frontend_page_connexion/LProject%20_Page%20Accueil%20_UX%20UI%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-59-frontend-connexion/Docs/EPIC_frontend_page_connexion/LProject%20_Page%20Connexion%20_UX%20UI%20_Fin.jpg)
 
 Rmq: Voir les fichiers joints en annexe dans ce repertoire "Docs" pour en savoir plus sur cet epic.
