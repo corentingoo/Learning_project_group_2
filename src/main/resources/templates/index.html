@@ -5,46 +5,20 @@
     <head>
         <meta charset="UTF-8">
         <title>LP: Accueil</title>
-        <link rel="icon" type="image/x-icon" href="/img/favicon.png">
-        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.png}" />
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"> </script>
 
-        <!-- <script src="/js/"></script> -->
-
-        <!-- href="/css/style.css" car on fait un chemin absolu depuis notre dossier public -->
-        <!-- Donc quand on commence par un slash '/', cela veut dire que l'on fait de l'absolu. -->
-        <link rel="stylesheet" href="/css/style.css" type="text/css">
+        <script th:src="@{/js/scripts.js}" type="text/javascript"></script>
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
 
         <!-- font-awesome : Ajouts de fonts libres de droits -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+        <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.4/css/all.css}" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
     </head>
-    <body>
-        <header>
-            <div>
-                <!-- <img th:src="@{./img/LProject_Logo_Final.jpg}" alt="Learning Project Logo" /> -->
-                <div class="titreHeader">
-                    <img id="img1" src="/img/LProject_Logo_Final.png" alt="Learning Project Logo" >
-                </div>
+    <body onload="showMsgAlert()">
+        <!-- 1er parametre: le nom du template | 2e parametre: le selecteur -->
+        <header th:insert="fragments/header :: header"></header>
+        <nav th:insert="fragments/nav :: nav"></nav>
 
-                <div class="titreHeader">
-                    Learning Project
-                </div>
-            </div>
-        </header>
-        <nav>
-            <!-- <a th:href="@{/}">Accueil</a> -->
-            <a href="/"><div style="font-size:20px" class="navFloat fa">&#xf015;</div></a>
-            <div id="navAccueil" class="navFloat"><a href="/" class="liensNav" title="Accueil"> Accueil</a></div>
-
-
-            <div class="navFloat">
-                |
-            </div>
-
-
-            <!-- <a th:href="@{/login}">Connexion</a> -->
-            <div id="navConnexion" class="navFloat"><a href="/login" class="liensNav" title="Connexion">Connexion</a></div>
-            <a href="/login"><div style="font-size:20px" class="navFloat fa">&#xf2f6;</div></a>
-        </nav>
         <section>
             <div id="bienvenue">
                 Bienvenue sur LP, la plateforme de gestion de formations.
@@ -52,50 +26,18 @@
 
             <div class="row">
                 <div class="divParent">
-                    <img id="img2" src="/img/LProject_Accueil_Pexels_Fin.jpg" alt="LP Compteur de formations finies" >
+                    <img id="img2" th:src="@{/img/LProject_Accueil_Pexels_Fin.jpg}" alt="LP Compteur de formations finies" />
                 </div>
-                <!-- <div style="position:absolute; font-size:200%; top:30px; width:600px; height:400px; z-index:2"> -->
                 <div class="divEnfant">
                     A ce jour, 3 formations se sont terminées via notre site.
                 </div>
-                <!-- News -->
                 <div id="news" class="col">
                     <strong>News:</strong> 16/12/2022: Soirée Alumni avec les anciens élèves et professeurs.
                 </div>
             </div>
         </section>
-        <footer>
-            <div class="divFooter">
-                <!-- <a th:href="@{/}">Accueil</a> -->
-                <a href="/" title="Accueil"> Accueil </a>
-            </div>
-            <div class="divFooter">
-                |
-            </div>
-            <div class="divFooter">
-                Learning Project
-            </div>
-            <div class="divFooter">
-                |
-            </div>
-            <div class="divFooter">
-                Project d'intégration de dev (Professeur: Sebastien LEJEUNE)
-            </div>
-            <div class="divFooter">
-                |
-            </div>
-            <div class="divFooter">
-                IFOSUP
-            </div>
-            <div class="divFooter">
-                |
-            </div>
-            <div class="divFooter">
-                Année académique 2022 - 2023
-            </div>
-            <!-- <img id="imgFooter" src="./img/LProject_Accueil_Footer_Fin.jpg" alt="Learning Project Footer Img" > -->
-        </footer>
 
-        <!-- <footer th:replace="fragments/footer"></footer> -->
+        <!-- 1er parametre: le nom du template | 2e parametre: le selecteur -->
+        <footer th:insert="fragments/footer :: footer"></footer>
     </body>
 </html>
