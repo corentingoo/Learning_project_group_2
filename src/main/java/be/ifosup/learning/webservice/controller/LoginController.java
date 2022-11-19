@@ -10,15 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 /** @RequestMapping renvoit un array de string
  * */
-@RequestMapping({"/index", "/login"})
+@RequestMapping("/login")
 public class LoginController {
     @GetMapping
     public String loginPage() {
-        if ("index"){
-            return "index";
-        }
-        else return "login"; */
-
-
+        return "login";
     }
 }
