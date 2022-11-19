@@ -46,7 +46,7 @@ CSS Icon (FontAwesome Library - Sous license Open Font License OFL) => Source: h
 
 
 ### Gérer les exceptions et problèmes qui pourraient être rencontrés:  
-![Visual display](hhttps://github.com/corentingoo/Learning_project_group_2/blob/documentation-59-frontend-connexion/Docs/EPIC_create_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
+![Visual display](https://github.com/corentingoo/Learning_project_group_2/blob/documentation-59-frontend-connexion/Docs/EPIC_create_formation/LProject%20_Formation%20_MindMap%20_Code%20HTTP%20_Fin.jpg)
 
 - Code 200: Réussite d'une requête. Par exemple: Page Ok.
 
