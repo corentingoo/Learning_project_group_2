@@ -74,7 +74,7 @@ public class FormationController {
     @PostMapping("/update/{id}")
     public String updateFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, @PathVariable("id") Long id , Model model) {
         try {
-            formationservice.update(id , formationIn);        }
+            formationservice.update(id, formationIn);        }
         catch(Exception e){
             return "redirect:/admin/formation/";
         }

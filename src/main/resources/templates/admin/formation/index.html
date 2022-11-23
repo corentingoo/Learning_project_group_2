@@ -13,6 +13,7 @@
             <th> Id</th>
             <th> Titre</th>
             <th> Nombre d'élèves</th>
+            <th> Date de début</th>
             <th> Mise à jour</th>
             <th> Supprimer</th>
         </tr>
@@ -22,6 +23,8 @@
             <td>[[${formation.formation_id}]]</td>
             <td>[[${formation.titre}]]</td>
             <td>[[${formation.num_eleve}]]</td>
+            <td>[[${formation.date_debut}]]</td>
+            <td>[[${formation.date_fin}]]</td>
             <td>
                 <a th:href="@{'/admin/formation/update/' + ${formation.formation_id}}">edit</a>
 
@@ -36,7 +39,7 @@
     </table>
     <div class="add-formation">
         <a th:href="@{/admin/formation/create}">
-            <button type="button"> Rajouter une formation</button>
+            <button type="button"> Ajouter une formation</button>
         </a>
     </div>
 </div>
