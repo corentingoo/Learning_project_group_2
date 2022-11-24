@@ -1,6 +1,6 @@
 ALTER TABLE formations
-    Add date_debut varchar(25),
-    Add date_fin varchar(25),
+    Add date_debut date,
+    Add date_fin date,
     Add teacher bigint;
 
 

@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "formations")
@@ -35,11 +36,11 @@ public class Formation {
 
     @NotNull
     @Column(name = "date_debut")
-    private String date_debut;
+    private Date date_debut;
 
     @NotNull
     @Column(name = "date_fin")
-    private String date_fin;
+    private Date date_fin;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
