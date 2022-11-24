@@ -30,7 +30,21 @@
     <h2>Page Admin: Gestion des utilisateurs</h2>
     <button type="button" class="createbtn" name="ajouterUtilisateur">Ajouter un utilisateur</button>
     <!-- <input class="createbtn" name="ajouterUtilisateur" type="button" value="Ajouter un utilisateur" onclick="" /> -->
+    <th:block th:each="users: ${users}">
+        <td>[[${users.id_user}]]</td>
+        <td>[[${users.account_}]]</td>
+        <td>[[${users.id_user}]]</td>
+        <td>[[${users.titre}]]</td>
+        <td>[[${users.num_eleve}]]</td>
+        <td>
+            <a th:href="@{'/admin/formation/update/' + ${formation.formation_id}}">edit</a>
 
+        </td>
+        <td>
+            <a th:href="@{'/admin/formation/delete/' + ${formation.formation_id}}">delete</a>
+        </td>
+        </tr>
+    </th:block>
 
 
 
