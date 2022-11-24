@@ -23,6 +23,7 @@
     </style>
 </head>
 <body>
+
     <!-- <img src="../img/LProject_Logo_Final.png" alt="Learning Project Logo"> -->
     <!-- <img th:src=@{${'../img/img/LProject_Logo_Final.png'}}" /> -->
     <img th:src="@{./img/LProject_Logo_Final.jpg}" alt="Learning Project Logo" />
@@ -31,9 +32,12 @@
     <button type="button" class="createbtn" name="ajouterUtilisateur">Ajouter un utilisateur</button>
     <!-- <input class="createbtn" name="ajouterUtilisateur" type="button" value="Ajouter un utilisateur" onclick="" /> -->
 
-
+    <a th:href="@{/admin/formation}">
+        <button type="button"> Gestion des formations</button>
+    </a>
 
 
     <!-- <footer th:replace="fragments/footer"></footer> -->
+
 </body>
 </html>

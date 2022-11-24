@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une formation</title>
+</head>
+<body>
+<h1>Ajouter une formation</h1>
+<section id="create-formation" class="create-formation">
+
+        <form th:action="@{/admin/formation/create}" th:object="${formations}" method="post" role="form">
+            <div class="row">
+                <div>
+                    <input type="text" th:field="*{titre}" class="form-control"
+                           placeholder="Titre*">
+                </div>
+
+                <div>
+                    <input type="number" th:field="*{num_eleve}" class="form-control"
+                           placeholder="Nombre d'élèves*">
+                </div>
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit">Confirmer</button>
+            </div>
+        </form>
+
+
+</section>
+</body>
+</html>
