@@ -3,8 +3,6 @@ package be.ifosup.learning.users.service;
 
 import be.ifosup.learning.users.in.UserIn;
 import be.ifosup.learning.users.out.UserOut;
-import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -17,8 +15,7 @@ import java.util.List;
  *  On déclare les services / utilitaires que l'on va utiliser
  *
  */
-@Service
-@Transactional
+
 public interface UsersService  {
 
 

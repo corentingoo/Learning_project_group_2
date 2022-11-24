@@ -8,6 +8,7 @@ import be.ifosup.learning.users.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,8 @@ import java.util.NoSuchElementException;
 
 /** Pour indiquer à Spring que nous sommes en API RESTful
  *  avec communication en JSON */
-@RestController
+@Controller
+@RequestMapping("/admin/users")
 public class UserController {
 
     /** Le controller est lié au service (qui est une interface, sorte de boîte à outils) */
