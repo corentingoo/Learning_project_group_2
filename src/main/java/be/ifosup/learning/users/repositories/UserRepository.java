@@ -5,6 +5,7 @@ import be.ifosup.learning.users.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
@@ -25,8 +26,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying
     @Transactional
-    @Query("SELECT users FROM users LEFT JOIN roles on users.id_user = roles.id_user WHERE role = ?1")
-    List<User> allUserByRole(String role);
+    @Query("SELECT username FROM users LEFT JOIN roles on users.id_user = roles.id_user WHERE roles.role = :role")
+    List<User> allUserByRole(@Param("role")String role);
+
+
+
+
 
 
 

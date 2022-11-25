@@ -83,7 +83,6 @@ public class FormationServiceImpl implements FormationService {
                 .date_debut(formation.getDate_debut())
                 .date_fin(formation.getDate_fin())
                 .build();
-
     }
 
     public void delete(Long id) {
