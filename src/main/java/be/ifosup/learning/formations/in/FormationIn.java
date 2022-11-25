@@ -22,4 +22,6 @@ public class FormationIn {
     private Date date_debut;
     @NotNull
     private Date date_fin;
+    @NotNull
+    private Integer teacher;
 }

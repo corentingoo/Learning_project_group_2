@@ -45,6 +45,10 @@ public class Formation {
     @Column(name = "date_fin")
     private Date date_fin;
 
+    @NotNull
+    @Column(name = "teacher", nullable = false)
+    private Integer teacher;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getFormation_id() {

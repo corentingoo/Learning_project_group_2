@@ -2,12 +2,12 @@ package be.ifosup.learning.webservice.controller.admin;
 
 
 import be.ifosup.learning.formations.service.FormationService;
+import be.ifosup.learning.users.service.UsersService;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import be.ifosup.learning.formations.in.FormationIn;
-import be.ifosup.learning.formations.out.FormationOut;
 
 import org.springframework.ui.Model;
 
@@ -20,6 +20,8 @@ public class FormationController {
 
     @Autowired
     private FormationService formationservice;
+    @Autowired
+    private UsersService userservice;
 
     // Methods for Retrieval operations
     @GetMapping()
@@ -31,6 +33,7 @@ public class FormationController {
     @GetMapping("/create")
     public String formationcreatepage(Model model) {
         model.addAttribute("formations", new FormationIn());
+        model.addAttribute("teachers", userservice.listAllbyRole("teacher"));
         return "/admin/formation/create.html";
     }
 
