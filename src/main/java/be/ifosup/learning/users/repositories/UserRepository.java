@@ -1,5 +1,6 @@
 package be.ifosup.learning.users.repositories;
 
+import be.ifosup.learning.constants.RoleEnum;
 import be.ifosup.learning.users.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,8 +25,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Modifying
     @Transactional
-    @Query("SELECT username FROM users LEFT JOIN roles on users.id_user = roles.id_user WHERE role = ?1")
+    @Query("SELECT users FROM users LEFT JOIN roles on users.id_user = roles.id_user WHERE role = ?1")
     List<User> allUserByRole(String role);
+
+
+
+
 
 
 
