@@ -22,10 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
      */
     User findByUsername(String username);
 
-    @Modifying
-    @Transactional
-    @Query("SELECT username FROM users LEFT JOIN roles on users.id_user = roles.id_user WHERE role = ?1")
-    List<User> allUserByRole(String role);
+    
 
 
 
