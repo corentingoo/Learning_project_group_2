@@ -1,32 +1,18 @@
 package be.ifosup.learning.formations.service;
 
+import be.ifosup.learning.formations.in.FormationIn;
+import be.ifosup.learning.formations.out.FormationOut;
+
 import java.util.List;
 
-import javax.transaction.Transactional;
-import be.ifosup.learning.formations.entities.Formation;
-import be.ifosup.learning.formations.repositories.FormationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface FormationService {
+    List<FormationOut> listAll();
 
-@Service
-@Transactional
-public class FormationService {
-    @Autowired
-    private FormationRepository formationRepository;
+    FormationOut save(FormationIn formationIn);
 
-    public List<Formation> listAll() {
-        return formationRepository.findAll();
-    }
+    FormationOut update(Long id, FormationIn formationIn);
 
-    public void save(Formation product) {
-        formationRepository.save(product);
-    }
+    FormationOut get(Long id) ;
 
-    public Formation get(Long id) {
-        return formationRepository.findById(id).get();
-    }
-
-    public void delete(Long id) {
-        formationRepository.deleteById(id);
-    }
+    void delete(Long id);
 }
