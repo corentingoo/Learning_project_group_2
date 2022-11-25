@@ -18,5 +18,4 @@ public class FormationOut {
     private Integer num_eleve;
     private Date date_debut;
     private Date date_fin;
-    private Integer teacher;
 }

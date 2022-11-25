@@ -32,13 +32,6 @@
                     <input type="date" th:field="*{date_fin}" class="form-control">
                 </div>
 
-                <div>
-                    <select th:field="*{teacher}" id="teacher">
-                        <option type="text" th:value="default">Choisir un professeur</option>
-                        <option type="text" th:each="Teacher: ${teachers}" th:value="${Teacher.username}"
-                                th:text="${Teacher.username}"></option>
-                    </select>
-                </div>
 
             </div>
             <br>
