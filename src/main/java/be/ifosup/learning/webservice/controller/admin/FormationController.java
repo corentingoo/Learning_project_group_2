@@ -33,16 +33,13 @@ public class FormationController {
     @GetMapping("/create")
     public String formationcreatepage(Model model) {
         model.addAttribute("formations", new FormationIn());
-        model.addAttribute("teachers", userservice.listAllbyRole("teacher"));
+        model.addAttribute("teachers", userservice.listAllbyRole("TEACHER"));
         return "/admin/formation/create.html";
     }
 
     @PostMapping("/create")
     public String createFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, Model model) {
 
-        //Informations de la formation
-        String formationTitre = formationIn.getTitre();
-        String formationNumeleve = formationIn.getNum_eleve().toString();
 
         try {
             formationservice.save(formationIn);
@@ -83,6 +80,12 @@ public class FormationController {
         }
 
         return "redirect:/admin/formation/";
+    }
+
+    @GetMapping("/teacher")
+    public String teacherpage(Model model) {
+        model.addAttribute("teachers", userservice.listAllbyRole("TEACHER"));
+        return "admin/formation/teacher/index.html";
     }
 
 

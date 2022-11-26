@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -25,8 +24,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 
     @Modifying
-    @Transactional
-    @Query("SELECT username FROM users LEFT JOIN roles on users.id_user = roles.id_user WHERE roles.role = :role")
+    @Query("SELECT u FROM User u LEFT JOIN Role r on u.id = r.id_user WHERE r.role = :role")
     List<User> allUserByRole(@Param("role")String role);
 
 
