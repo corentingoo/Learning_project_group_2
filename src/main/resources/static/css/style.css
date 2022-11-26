@@ -26,7 +26,9 @@
 }
 
 
-
+#ajouterUtilisateur {
+    margin: 5px;
+}
 
 
 a {
@@ -91,6 +93,24 @@ a:visited {
     padding: 1em;
 }
 
+
+table, th, td {
+    border: 1px black;
+    border-collapse: collapse;
+    border-style: solid;
+}
+
+
+th, td {
+    text-align: center;
+    padding: 3px;
+}
+
+
+/* odd = ligne paire */
+table tr:nth-child(odd) {
+    background: yellow;
+}
 
 
 #news {

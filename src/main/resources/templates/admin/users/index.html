@@ -20,50 +20,51 @@
         <nav th:insert="fragments/nav :: nav"></nav>
 
         <h2>Page Admin: Gestion des utilisateurs</h2>
-        <button type="button" class="createbtn" name="ajouterUtilisateur">Ajouter un utilisateur</button>
-        <!-- <input class="createbtn" name="ajouterUtilisateur" type="button" value="Ajouter un utilisateur" onclick="" /> -->
-
 
         <div>
             <table>
                 <!-- Creation de la barre de titre de ma table user -->
-                <tr>
-                    <th>id_user</th>
-                    <th>account_non_expired</th>
-                    <th>account_non_locked</th>
-                    <th>credentials_non_expired</th>
-                    <th>enabled</th>
-                    <th>firstname</th>
-                    <th>lastname</th>
-                    <th>username</th>
-                    <th>email</th>
-                    <th>update</th>
-                    <th>delete</th>
-                </tr>
-            </table>
-            <tbody>
-                <th:block th:each="users: ${users}">
-
-                        <td>[[${users.id_user}]]</td>
-                        <td>[[${users.account_non_expired}]]</td>
-                        <td>[[${users.account_non_locked}]]</td>
-                        <td>[[${users.credentials_non_expired}]]</td>
-                        <td>[[${users.enabled}]]</td>
-                        <td>[[${users.firstname}]]</td>
-                        <td>[[${users.lastname}]]</td>
-                        <td>[[${users.username}]]</td>
-                        <td>[[${users.email}]]</td>
-                        <td>
-                            <a th:href="@{'/admin/users/update/' + ${users.id_user}}">update</a>
-
-                        </td>
-                        <td>
-                            <a th:href="@{'/admin/users/delete/' + ${users.id_user}}">delete</a>
-                        </td>
+                <thead>
+                    <tr>
+                        <th>Id utilisateur</th>
+                        <th>Compte non-expire</th>
+                        <th>Compte non-verrouille</th>
+                        <th>Certificat non-expire</th>
+                        <th>Compte actif</th>
+                        <th>Prenom</th>
+                        <th>Nom</th>
+                        <th>Username</th>
+                        <th>E-mail</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
-                </th:block>
-            </tbody>
+                </thead>
+                <tbody>
+                    <th:block th:each="users: ${users}">
+                        <tr>
+                            <td>[[${users.id_user}]]</td>
+                            <td>[[${users.account_non_expired}]]</td>
+                            <td>[[${users.account_non_locked}]]</td>
+                            <td>[[${users.credentials_non_expired}]]</td>
+                            <td>[[${users.enabled}]]</td>
+                            <td>[[${users.firstname}]]</td>
+                            <td>[[${users.lastname}]]</td>
+                            <td>[[${users.username}]]</td>
+                            <td>[[${users.email}]]</td>
+                            <td>
+                                <a th:href="@{'/admin/users/update/' + ${users.id_user}}" /><div style="font-size:20px" class="navFloat fa">&#xf304;</div></a>
+
+                            </td>
+                            <td>
+                                <a th:href="@{'/admin/users/delete/' + ${users.id_user}}" /><div style="font-size:20px" class="navFloat fa">&#xf00d;</div></a>
+                            </td>
+                        </tr>
+                    </th:block>
+                </tbody>
+            </table>
         </div>
+
+        <button type="button" class="createbtn" name="ajouterUtilisateur" id="ajouterUtilisateur">Ajouter un utilisateur</button>
 
         <footer th:insert="fragments/footer :: footer"></footer>
     </body>
