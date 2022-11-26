@@ -2,52 +2,69 @@
 <!-- Groupe: Learning Project -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>LP: Admin | Gestion des utilisateurs</title>
-    <style>
-        *{font-family: Arial;}
-        h1 {color:black;}
-        .createbtn{
-            padding: 6px 50px;
-            background-color:rgba(51,153,152,1);
-            color: white;
-            border: dashed;
-            border-color: rgb(0,102,51);
-            border-radius: 2px;
-        }
+    <head>
+        <meta charset="UTF-8">
+        <title>LP: Admin | Gestion des utilisateurs</title>
+        <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.png}" />
+        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"> </script>
 
-        .createbtn:hover{
-            background-color:rgba(53,229,172,1);
-        }
-    </style>
-</head>
-<body>
-    <!-- <img src="../img/LProject_Logo_Final.png" alt="Learning Project Logo"> -->
-    <!-- <img th:src=@{${'../img/img/LProject_Logo_Final.png'}}" /> -->
-    <img th:src="@{./img/LProject_Logo_Final.jpg}" alt="Learning Project Logo" />
-    <h1>Learning Project</h1>
-    <h2>Page Admin: Gestion des utilisateurs</h2>
-    <button type="button" class="createbtn" name="ajouterUtilisateur">Ajouter un utilisateur</button>
-    <!-- <input class="createbtn" name="ajouterUtilisateur" type="button" value="Ajouter un utilisateur" onclick="" /> -->
-    <th:block th:each="users: ${users}">
-        <td>[[${users.id_user}]]</td>
-        <td>[[${users.account_}]]</td>
-        <td>[[${users.id_user}]]</td>
-        <td>[[${users.titre}]]</td>
-        <td>[[${users.num_eleve}]]</td>
-        <td>
-            <a th:href="@{'/admin/formation/update/' + ${formation.formation_id}}">edit</a>
-
-        </td>
-        <td>
-            <a th:href="@{'/admin/formation/delete/' + ${formation.formation_id}}">delete</a>
-        </td>
-        </tr>
-    </th:block>
+        <script th:src="@{/js/scripts.js}" type="text/javascript"></script>
+        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
 
 
+        <!-- font-awesome : Ajouts de fonts libres de droits -->
+        <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.4/css/all.css}" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+    </head>
+    <body>
+        <header th:insert="fragments/header :: header"></header>
+        <nav th:insert="fragments/nav :: nav"></nav>
 
-    <!-- <footer th:replace="fragments/footer"></footer> -->
-</body>
+        <h2>Page Admin: Gestion des utilisateurs</h2>
+        <button type="button" class="createbtn" name="ajouterUtilisateur">Ajouter un utilisateur</button>
+        <!-- <input class="createbtn" name="ajouterUtilisateur" type="button" value="Ajouter un utilisateur" onclick="" /> -->
+
+
+        <div>
+            <table>
+                <!-- Creation de la barre de titre de ma table user -->
+                <tr>
+                    <th>id_user</th>
+                    <th>account_non_expired</th>
+                    <th>account_non_locked</th>
+                    <th>credentials_non_expired</th>
+                    <th>enabled</th>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>username</th>
+                    <th>email</th>
+                    <th>update</th>
+                    <th>delete</th>
+                </tr>
+            </table>
+            <tbody>
+                <th:block th:each="users: ${users}">
+
+                        <td>[[${users.id_user}]]</td>
+                        <td>[[${users.account_non_expired}]]</td>
+                        <td>[[${users.account_non_locked}]]</td>
+                        <td>[[${users.credentials_non_expired}]]</td>
+                        <td>[[${users.enabled}]]</td>
+                        <td>[[${users.firstname}]]</td>
+                        <td>[[${users.lastname}]]</td>
+                        <td>[[${users.username}]]</td>
+                        <td>[[${users.email}]]</td>
+                        <td>
+                            <a th:href="@{'/admin/users/update/' + ${users.id_user}}">update</a>
+
+                        </td>
+                        <td>
+                            <a th:href="@{'/admin/users/delete/' + ${users.id_user}}">delete</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </div>
+
+        <footer th:insert="fragments/footer :: footer"></footer>
+    </body>
 </html>

@@ -44,15 +44,15 @@ public class UsersServiceImpl implements UsersService{
     /** method getUserOut() */
     private static UserOut getUserOut(User user) {
         return UserOut.builder()
-                .id(user.getId())
-                .username(user.getUsername())
-                .lastname(user.getLastname())
-                .firstname(user.getFirstname())
-                .roles(user.getRoles())
-                .accountNonExpired(user.isAccountNonExpired())
-                .accountNonLocked(user.isAccountNonLocked())
-                .credentialsNonExpired(user.isCredentialsNonExpired())
+                .id_user(user.getId())
+                .account_non_expired(user.isAccountNonExpired())
+                .account_non_locked(user.isAccountNonLocked())
+                .credentials_non_expired(user.isCredentialsNonExpired())
                 .enabled(user.isEnabled())
+                .firstname(user.getFirstname())
+                .lastname(user.getLastname())
+                .username(user.getUsername())
+                .roles(user.getRoles())
                 .email(user.getEmail())
                 .build();
     }

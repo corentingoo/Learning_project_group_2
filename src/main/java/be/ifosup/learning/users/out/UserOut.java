@@ -20,21 +20,18 @@ import java.util.Collection;
  * Uniquement pour le rôle ADMIN
  */
 public class UserOut {
-    private Long id;
+    private Long id_user;
 
-
-    private String username;
-
-    private String lastname;
+    private boolean account_non_expired;
+    private boolean account_non_locked;
+    private boolean credentials_non_expired;
+    private boolean enabled;
 
     private String firstname;
+    private String lastname;
+    private String username;
 
     private Collection<RoleEnum> roles;
-
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean credentialsNonExpired;
-    private boolean enabled;
 
     private String email;
 }
