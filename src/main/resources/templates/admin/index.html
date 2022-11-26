@@ -5,39 +5,32 @@
 <head>
     <meta charset="UTF-8">
     <title>LP: Admin</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.png}" />
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"> </script>
+
+    <script th:src="@{/js/scripts.js}" type="text/javascript"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
+
     <style>
-        *{font-family: Arial;}
-        h1 {color:black;}
-        .createbtn{
-            padding: 6px 50px;
-            background-color:rgba(51,153,152,1);
-            color: white;
-            border: dashed;
-            border-color: rgb(0,102,51);
-            border-radius: 2px;
-        }
 
-        .createbtn:hover{
-            background-color:rgba(53,229,172,1);
-        }
+
     </style>
+
+    <!-- font-awesome : Ajouts de fonts libres de droits -->
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.4/css/all.css}" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
 </head>
-<body>
+    <body>
+        <header th:insert="fragments/header :: header"></header>
+        <nav th:insert="fragments/nav :: nav"></nav>
 
-    <!-- <img src="../img/LProject_Logo_Final.png" alt="Learning Project Logo"> -->
-    <!-- <img th:src=@{${'../img/img/LProject_Logo_Final.png'}}" /> -->
-    <img th:src="@{./img/LProject_Logo_Final.jpg}" alt="Learning Project Logo" />
-    <h1>Learning Project</h1>
-    <h2>Page Admin:</h2>
-    <button type="button" class="createbtn" name="ajouterUtilisateur">Ajouter un utilisateur</button>
-    <!-- <input class="createbtn" name="ajouterUtilisateur" type="button" value="Ajouter un utilisateur" onclick="" /> -->
+        <a th:href="@{/admin/users}">
+            <button type="button" class="createbtn" name="ajouterUtilisateur">Gestion des utilisateurs</button>
+        </a>
 
-    <a th:href="@{/admin/formation}">
-        <button type="button"> Gestion des formations</button>
-    </a>
+        <a th:href="@{/admin/formation}">
+            <button type="button"> Gestion des formations</button>
+        </a>
 
-
-    <!-- <footer th:replace="fragments/footer"></footer> -->
-
-</body>
+        <footer th:insert="fragments/footer :: footer"></footer>
+    </body>
 </html>
