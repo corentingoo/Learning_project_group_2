@@ -125,6 +125,10 @@ a:visited {
 }
 
 
+.hidden {
+    visibility: hidden;
+    display: none;
+}
 
 
 

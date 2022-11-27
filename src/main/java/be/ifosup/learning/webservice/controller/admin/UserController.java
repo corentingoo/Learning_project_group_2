@@ -36,6 +36,14 @@ public class UserController {
     }
 
 
+
+    /** create */
+    @GetMapping("/create")
+    public String userCreatePage(Model model){
+        model.addAttribute("users", new User());
+        return "admin/users/create.html";
+    }
+
 //
 //    /** read by id */
 //    @GetMapping("/users/{id}")

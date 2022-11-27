@@ -66,7 +66,11 @@
             </table>
         </div>
 
-        <button type="button" class="createbtn" name="ajouterUtilisateur" id="ajouterUtilisateur">Ajouter un utilisateur</button>
+
+        <a th:href="@{/admin/users/create}">
+            <button type="button" class="createbtn" name="ajouterUtilisateur" id="ajouterUtilisateur">Ajouter un utilisateur <div style="font-size:20px" class="fa">&#xf234;</div></button>
+        </a>
+
 
         <footer th:insert="fragments/footer :: footer"></footer>
     </body>
