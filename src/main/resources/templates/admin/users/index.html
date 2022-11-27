@@ -24,7 +24,7 @@
 
 
         <div>
-            <table>
+            <table class="objetsACentrer1">
                 <!-- Creation de la barre de titre de ma table user -->
                 <thead>
                     <tr>
@@ -67,10 +67,11 @@
         </div>
 
 
-        <a th:href="@{/admin/users/create}">
-            <button type="button" class="createbtn" name="ajouterUtilisateur" id="ajouterUtilisateur">Ajouter un utilisateur <div style="font-size:20px" class="fa">&#xf234;</div></button>
-        </a>
-
+        <div class="objetsACentrer2">
+            <a th:href="@{/admin/users/create}">
+                <button type="button" class="createBtn" name="ajouterUtilisateur" id="ajouterUtilisateur">Ajouter un utilisateur <div style="font-size:20px" class="fa">&#xf234;</div></button>
+            </a>
+        </div>
 
         <footer th:insert="fragments/footer :: footer"></footer>
     </body>

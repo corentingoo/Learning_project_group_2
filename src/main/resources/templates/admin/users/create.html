@@ -25,49 +25,56 @@
     <div id="boxCreationUtilisateur">
       <form th:action="@{/admin/users/create}" th:object="${users}" method="post" id="inscriptionUserForm" name="inscriptionUserForm">
         <fieldset id="creationUserFieldset">
-          <legend id="creationUser">Formulaire de création d'un utilisateur</legend>
+          <legend class="UserLegend">Formulaire de création d'un utilisateur</legend>
           <div class="divInscriptionUserForm">
             <label for="nomUserForm">* Votre nom</label>
             <!-- L'attribut name permet de retrouver la valeur d'un élément de formulaire. -->
             <input title="Veuillez renseigner votre nom." type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" autofocus required>
-
-
-            <label for="prenomUserForm">* Votre prenom</label>
-            <input title="Veuillez renseigner votre prénom." type="text" id="prenomUserForm" name="prenomUserForm" placeholder="Prenom" required>
-
-
-            <label for="emailUserForm">* Votre email</label>
-            <input title="Veuillez renseigner votre email." type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" required>
-
-
-            <label for="nomutilisateurUserForm">* Votre nom d'utilisateur</label>
-            <input title="Veuillez renseigner votre nom d'utilisateur." type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" required>
-            <!-- Pour définir un small text -->
-            <div id="nomutilisateur">
-              <small>Votre nom d'utilisateur fera office de Login.</small>
-              <br>
-              <small>Attention à respecter ce format: 2 premières lettres de votre prénom + 2 premières lettres de votre nom + 4 chiffres aléatoires</small>
-            </div>
           </div>
+
+            <div class="divInscriptionUserForm">
+              <label for="prenomUserForm">* Votre prenom</label>
+              <input title="Veuillez renseigner votre prénom." type="text" id="prenomUserForm" name="prenomUserForm" placeholder="Prenom" required>
+            </div>
+
+
+            <div class="divInscriptionUserForm">
+              <label for="emailUserForm">* Votre email</label>
+              <input title="Veuillez renseigner votre email." type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" required>
+            </div>
+
+
+            <div class="divInscriptionUserForm">
+              <label for="nomutilisateurUserForm">* Votre nom d'utilisateur</label>
+              <input title="Veuillez renseigner votre nom d'utilisateur." type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" required>
+              <!-- Pour définir un small text -->
+              <div id="nomutilisateur">
+                <small>Votre nom d'utilisateur fera office de Login.</small>
+                <br>
+                <small>Attention à respecter ce format: 2 premières lettres de votre prénom + 2 premières lettres de votre nom + 4 chiffres aléatoires</small>
+              </div>
+            </div>
+
+
 
           <!-- Affichage en cas d'erreur -->
           <!-- en visibilité hidden -->
-          <fieldset id="erreurFieldset" title="Affichage Message d'erreur" class="hidden" disabled>
-            <legend id="erreur">Message d'erreur</legend>
-            <div class="divInscriptionUserForm">
+          <div class="divInscriptionUserForm">
+            <fieldset id="erreurFieldset" title="Affichage Message d'erreur" class="hidden" disabled>
+              <legend id="erreur">Message d'erreur</legend>
               <span class="Erreur lors de l'encodage de votre mail."></span>
-            </div>
-          </fieldset>
+            </fieldset>
+          </div>
 
           <div class="divInscriptionUserForm">
             *: Champs obligatoires
           </div>
 
-          <div class="divInscriptionUserForm">
-            <button title="bouton Annuler un utilisateur" id="boutonAnnulerUserForm" class="pointeurMain" type="reset" value="annuler_utilisateur">Annuler <div style="font-size:20px" class="fa">&#xf410;</div></button>
+          <div class="divBtnInscriptionUserForm">
+            <button title="bouton Annuler un utilisateur" id="boutonAnnulerUserForm" class="AnnulerBtn pointeurMain" type="reset" value="annuler_utilisateur">Annuler <div style="font-size:20px" class="fa">&#xf410;</div></button>
 
             <!-- parametre "disabled" : Bouton enregistré desactivé et ne s'active que quand tous les champes requis seront remplis -->
-            <button title="bouton Enregistrer un utilisateur" id="boutonEnregistrerUserForm" class="pointeurMain" type="submit" value="ajouter_utilisateur" onClick="return confirm('Souhaitez-vous réellement ajouter un utilistateur ?');" disabled>Enregistrer <div style="font-size:20px" class="fa">&#xf0c7;</div></button>
+            <button title="bouton Enregistrer un utilisateur" id="boutonEnregistrerUserForm" class="createBtn pointeurMain" type="submit" value="ajouter_utilisateur" onClick="return confirm('Souhaitez-vous réellement ajouter un utilistateur ?');" disabled>Enregistrer <div style="font-size:20px" class="fa">&#xf0c7;</div></button>
           </div>
         </fieldset>
       </form>
