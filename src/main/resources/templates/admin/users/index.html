@@ -19,7 +19,9 @@
         <header th:insert="fragments/header :: header"></header>
         <nav th:insert="fragments/nav :: nav"></nav>
 
-        <h2>Page Admin: Gestion des utilisateurs</h2>
+         <h2>Page Admin: Gestion des utilisateurs</h2>
+
+
 
         <div>
             <table>
@@ -33,16 +35,16 @@
                         <th>Compte actif</th>
                         <th>Prenom</th>
                         <th>Nom</th>
-                        <th>Username</th>
+                        <th>Nom d utilisateur</th>
                         <th>E-mail</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
                     <th:block th:each="users: ${users}">
-                        <tr>
-                            <td>[[${users.id_user}]]</td>
+                        <tr class="ligne_hover">
+                            <td class="col_id">[[${users.id_user}]]</td>
                             <td>[[${users.account_non_expired}]]</td>
                             <td>[[${users.account_non_locked}]]</td>
                             <td>[[${users.credentials_non_expired}]]</td>
