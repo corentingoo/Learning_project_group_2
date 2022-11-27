@@ -10,7 +10,7 @@
     <table>
         <thead class="thead-dark">
         <tr>
-
+            <th> Is</th>
             <th> Username</th>
             <th> lastname</th>
             <th> firstname</th>
@@ -19,6 +19,7 @@
         <tbody>
         <th:block th:each="teacher: ${teachers}">
 
+            <td>[[${teacher.id}]]</td>
             <td>[[${teacher.username}]]</td>
             <td>[[${teacher.lastname}]]</td>
             <td>[[${teacher.firstname}]]</td>

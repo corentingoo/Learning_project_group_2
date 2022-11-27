@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import javax.validation.Valid;
 
 
+
 @Controller
 @RequestMapping("/admin/formation")
 public class FormationController {
@@ -33,7 +34,7 @@ public class FormationController {
     @GetMapping("/create")
     public String formationcreatepage(Model model) {
         model.addAttribute("formations", new FormationIn());
-        model.addAttribute("teachers", userservice.listAllbyRole("TEACHER"));
+        model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
         return "/admin/formation/create.html";
     }
 
