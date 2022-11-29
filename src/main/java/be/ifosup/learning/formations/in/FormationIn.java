@@ -15,13 +15,13 @@ import java.sql.Date;
 @NoArgsConstructor
 public class FormationIn {
     @NotNull
-    private String titre;
+    public String titre;
     @NotNull
-    private Integer num_eleve;
+    public Integer num_eleve;
     @NotNull
-    private Date date_debut;
+    public Date date_debut;
     @NotNull
-    private Date date_fin;
+    public Date date_fin;
     @NotNull
-    private Integer teacher;
+    public Long teacher;
 }

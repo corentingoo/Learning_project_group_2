@@ -20,16 +20,16 @@ import java.util.Collection;
  * Uniquement pour le rôle ADMIN
  */
 public class UserOut {
-    private Long id;
+    public Long id;
 
 
-    private String username;
+    public String username;
 
-    private String lastname;
+    public String lastname;
 
-    private String firstname;
+    public String firstname;
 
-    private Collection<RoleEnum> roles;
+    public Collection<RoleEnum> roles;
 
 
 }

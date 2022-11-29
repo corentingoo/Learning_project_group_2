@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formations</title>
+</head>
+<body>
+<h1>Liste des formations donnée par vous</h1>
+<div class="tableau">
+    <table>
+        <thead class="thead-dark">
+        <tr>
+            <th> Titre</th>
+            <th> Nombre d'élèves</th>
+            <th> Date de début</th>
+            <th> Date de fin</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="formation: ${formations}">
+            <td>[[${formation.titre}]]</td>
+            <td>[[${formation.num_eleve}]]</td>
+            <td>[[${formation.date_debut}]]</td>
+            <td>[[${formation.date_fin}]]</td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

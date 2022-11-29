@@ -11,6 +11,7 @@ import be.ifosup.learning.formations.entities.Formation;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
+import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,14 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class FormationServiceImpl implements FormationService {
     @Autowired
-    private FormationRepository formationRepository;
+    private final FormationRepository formationRepository;
+    private final UserRepository userRepository;
+
+    @Autowired
+    public FormationServiceImpl(FormationRepository formationRepository, UserRepository userRepository) {
+        this.formationRepository = formationRepository;
+        this.userRepository = userRepository;
+    }
 
     public List<FormationOut> listAll() {
         List<Formation> formationRepositoryAll = formationRepository.findAll();
@@ -34,10 +42,11 @@ public class FormationServiceImpl implements FormationService {
         List<FormationOut> formationOuts1 = new ArrayList<>();
         for (Formation formation :formationRepositoryAll) {
             formationOuts1.add(getFormationOut(formation));
+            //usersOuts1.add(userRepository.findById(formation.getTeacher()));
         }
 
 
-        return formationOuts;
+        return formationOuts1;
     }
 
     public FormationOut save(FormationIn formationIn) {
@@ -90,5 +99,17 @@ public class FormationServiceImpl implements FormationService {
 
     public void delete(Long id) {
         formationRepository.deleteById(id);
+    }
+
+    @Override
+    public List<FormationOut> listbyTeacher(Long teacher) {
+        List<Formation> formationRepositoryAll = formationRepository.findByTeacher(teacher);
+
+        List<FormationOut> formationOuts = formationRepositoryAll
+                .stream()
+                .map(formation -> getFormationOut(formation))
+                .collect(Collectors.toList());
+
+        return formationOuts;
     }
 }

@@ -21,19 +21,15 @@ import java.util.Collection;
  */
 public class UserIn {
     @NotNull
-    private String username;
+    public String username;
 
     @NotNull
-    private String lastname;
+    public String lastname;
 
     @NotNull
-    private String firstname;
+    public String firstname;
 
-    private Collection<RoleEnum> roles;
+    public Collection<RoleEnum> roles;
 
-    private boolean accountNonExpired;
-    private boolean accountNonLocked;
-    private boolean credentialsNonExpired;
-    private boolean enabled;
 
 }
