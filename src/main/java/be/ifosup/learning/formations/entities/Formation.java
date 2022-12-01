@@ -1,20 +1,13 @@
 package be.ifosup.learning.formations.entities;
 
-import be.ifosup.learning.constants.RoleEnum;
-import be.ifosup.learning.users.entities.User;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
-import java.util.Collection;
 
 
 @Entity
@@ -44,6 +37,10 @@ public class Formation {
     @NotNull
     @Column(name = "date_fin")
     private Date date_fin;
+
+    @NotNull
+    @Column(name = "teacher", nullable = false)
+    private Long teacher;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
