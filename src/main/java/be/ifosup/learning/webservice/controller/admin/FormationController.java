@@ -32,6 +32,8 @@ public class FormationController {
     public String formationcreatepage(Model model) {
         model.addAttribute("formations", new FormationIn());
         return "/admin/formation/create.html";
+
+
     }
 
     @PostMapping("/create")

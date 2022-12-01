@@ -66,6 +66,9 @@ public class User implements UserDetails {
     @Column(name = "enabled")
     private boolean enabled;
 
+    @Column(name = "email")
+    public String email;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         String roles = StringUtils.collectionToCommaDelimitedString(getRoles().stream()
