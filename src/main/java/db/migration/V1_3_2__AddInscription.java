@@ -14,9 +14,9 @@ public class V1_3_2__AddInscription extends BaseJavaMigration {
                         "(inscription_id, student_id, formation_id) values " +
                         "(1, 2, 1)");
         statement.execute(
-                "INSERT INTO formations " +
-                        "(formation_id, titre, num_eleve) values " +
-                        "(2, 3, )");
+                "INSERT INTO inscriptions " +
+                        "(inscription_id, student_id, formation_id) values " +
+                        "(2, 3, 2)");
 
 
     }

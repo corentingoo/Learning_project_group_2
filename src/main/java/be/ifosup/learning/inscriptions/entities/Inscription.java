@@ -1,4 +1,4 @@
-package be.ifosup.learning.formations.entities;
+package be.ifosup.learning.inscriptions.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
