@@ -1,8 +1,17 @@
 package be.ifosup.learning.users.repositories;
 
+import be.ifosup.learning.constants.RoleEnum;
 import be.ifosup.learning.users.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.Optional;
 
 /**
  * Gestion JPA pour les utilisateurs
@@ -16,4 +25,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return
      */
     User findByUsername(String username);
+
+    @Modifying
+    @Query("SELECT u FROM User u LEFT JOIN Role r on u.id = r.id_user WHERE r.role = :role")
+    List<User> allUserByRole(@Param("role")String role);
+
+    @Override
+    Optional<User> findById(Long aLong);
 }

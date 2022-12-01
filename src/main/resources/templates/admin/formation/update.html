@@ -8,16 +8,36 @@
 
     <form th:action="@{/admin/formation/update/{id}(id = *{formation_id})}" th:object="${formations}" method="post" role="form">        <div class="row">
             <div>
+                <label> Titre : </label>
                 <input type="text" th:field="*{titre}" class="form-control"
                        placeholder="Titre*">
             </div>
 
 
             <div>
+                <label> Nombre d'élèves : </label>
                 <input type="number" th:field="*{num_eleve}" class="form-control"
                        placeholder="Nombre d'élèves*">
-
             </div>
+
+            <div>
+                <label> Date de début : </label>
+                <input type="date" th:field="*{date_debut}" class="form-control">
+            </div>
+
+            <div>
+                <label> Date de fin : </label>
+                <input type="date" th:field="*{date_fin}" class="form-control">
+            </div>
+
+            <div>
+                <label> Professeur : </label>
+                <select th:field="*{teacher}" id="teacher">
+                    <option type="text" th:each="Prof: ${profs}" th:value="${Prof.id}"
+                            th:text="${Prof.username}"></option>
+                </select>
+            </div>
+
         <br>
         <div class="text-center">
             <button type="submit">Confirmer</button>

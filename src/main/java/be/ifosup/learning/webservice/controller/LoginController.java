@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 * Controller pour la page admin
 * */
 @Controller
+/** @RequestMapping renvoit un array de string
+ * */
 @RequestMapping("/login")
 public class LoginController {
     @GetMapping

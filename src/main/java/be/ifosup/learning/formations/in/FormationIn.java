@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
 
 
 @Data
@@ -14,7 +15,13 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class FormationIn {
     @NotNull
-    private String titre;
+    public String titre;
     @NotNull
-    private Integer num_eleve;
+    public Integer num_eleve;
+    @NotNull
+    public Date date_debut;
+    @NotNull
+    public Date date_fin;
+    @NotNull
+    public Long teacher;
 }

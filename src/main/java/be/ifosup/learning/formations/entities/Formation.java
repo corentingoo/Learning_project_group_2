@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "formations")
@@ -27,6 +29,18 @@ public class Formation {
     @NotNull
     @Column(name = "num_eleve")
     private Integer num_eleve;
+
+    @NotNull
+    @Column(name = "date_debut")
+    private Date date_debut;
+
+    @NotNull
+    @Column(name = "date_fin")
+    private Date date_fin;
+
+    @NotNull
+    @Column(name = "teacher", nullable = false)
+    private Long teacher;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
