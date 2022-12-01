@@ -56,7 +56,7 @@ public class User implements UserDetails {
      *  Donc, j'ai juste redéclaré les colonnes.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long id;
 
