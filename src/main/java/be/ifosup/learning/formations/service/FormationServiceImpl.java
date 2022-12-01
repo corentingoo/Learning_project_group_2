@@ -1,5 +1,6 @@
 package be.ifosup.learning.formations.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -9,6 +10,7 @@ import be.ifosup.learning.formations.entities.Formation;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
+import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,10 +40,13 @@ public class FormationServiceImpl implements FormationService {
     }
 
     public FormationOut save(FormationIn formationIn) {
+
         Formation formation = Formation.builder()
                         .titre(formationIn
                         .getTitre())
                         .num_eleve(formationIn.getNum_eleve())
+                        .date_debut(formationIn.getDate_debut())
+                        .date_fin(formationIn.getDate_fin())
                         .build();
         Formation save = formationRepository.save(formation);
         return getFormationOut(save);
@@ -55,6 +60,8 @@ public class FormationServiceImpl implements FormationService {
                 .formation_id(formation.getFormation_id())
                 .num_eleve(formationIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIn.getNum_eleve())
                 .titre(formationIn.getTitre() == null ? formation.getTitre() : formationIn.getTitre())
+                .date_debut(formationIn.getDate_debut() == null ? formation.getDate_debut() : formationIn.getDate_debut())
+                .date_fin(formationIn.getDate_fin() == null ? formation.getDate_fin() : formationIn.getDate_fin())
                 .build();
 
         Formation saved = formationRepository.save(toSave);
@@ -71,7 +78,11 @@ public class FormationServiceImpl implements FormationService {
         return FormationOut.builder()
                 .formation_id(formation.getFormation_id())
                 .num_eleve(formation.getNum_eleve())
-                .titre(formation.getTitre()).build();
+                .titre(formation.getTitre())
+                .date_debut(formation.getDate_debut())
+                .date_fin(formation.getDate_fin())
+                .build();
+
     }
 
     public void delete(Long id) {

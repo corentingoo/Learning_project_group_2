@@ -2,7 +2,10 @@ package be.ifosup.learning.users.entities;
 
 import be.ifosup.learning.constants.RoleEnum;
 import be.ifosup.learning.utils.BCryptManagerUtil;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -21,6 +24,9 @@ import java.util.stream.Collectors;
 @Entity
 @Table(name = "users")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

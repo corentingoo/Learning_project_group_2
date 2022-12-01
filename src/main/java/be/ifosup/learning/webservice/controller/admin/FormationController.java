@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import be.ifosup.learning.formations.in.FormationIn;
-import be.ifosup.learning.formations.out.FormationOut;
 
 import org.springframework.ui.Model;
 
@@ -20,6 +19,7 @@ public class FormationController {
 
     @Autowired
     private FormationService formationservice;
+
 
     // Methods for Retrieval operations
     @GetMapping()
@@ -74,7 +74,7 @@ public class FormationController {
     @PostMapping("/update/{id}")
     public String updateFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, @PathVariable("id") Long id , Model model) {
         try {
-            formationservice.update(id , formationIn);        }
+            formationservice.update(id, formationIn);        }
         catch(Exception e){
             return "redirect:/admin/formation/";
         }

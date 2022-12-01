@@ -2,7 +2,12 @@ package be.ifosup.learning.users.repositories;
 
 import be.ifosup.learning.users.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Gestion JPA pour les utilisateurs
@@ -16,4 +21,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * @return
      */
     User findByUsername(String username);
+
+    
+
+
+
+
 }
