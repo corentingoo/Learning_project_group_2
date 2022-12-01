@@ -17,13 +17,13 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class InscriptionsServiceImpl implements InscriptionService {
     @Autowired
-    private final InscriptionRepository inscriptionRepository;
-    private final UserRepository userRepository;
+    private InscriptionRepository inscriptionRepository;
+
 
     @Autowired
-    public FormationServiceImpl(InscriptionRepository inscriptionRepository, UserRepository userRepository) {
+    public InscriptionServiceImpl(InscriptionRepository inscriptionRepository) {
         this.inscriptionRepository = inscriptionRepository;
-        this.userRepository = userRepository;
+
     }
 
     public List<InscriptionOut> listAll() {
