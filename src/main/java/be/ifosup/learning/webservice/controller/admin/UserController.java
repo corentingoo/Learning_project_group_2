@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -43,6 +44,41 @@ public class UserController {
         model.addAttribute("users", new User());
         return "admin/users/create.html";
     }
+
+
+
+
+
+    /** create - 2e étape post */
+    @PostMapping("/create")
+    public String createuser(@Valid @ModelAttribute("users") UserIn userIn, Model model){
+
+        String userNom = userIn.getLastname();
+        String userPrenom = userIn.getFirstname();
+        String userEmail = userIn.getEmail();
+        String userNumdutilisateur = userIn.getUsername();
+
+
+        /* Pour debug: voir le contenu ramené par mon post */
+        System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNumdutilisateur);
+
+
+        try {
+            usersService.save(userIn);
+        }
+
+        catch (Exception e){
+            return "redirect:/admin/users/create.html";
+        }
+
+        return "redirect:/admin/users/";
+
+    }
+
+}
+
+
+
 
 //
 //    /** read by id */
@@ -85,4 +121,4 @@ public class UserController {
 //    public void delete(@PathVariable Long id){
 //        usersService.delete(id);
 //    }
-}
+

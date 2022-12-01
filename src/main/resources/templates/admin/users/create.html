@@ -23,30 +23,30 @@
 
 
     <div id="boxCreationUtilisateur">
-      <form th:action="@{/admin/users/create}" th:object="${users}" method="post" id="inscriptionUserForm" name="inscriptionUserForm">
+      <form th:action="@{/admin/users/create}" th:object="${users}" method="post" id="inscriptionUserForm" name="inscriptionUserForm" role="form">
         <fieldset id="creationUserFieldset">
           <legend class="UserLegend">Formulaire de création d'un utilisateur</legend>
           <div class="divInscriptionUserForm">
             <label for="nomUserForm">* Votre nom</label>
             <!-- L'attribut name permet de retrouver la valeur d'un élément de formulaire. -->
-            <input title="Veuillez renseigner votre nom." type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" autofocus required>
+            <input title="Veuillez renseigner votre nom."  th:field="*{lastname}" type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" autofocus required>
           </div>
 
             <div class="divInscriptionUserForm">
               <label for="prenomUserForm">* Votre prenom</label>
-              <input title="Veuillez renseigner votre prénom." type="text" id="prenomUserForm" name="prenomUserForm" placeholder="Prenom" required>
+              <input title="Veuillez renseigner votre prénom." th:field="*{firstname}" type="text" id="prenomUserForm" name="prenomUserForm" placeholder="Prenom" required>
             </div>
 
 
             <div class="divInscriptionUserForm">
               <label for="emailUserForm">* Votre email</label>
-              <input title="Veuillez renseigner votre email." type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" required>
+              <input title="Veuillez renseigner votre email." th:field="*{email}" type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" required>
             </div>
 
 
             <div class="divInscriptionUserForm">
               <label for="nomutilisateurUserForm">* Votre nom d'utilisateur</label>
-              <input title="Veuillez renseigner votre nom d'utilisateur." type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" required>
+              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" required>
               <!-- Pour définir un small text -->
               <div id="nomutilisateur">
                 <small>Votre nom d'utilisateur fera office de Login.</small>
@@ -75,7 +75,8 @@
 
             <!-- parametre "disabled" : Bouton enregistré desactivé et ne s'active que quand tous les champes requis seront remplis -->
             <!-- <button title="bouton Enregistrer un utilisateur" id="boutonEnregistrerUserForm" class="createBtn pointeurMain" type="submit" value="ajouter_utilisateur" onClick="return confirm('Souhaitez-vous réellement ajouter un utilistateur ?');">Enregistrer <div style="font-size:20px" class="fa">&#xf0c7;</div></button> -->
-            <button title="bouton Enregistrer un utilisateur" id="boutonEnregistrerUserForm" class="createBtn pointeurMain" type="submit" value="ajouter_utilisateur" disabled="disabled">Enregistrer <div style="font-size:20px" class="fa">&#xf0c7;</div></button>
+<!--            <button title="bouton Enregistrer un utilisateur" id="boutonEnregistrerUserForm" class="createBtn pointeurMain" type="submit" value="ajouter_utilisateur" disabled="disabled">Enregistrer <div style="font-size:20px" class="fa">&#xf0c7;</div></button>-->
+            <button type="submit"> Enregistrer</button>
           </div>
         </fieldset>
       </form>
