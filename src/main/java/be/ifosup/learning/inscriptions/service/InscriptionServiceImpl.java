@@ -9,13 +9,12 @@ import be.ifosup.learning.inscriptions.entities.Inscription;
 import be.ifosup.learning.inscriptions.in.InscriptionIn;
 import be.ifosup.learning.inscriptions.out.InscriptionOut;
 import be.ifosup.learning.inscriptions.repositories.InscriptionRepository;
-import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 @Transactional
-public class InscriptionsServiceImpl implements InscriptionService {
+public class InscriptionServiceImpl implements InscriptionService {
     @Autowired
     private InscriptionRepository inscriptionRepository;
 
@@ -31,7 +30,7 @@ public class InscriptionsServiceImpl implements InscriptionService {
 
         List<InscriptionOut> inscriptionOuts = inscriptionRepositoryAll
                 .stream()
-                .map(formation -> getInscriptionOut(inscription))
+                .map(inscription -> getInscriptionOut(inscription))
                 .collect(Collectors.toList());
 
         //2eme méthode pour lister toutes les formations avec une méthode de boucle
@@ -46,18 +45,14 @@ public class InscriptionsServiceImpl implements InscriptionService {
         return inscriptionOuts1;
     }
 
-    public InscriptionOut save(InscriptionIn formationIn) {
+    public InscriptionOut save(InscriptionIn inscriptionIn) {
 
         Inscription inscription = Inscription.builder()
-                .titre(formationIn
-                        .getTitre())
-                .num_eleve(formationIn.getNum_eleve())
-                .date_debut(formationIn.getDate_debut())
-                .date_fin(formationIn.getDate_fin())
-                .teacher(formationIn.getTeacher())
+                .student_id(inscriptionIn.getStudent_id())
+                .formation_id(inscriptionIn.getFormation_id())
                 .build();
         Inscription save = inscriptionRepository.save(inscription);
-        return getFormationOut(save);
+        return getInscriptionOut(save);
     }
 
     @Override
