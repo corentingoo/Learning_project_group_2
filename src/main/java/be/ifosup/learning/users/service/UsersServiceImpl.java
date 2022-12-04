@@ -1,14 +1,18 @@
 package be.ifosup.learning.users.service;
 
+import be.ifosup.learning.constants.RoleEnum;
 import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.in.UserIn;
 import be.ifosup.learning.users.out.UserOut;
 import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,16 +66,22 @@ public class UsersServiceImpl implements UsersService{
     @Override
     public UserOut save(UserIn creationIn) {
         /** recherche de notre constructeur */
+
+        Collection roles = new ArrayList();
+        roles.add(RoleEnum.STUDENT);
+
         User user = User.builder()
                 .username(creationIn.getUsername())
                 .lastname(creationIn.getLastname())
                 .firstname(creationIn.getFirstname())
-                .roles(creationIn.getRoles())
-                .accountNonExpired(creationIn.isAccountNonExpired())
-                .accountNonLocked(creationIn.isAccountNonLocked())
-                .credentialsNonExpired(creationIn.isCredentialsNonExpired())
-                .enabled(creationIn.isEnabled())
+                .roles(roles)
+                .accountNonExpired(true)
+                .accountNonLocked(true)
+                .credentialsNonExpired(true)
+                .enabled(true)
                 .email(creationIn.getEmail())
+                .password("STUDENT")
+//                .BCryptManagerUtil.password(password("STUDENT"))
                 .build();
 
         /** enregistrement dans la base de données */

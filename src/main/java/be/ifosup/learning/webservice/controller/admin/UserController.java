@@ -56,21 +56,27 @@ public class UserController {
         String userNom = userIn.getLastname();
         String userPrenom = userIn.getFirstname();
         String userEmail = userIn.getEmail();
-        String userNumdutilisateur = userIn.getUsername();
-
-
-        /* Pour debug: voir le contenu ramené par mon post */
-        System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNumdutilisateur);
+        String userNomdutilisateur = userIn.getUsername();
 
 
         try {
-            usersService.save(userIn);
+            /* Verification que les champs requis sont soumis sans etre vide */
+            if (    !userNom.isEmpty() && userNom != null &&
+                    !userPrenom.isEmpty() && userPrenom != null &&
+                    !userEmail.isEmpty() && userEmail != null &&
+                    !userNomdutilisateur.isEmpty() && userNomdutilisateur != null){
+
+                /* Pour debug: voir le contenu ramené par mon post */
+                System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNomdutilisateur);
+                usersService.save(userIn);
+            }
         }
 
         catch (Exception e){
             return "redirect:/admin/users/create.html";
         }
 
+        /* Retour à la page des vues des utilisateurs */
         return "redirect:/admin/users/";
 
     }
