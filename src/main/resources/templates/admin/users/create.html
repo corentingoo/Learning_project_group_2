@@ -46,7 +46,7 @@
 
             <div class="divInscriptionUserForm">
               <label for="nomutilisateurUserForm">* Son nom d'utilisateur</label>
-              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" required>
+              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" required>
               <!-- Pour définir un small text -->
               <div id="nomutilisateur">
                 <small>Son nom d'utilisateur fera office de Login.</small>
