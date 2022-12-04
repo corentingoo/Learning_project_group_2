@@ -50,6 +50,16 @@ body{
 }
 
 
+/* Css signalétique de verification de validation */
+input:valid{
+    border: 1px solid black;
+}
+
+/*input:invalid{*/
+/*    border: 2px dashed rgb(235, 55, 55);*/
+/*}*/
+
+
 a {
     text-decoration: none;
 }

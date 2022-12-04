@@ -40,13 +40,13 @@
 
             <div class="divInscriptionUserForm">
               <label for="emailUserForm">* Son email</label>
-              <input title="Veuillez renseigner votre email." th:field="*{email}" type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" required>
+              <input title="Veuillez renseigner votre email." th:field="*{email}" type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" minlength="9" maxlength="50" required>
             </div>
 
 
             <div class="divInscriptionUserForm">
               <label for="nomutilisateurUserForm">* Son nom d'utilisateur</label>
-              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" required>
+              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" pattern="[a-z]{4}[0-9]{4}" required>
               <!-- Pour définir un small text -->
               <div id="nomutilisateur">
                 <small>Son nom d'utilisateur fera office de Login.</small>
