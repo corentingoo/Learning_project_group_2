@@ -67,7 +67,7 @@ public class UserController {
                     !userNomdutilisateur.isEmpty() && userNomdutilisateur != null){
 
                 /* Pour debug: voir le contenu ramené par mon post */
-                System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNomdutilisateur);
+//                System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNomdutilisateur);
                 usersService.save(userIn);
             }
         }
@@ -78,36 +78,58 @@ public class UserController {
 
         /* Retour à la page des vues des utilisateurs */
         return "redirect:/admin/users/";
-
     }
 
+
+
+    /** Update Partie 1 */
+    @GetMapping("/update/{id}")
+    public String updateFirststep(@PathVariable("id") String id, Model model){
+        model.addAttribute("users", usersService.get(Long.valueOf(id)));
+        return  "/admin/users/update";
+    }
+
+
+    /** Update Partie 2 */
+    @PostMapping("/update/{id}")
+    public String updateUser(@Valid @ModelAttribute("users") UserIn userIn, @PathVariable("id") Long id, Model model){
+
+
+        String userNom = userIn.getLastname();
+        String userPrenom = userIn.getFirstname();
+        String userEmail = userIn.getEmail();
+        String userNomdutilisateur = userIn.getUsername();
+
+
+        try{
+            System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNomdutilisateur);
+
+            /** Ceci va vers mon update( ) de mon userOut, càd vers ma db */
+            usersService.update(id, userIn);
+        } catch (Exception e){
+            return  "redirect:/admin/users/";
+        }
+        return  "redirect:/admin/users/";
+    }
+
+
+
+    /** Delete */
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id){
+        try{
+            usersService.delete(id);
+        } catch (Exception e){
+
+        }
+         return  "redirect:/admin/users/";
+    }
 }
 
 
 
 
-//
-//    /** read by id */
-//    @GetMapping("/users/{id}")
-//    /** @PathVariable càd récupère une valeur dans le chemin de la ressource. */
-//    public ResponseEntity<User> get(@PathVariable Long id){
-//        try{
-//            UserOut user = usersService.get(id);
-//            return new ResponseEntity<User>((MultiValueMap<String, String>) user, HttpStatus.OK);
-//        } catch (NoSuchElementException e){
-//            return new ResponseEntity<User>(HttpStatus.NOT_FOUND);
-//        }
-//    }
-//
-//
-//    /** create */
-//    @PostMapping("/users")
-//    public void add(@RequestBody UserIn user){
-//        usersService.save(user);
-//    }
-//
-//
-//
+
 //    /** update */
 //    @PutMapping("/users/{id}")
 //    public ResponseEntity<?> update(@RequestBody UserIn user, @PathVariable Long id){
@@ -118,13 +140,5 @@ public class UserController {
 //        } catch (NoSuchElementException e){
 //            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //        }
-//    }
-//
-//
-//
-//    /** delete */
-//    @DeleteMapping("/users/{id}")
-//    public void delete(@PathVariable Long id){
-//        usersService.delete(id);
 //    }
 

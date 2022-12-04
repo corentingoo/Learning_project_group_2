@@ -64,7 +64,7 @@ public class UsersServiceImpl implements UsersService{
 
     /** method create */
     @Override
-    public UserOut save(UserIn creationIn) {
+    public UserOut save(UserIn userIn) {
         /** recherche de notre constructeur */
 
         Collection roles = new ArrayList();
@@ -72,15 +72,15 @@ public class UsersServiceImpl implements UsersService{
 
         User user = User.builder()
                 /**  replaceALL() avec Regex pour supprimer tous les espaces insécables en début, dans le mot et à la fin */
-                .username(creationIn.getUsername().toUpperCase().strip().replaceAll("\\s+" , ""))
-                .lastname(creationIn.getLastname().strip().replaceAll("\\s+" , ""))
-                .firstname(creationIn.getFirstname().strip().replaceAll("\\s+" , ""))
+                .username(userIn.getUsername().toUpperCase().strip().replaceAll("\\s+" , ""))
+                .lastname(userIn.getLastname().strip().replaceAll("\\s+" , ""))
+                .firstname(userIn.getFirstname().strip().replaceAll("\\s+" , ""))
                 .roles(roles)
                 .accountNonExpired(true)
                 .accountNonLocked(true)
                 .credentialsNonExpired(true)
                 .enabled(true)
-                .email(creationIn.getEmail().trim())
+                .email(userIn.getEmail().trim())
                 .password("STUDENT")
 //                .BCryptManagerUtil.password(password("STUDENT"))
                 .build();
@@ -93,7 +93,7 @@ public class UsersServiceImpl implements UsersService{
 
     /** method update */
     @Override
-    public UserOut update(Long id, UserIn creationIn) {
+    public UserOut update(Long id, UserIn userIn) {
         /** recherche de l'élément à modifier sur base de son id */
         User user = userRepository.findById(id).get();
 
@@ -101,14 +101,14 @@ public class UsersServiceImpl implements UsersService{
         User toSave = User.builder()
                 .id(user.getId())
                 .username(user.getUsername())
-                .lastname(user.getLastname())
-                .firstname(user.getFirstname())
-                .roles(user.getRoles())
-                .accountNonExpired(user.isAccountNonExpired())
-                .accountNonLocked(user.isAccountNonLocked())
-                .credentialsNonExpired(user.isCredentialsNonExpired())
-                .enabled(user.isEnabled())
-                .email(user.getEmail())
+                .lastname(userIn.getLastname())
+                .firstname(userIn.getFirstname())
+                .roles(userIn.getRoles())
+                .accountNonExpired(true)
+                .accountNonLocked(true)
+                .credentialsNonExpired(true)
+                .enabled(true)
+                .email(userIn.getEmail())
                 .build();
 
         /** enregistrement dans la base de données */

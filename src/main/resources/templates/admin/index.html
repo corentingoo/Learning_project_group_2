@@ -20,11 +20,11 @@
         <nav th:insert="fragments/navOut :: nav"></nav>
 
         <a th:href="@{/admin/users}">
-            <button type="button" class="createBtn" name="ajouterUtilisateur">Gestion des utilisateurs</button>
+            <button type="button" class="createBtn optionBtn" name="ajouterUtilisateur">Gestion des utilisateurs</button>
         </a>
 
         <a th:href="@{/admin/formation}">
-            <button type="button"> Gestion des formations</button>
+            <button type="button" class="optionBtn"> Gestion des formations</button>
         </a>
 
         <footer th:insert="fragments/footer :: footer"></footer>

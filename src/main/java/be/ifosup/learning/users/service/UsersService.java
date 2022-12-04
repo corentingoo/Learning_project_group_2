@@ -24,12 +24,12 @@ public interface UsersService  {
 
 
     /* create */
-    UserOut save(UserIn creationIn);
+    UserOut save(UserIn userIn);
 
 
 
     /* update */
-    UserOut update(Long id, UserIn creationIn);
+    UserOut update(Long id, UserIn userIn);
 
 
 

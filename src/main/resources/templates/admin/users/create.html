@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
-      <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>LP: Admin | Page de gestion des utilisateurs | Creation</title>
     <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.png}" />
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"> </script>
@@ -26,33 +26,33 @@
       <form th:action="@{/admin/users/create}" th:object="${users}" method="post" id="inscriptionUserForm" name="inscriptionUserForm" role="form">
         <fieldset id="creationUserFieldset">
           <legend class="UserLegend">Formulaire de création d'un utilisateur</legend>
-          <div class="divInscriptionUserForm">
+          <div class="divOptionUserForm">
             <label for="nomUserForm">* Son nom</label>
             <!-- L'attribut name permet de retrouver la valeur d'un élément de formulaire. -->
             <input title="Veuillez renseigner votre nom."  th:field="*{lastname}" type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" required>
           </div>
 
-            <div class="divInscriptionUserForm">
+            <div class="divOptionUserForm">
               <label for="prenomUserForm">* Son prenom</label>
               <input title="Veuillez renseigner votre prénom." th:field="*{firstname}" type="text" id="prenomUserForm" name="prenomUserForm" placeholder="Prenom" required>
             </div>
 
 
-            <div class="divInscriptionUserForm">
+            <div class="divOptionUserForm">
               <label for="emailUserForm">* Son email</label>
               <input title="Veuillez renseigner votre email." th:field="*{email}" type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" minlength="9" maxlength="50" pattern="^[a-z0-9.-]+@[a-z0-9.-]{2,20}\.[a-z]{2,12}$" required>
             </div>
 
 
-            <div class="divInscriptionUserForm">
+            <div class="divOptionUserForm">
               <label for="nomutilisateurUserForm">* Son nom d'utilisateur</label>
               <!-- Pattern: ^ = flag de début et $ = flag de fin -->
-              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" pattern="^[a-z]{4}[0-9]{4}$" required>
+              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" pattern="^[A-Z]{4}[0-9]{4}$" required>
               <!-- Pour définir un small text -->
               <div id="nomutilisateur">
                 <small>Son nom d'utilisateur fera office de Login.</small>
                 <br>
-                <small>Attention à respecter ce format: 2 premières lettres de son prénom + 2 premières lettres de son nom + 4 chiffres aléatoires</small>
+                <small>Attention à respecter ce format en Majuscule: 2 premières lettres de son prénom + 2 premières lettres de son nom + 4 chiffres aléatoires</small>
               </div>
             </div>
 
@@ -60,23 +60,22 @@
 
           <!-- Affichage en cas d'erreur -->
           <!-- en visibilité hidden -->
-          <div class="divInscriptionUserForm">
+          <div class="divOptionUserForm">
             <fieldset id="erreurFieldset" title="Affichage Message d'erreur" class="hidden" disabled>
               <legend id="erreur">Message d'erreur</legend>
               <span class="Erreur lors de l'encodage de votre mail."></span>
             </fieldset>
           </div>
 
-          <div class="divInscriptionUserForm">
+          <div class="divOptionUserForm">
             *: Champs obligatoires
           </div>
 
           <div class="divBtnInscriptionUserForm">
-            <button title="bouton Annuler un utilisateur" id="boutonAnnulerUserForm" class="AnnulerBtn pointeurMain" type="reset" value="annuler_utilisateur">Annuler <div style="font-size:20px" class="fa">&#xf410;</div></button>
+            <button title="bouton Annuler un utilisateur" id="boutonAnnulerUserForm" class="AnnulerBtn optionBtn" type="reset" value="annuler_utilisateur">Annuler <div style="font-size:20px" class="fa">&#xf410;</div></button>
 
             <!-- parametre "disabled" : Bouton enregistré desactivé et ne s'active que quand tous les champes requis seront remplis -->
-            <button title="bouton Enregistrer un utilisateur" id="boutonEnregistrerUserForm" class="createBtn pointeurMain" type="submit" value="ajouter_utilisateur">Enregistrer <div style="font-size:20px" class="fa">&#xf0c7;</div></button>
-            <!--            disabled="disabled -->
+            <button title="bouton Enregistrer un utilisateur" id="boutonEnregistrerUserForm" class="createBtn optionBtn" type="submit" value="ajouter_utilisateur">Enregistrer <div style="font-size:20px" class="fa">&#xf0c7;</div></button>
           </div>
         </fieldset>
       </form>

@@ -2,14 +2,72 @@
 <!-- Groupe: Learning Project -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>LP: Admin | Page de gestion des utilisateurs | Mise à jour</title>
-  <style>
-  </style>
-</head>
-<body>
-<nav th:insert="fragments/navOut :: nav"></nav>
-<h1>Admin | Page de modification des utilisateurs</h1>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <title>LP: Admin | Page de gestion des utilisateurs | Mise à jour</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.png}" />
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"> </script>
+
+    <script th:src="@{/js/scripts.js}" type="text/javascript"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
+
+
+    <!-- font-awesome : Ajouts de fonts libres de droits -->
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.4/css/all.css}" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+  </head>
+  <body>
+    <header th:insert="fragments/header :: header"></header>
+    <nav th:insert="fragments/navOut :: nav"></nav>
+
+    <h2>Admin | Page de modification des utilisateurs</h2>
+
+    <div id="boxModifUtilisateur">
+      <!-- column name id_user-->
+      <form th:action="@{/admin/users/update/{id}(id = *{id_user})}" th:object="${users}" method="post" role="form">
+        <fieldset id="modifUserFieldset">
+          <legend class="UserLegend">Formulaire de modification d'un utilisateur</legend>
+
+          <div class="divOptionUserForm">
+            <label for="nomUserForm">* Son nom</label>
+            <input th:field="*{lastname}" type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" required>
+          </div>
+
+          <div class="divOptionUserForm">
+            <label for="prenomUserForm">* Son prenom</label>
+            <input th:field="*{firstname}" type="text" id="prenomUserForm" name="prenomUserForm" placeholder="Prenom" required>
+          </div>
+
+          <div class="divOptionUserForm">
+            <label for="emailUserForm">* Son email</label>
+            <input th:field="*{email}" type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" minlength="9" maxlength="50" pattern="^[a-z0-9.-]+@[a-z0-9.-]{2,20}\.[a-z]{2,12}$" required>
+          </div>
+
+          <div class="divOptionUserForm">
+            <label for="nomutilisateurUserForm">* Son nom d'utilisateur</label>
+            <input th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" pattern="^[A-Z]{4}[0-9]{4}$" required>
+          </div>
+
+          <!-- Affichage en cas d'erreur -->
+          <!-- en visibilité hidden -->
+          <div class="divOptionUserForm">
+            <fieldset id="erreurFieldset" title="Affichage Message d'erreur" class="hidden" disabled>
+              <legend id="erreur">Message d'erreur</legend>
+              <span class="Erreur lors de la correction d'un champ."></span>
+            </fieldset>
+          </div>
+
+          <div class="divOptionUserForm">
+            *: Champs obligatoires
+          </div>
+
+          <div class="divBtnModifUserForm">
+            <button title="bouton Annuler la modification" id="boutonAnnulerUserModif" class="AnnulerBtn optionBtn" type="reset" value="annuler_user_modif">Annuler <div style="font-size:20px" class="fa">&#xf410;</div></button>
+            <button type="submit" class="createBtn optionBtn">Enregistrer<div style="font-size:20px" class="fa">&#xf0c7;</div></button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <footer th:insert="fragments/footer :: footer"></footer>
+  </body>
 </html>

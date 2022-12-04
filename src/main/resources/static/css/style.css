@@ -45,6 +45,10 @@ body{
 }
 
 
+.optionBtn{
+    cursor: pointer;
+}
+
 #ajouterUtilisateur {
     margin: 5px;
 }
@@ -161,13 +165,25 @@ a:visited {
 }
 
 
+
+#boxModifUtilisateur {
+    margin: 0% 30%;
+    text-align: center;
+}
+
+
+#modifUserFieldset {
+    border-color: rgba(0,51,153,1);
+}
+
+
 .UserLegend {
     color: rgba(0,51,153,1);
     font-weight: bold;
 }
 
 
-.divInscriptionUserForm {
+.divOptionUserForm {
     margin: 5px auto;
 }
 
