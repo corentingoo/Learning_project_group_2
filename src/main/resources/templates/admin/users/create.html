@@ -17,7 +17,7 @@
   </head>
   <body>
     <header th:insert="fragments/header :: header"></header>
-    <nav th:insert="fragments/nav :: nav"></nav>
+    <nav th:insert="fragments/navOut :: nav"></nav>
 
     <h2>Admin: Page de création d'un utilisateur</h2>
 
@@ -27,31 +27,31 @@
         <fieldset id="creationUserFieldset">
           <legend class="UserLegend">Formulaire de création d'un utilisateur</legend>
           <div class="divInscriptionUserForm">
-            <label for="nomUserForm">* Votre nom</label>
+            <label for="nomUserForm">* Son nom</label>
             <!-- L'attribut name permet de retrouver la valeur d'un élément de formulaire. -->
             <input title="Veuillez renseigner votre nom."  th:field="*{lastname}" type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" autofocus required>
           </div>
 
             <div class="divInscriptionUserForm">
-              <label for="prenomUserForm">* Votre prenom</label>
+              <label for="prenomUserForm">* Son prenom</label>
               <input title="Veuillez renseigner votre prénom." th:field="*{firstname}" type="text" id="prenomUserForm" name="prenomUserForm" placeholder="Prenom" required>
             </div>
 
 
             <div class="divInscriptionUserForm">
-              <label for="emailUserForm">* Votre email</label>
+              <label for="emailUserForm">* Son email</label>
               <input title="Veuillez renseigner votre email." th:field="*{email}" type="email" id="emailUserForm" name="emailUserForm" placeholder="Email" required>
             </div>
 
 
             <div class="divInscriptionUserForm">
-              <label for="nomutilisateurUserForm">* Votre nom d'utilisateur</label>
+              <label for="nomutilisateurUserForm">* Son nom d'utilisateur</label>
               <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" required>
               <!-- Pour définir un small text -->
               <div id="nomutilisateur">
-                <small>Votre nom d'utilisateur fera office de Login.</small>
+                <small>Son nom d'utilisateur fera office de Login.</small>
                 <br>
-                <small>Attention à respecter ce format: 2 premières lettres de votre prénom + 2 premières lettres de votre nom + 4 chiffres aléatoires</small>
+                <small>Attention à respecter ce format: 2 premières lettres de son prénom + 2 premières lettres de son nom + 4 chiffres aléatoires</small>
               </div>
             </div>
 

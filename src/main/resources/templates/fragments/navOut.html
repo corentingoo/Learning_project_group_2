@@ -1,0 +1,18 @@
+<!-- IFOSUP Wavre | Cours IPID avec Mr Sebastien LEJEUNE | Année académique: 2022 - 2023 -->
+<!-- Groupe: Learning Project -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="nav">
+      <a th:href="@{/}" /><div style="font-size:20px" class="navFloat fa">&#xf015;</div></a>
+      <div id="navAccueil" class="navFloat"><a th:href="@{/}" class="liensNav" title="Accueil" /> Accueil</a></div>
+
+      <div class="navFloat">
+        |
+      </div>
+
+      <div id="navConnexion" class="navFloat"><a th:href="@{/}" class="liensNav" title="Déconnexion" />Déconnexion</a></div>
+      <a th:href="@{/}" /><div style="font-size:20px" class="navFloat fa">&#xf2f5;</div></a>
+    </div>
+  </body>
+</html>
