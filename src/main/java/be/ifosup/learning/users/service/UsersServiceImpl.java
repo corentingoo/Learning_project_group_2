@@ -71,15 +71,16 @@ public class UsersServiceImpl implements UsersService{
         roles.add(RoleEnum.STUDENT);
 
         User user = User.builder()
-                .username(creationIn.getUsername())
-                .lastname(creationIn.getLastname())
-                .firstname(creationIn.getFirstname())
+                /**  replaceALL() avec Regex pour supprimer tous les espaces insécables en début, dans le mot et à la fin */
+                .username(creationIn.getUsername().toUpperCase().strip().replaceAll("\\s+" , ""))
+                .lastname(creationIn.getLastname().strip().replaceAll("\\s+" , ""))
+                .firstname(creationIn.getFirstname().strip().replaceAll("\\s+" , ""))
                 .roles(roles)
                 .accountNonExpired(true)
                 .accountNonLocked(true)
                 .credentialsNonExpired(true)
                 .enabled(true)
-                .email(creationIn.getEmail())
+                .email(creationIn.getEmail().trim())
                 .password("STUDENT")
 //                .BCryptManagerUtil.password(password("STUDENT"))
                 .build();

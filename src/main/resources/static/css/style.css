@@ -55,9 +55,9 @@ input:valid{
     border: 1px solid black;
 }
 
-/*input:invalid{*/
-/*    border: 2px dashed rgb(235, 55, 55);*/
-/*}*/
+input:focus:invalid{
+    border: 2px dashed rgb(235, 55, 55);
+}
 
 
 a {

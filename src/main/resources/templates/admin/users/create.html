@@ -29,7 +29,7 @@
           <div class="divInscriptionUserForm">
             <label for="nomUserForm">* Son nom</label>
             <!-- L'attribut name permet de retrouver la valeur d'un élément de formulaire. -->
-            <input title="Veuillez renseigner votre nom."  th:field="*{lastname}" type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" autofocus required>
+            <input title="Veuillez renseigner votre nom."  th:field="*{lastname}" type="text" id="nomUserForm" name="nomUserForm" placeholder="Nom" required>
           </div>
 
             <div class="divInscriptionUserForm">
@@ -46,7 +46,8 @@
 
             <div class="divInscriptionUserForm">
               <label for="nomutilisateurUserForm">* Son nom d'utilisateur</label>
-              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" pattern="[a-z]{4}[0-9]{4}" required>
+              <!-- Pattern: ^ = flag de début et $ = flag de fin -->
+              <input title="Veuillez renseigner votre nom d'utilisateur." th:field="*{username}" type="text" id="nomutilisateurUserForm" name="nomutilisateurUserForm" placeholder="Nom d utilisateur" minlength="8" maxlength="8" pattern="^[a-z]{4}[0-9]{4}$" required>
               <!-- Pour définir un small text -->
               <div id="nomutilisateur">
                 <small>Son nom d'utilisateur fera office de Login.</small>
