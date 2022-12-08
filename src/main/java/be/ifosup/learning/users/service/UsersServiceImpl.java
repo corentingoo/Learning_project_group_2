@@ -100,10 +100,11 @@ public class UsersServiceImpl implements UsersService{
         /** construction de notre user modifié */
         User toSave = User.builder()
                 .id(user.getId())
-                .username(user.getUsername())
+                .username(userIn.getUsername())
                 .lastname(userIn.getLastname())
                 .firstname(userIn.getFirstname())
-                .roles(userIn.getRoles())
+                .roles(user.getRoles())
+                .password(user.getPassword())
                 .accountNonExpired(true)
                 .accountNonLocked(true)
                 .credentialsNonExpired(true)
