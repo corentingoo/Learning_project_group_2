@@ -1,6 +1,5 @@
 package be.ifosup.learning.formations.service;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,7 +9,6 @@ import be.ifosup.learning.formations.entities.Formation;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
-import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

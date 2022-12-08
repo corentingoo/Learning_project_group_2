@@ -77,15 +77,23 @@ public class PasswordController {
     }
 
     @GetMapping("/resetpassword")
-    public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
+    public String showResetPasswordForm(@Param(value = "token") String token , Model model) {
         User user = userservice.findByToken(token);
         model.addAttribute("token", token);
         return "/public/resetpassword.html";
     }
 
     @PostMapping("/resetpassword")
-    public String updatePass(@RequestParam("password") String password, @RequestParam("token") String token, Model model) {
+    public String updatePass(@RequestParam("password") String password,@RequestParam("matchingpassword") String matchingpassword, @RequestParam("token") String token, Model model) {
+
         User user = userservice.findByToken(token);
+        if(matchingpassword != password){
+            model.addAttribute("message" , "les mots de passent ne correspondent pas");
+            model.addAttribute("token",token);
+            model.addAttribute("password" , password);
+            model.addAttribute("matchingpassword", matchingpassword);
+            return "redirect:/password/errorresetpassword";
+        }
         try {
             userservice.updatePassword(user.getId(), password);
         }
@@ -93,5 +101,12 @@ public class PasswordController {
             System.out.print(e);
         }
         return "/login.html";
+    }
+    @GetMapping("/errorresetpassword")
+    public String showResetPasswordFormInError(@RequestParam(value = "token") String token ,@RequestParam("password") String password,@RequestParam("matchingpassword") String matchingpassword, Model model) {
+        model.addAttribute("token", token);
+        model.addAttribute("password" , password);
+        model.addAttribute("matchingpassword" , matchingpassword);
+        return "/public/ErrorResetPassword.html";
     }
 }

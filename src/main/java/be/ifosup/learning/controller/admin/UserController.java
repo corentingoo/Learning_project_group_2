@@ -8,6 +8,7 @@ import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import be.ifosup.learning.constants.RoleEnum;
 import org.springframework.ui.Model;
@@ -42,6 +43,7 @@ public class UserController {
 
     @PostMapping("/create")
     public String createUser(@Valid @ModelAttribute("users") UserIn userIn, HttpServletRequest request) {
+
         UserIn.roles = new ArrayList<>();
         String role = userIn.getRole();
 
