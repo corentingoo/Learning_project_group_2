@@ -11,8 +11,10 @@ create table if not exists users (
     enabled bit,
     firstname varchar(255) not null,
     lastname varchar(255) not null,
-    password varchar(255) not null,
+    password varchar(255),
     username varchar(255) not null,
+    email varchar(255) not null,
+    token varchar(50),
     primary key (id_user)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

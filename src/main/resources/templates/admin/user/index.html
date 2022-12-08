@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:insert="fragments/header :: header"></header>
+<body>
+
+<nav th:insert="fragments/nav :: nav"></nav>
+
+<aside th:insert="fragments/sidebaradmin :: sidebaradmin"></aside>
+<main id="main" class="main">
+    <div class="formationtitle">
+        <h1>Gestion des utilisateurs</h1>
+
+    </div><!-- End Page Title -->
+
+    <section class="section">
+
+        <div class="row">
+            <div class="col-lg-15">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Liste des utilisateurs</h5>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+            <th scope="col"> Username</th>
+            <th scope="col"> Nom de famille</th>
+            <th scope="col"> Prénom</th>
+            <th scope="col"> Email</th>
+            <th scope="col"> Role</th>
+            <th scope="col"> Mise à jour</th>
+            <th scope="col"> Supprimer</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="user: ${users}">
+            <td>[[${user.username}]]</td>
+            <td>[[${user.lastname}]]</td>
+            <td>[[${user.firstname}]]</td>
+            <td>[[${user.email}]]</td>
+            <td>[[${user.roles}]]</td>
+            <td>
+                <a th:href="@{'/admin/user/update/' + ${user.id}}">Edit</a>
+
+            </td>
+            <td>
+                <a th:href="@{'/admin/user/delete/' + ${user.id}}">Delete</a>
+            </td>
+            </tr>
+        </th:block>
+
+        </tbody>
+    </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-2">
+        <a th:href="@{/admin/user/create}">
+            <button class="btn btn-primary w-100" type="submit"> Ajouter un utilisateur</button>
+        </a>
+    </div>
+    </section>
+
+</main><!-- End #main -->
+
+
+<footer th:insert="fragments/footer :: footer"></footer>
+
+</body>
+</html>

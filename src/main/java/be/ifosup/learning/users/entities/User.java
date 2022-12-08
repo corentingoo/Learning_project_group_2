@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_user")
     private Long id;
 
@@ -37,7 +37,6 @@ public class User implements UserDetails {
     @Column(name = "username", nullable = false, unique = true)
     private String username;
 
-    @NotNull
     @Column(name = "password", nullable = false)
     private String password;
 
@@ -71,6 +70,13 @@ public class User implements UserDetails {
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    @Column(name= "token")
+    private String token;
+
+    @NotNull
+    @Column (name="email")
+    private String email;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

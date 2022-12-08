@@ -21,11 +21,6 @@ import java.util.Arrays;
  * Gestion de la sécurité de l'application
  */
 
-/**
- * V2 update pour ajout teacher et student et retrait user pour clarification
- */
-
-
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
