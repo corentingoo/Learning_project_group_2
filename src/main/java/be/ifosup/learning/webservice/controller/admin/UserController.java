@@ -102,7 +102,7 @@ public class UserController {
 
 
         try{
-            System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNomdutilisateur);
+//            System.out.println(userNom + " " + userPrenom + " " + userEmail + " " + userNomdutilisateur);
 
             /** Ceci va vers mon update( ) de mon userOut, càd vers ma db */
             usersService.update(id, userIn);
