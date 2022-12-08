@@ -128,4 +128,12 @@ footer {
     margin: auto;
     padding-bottom: 3px;
     background-color: white;
+
+table,tr,th,td{
+    border: 1px solid;
+}
+
+th.filter:hover{
+    background-color: lightblue;
+}
 }

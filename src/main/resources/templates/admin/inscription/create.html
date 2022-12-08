@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter une inscription</title>
+</head>
+<body>
+<h1>Ajouter une inscription</h1>
+<section id="create-inscription" class="create-inscription">
+
+        <form th:action="@{/admin/inscription/create}" th:object="${inscriptions}" method="post" role="form">
+            <div class="row">
+
+<!--                <div>-->
+<!--                    <label> Session de formation : </label>-->
+<!--                    <input type="number" th:field="*{formation_id}" class="form-control"-->
+<!--                           placeholder="Session de formation*">-->
+<!--                </div>-->
+
+
+                <div>
+                    <label> Identifiant de l'éleve : </label>
+                    <select th:field="*{student_id}" id="student_id">
+                        <option type="text" th:value="default">Choisir un élève</option>
+                        <option type="text" th:each="Eleve: ${eleves}" th:value="${Eleve.id}"
+                                th:text="${Eleve.username}"></option>
+                    </select>
+                </div>
+
+                <div>
+                    <label> Session de formation : </label>
+                    <select th:field="*{formation_id}" id="formation_id">
+                        <option type="text" th:value="default">Choisir un cours</option>
+                        <option type="text" th:each="Formation: ${formations}" th:value="${Formation.formation_id}"
+                                th:text="${Formation.titre}"></option>
+                    </select>
+                </div>
+
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit">Confirmer</button>
+            </div>
+        </form>
+
+
+</section>
+</body>
+</html>

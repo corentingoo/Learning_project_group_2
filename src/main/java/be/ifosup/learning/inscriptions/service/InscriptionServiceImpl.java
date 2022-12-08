@@ -56,20 +56,17 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
     @Override
-    public InscriptionOut update(Long id, InscriptionIn formationIn) {
+    public InscriptionOut update(Long id, InscriptionIn inscriptionIn) {
         Inscription inscription = inscriptionRepository.findById(id).get();
 
         Inscription toSave = Inscription.builder()
-                .formation_id(formation.getFormation_id())
-                .num_eleve(formationIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIn.getNum_eleve())
-                .titre(formationIn.getTitre() == null ? formation.getTitre() : formationIn.getTitre())
-                .date_debut(formationIn.getDate_debut() == null ? formation.getDate_debut() : formationIn.getDate_debut())
-                .date_fin(formationIn.getDate_fin() == null ? formation.getDate_fin() : formationIn.getDate_fin())
-                .teacher(formationIn.getTeacher() == null ? formation.getTeacher() : formationIn.getTeacher())
+                .inscription_id(inscription.getInscription_id())
+                .student_id(inscription.getStudent_id())
+                .formation_id(inscription.getFormation_id())
                 .build();
 
         Inscription saved = inscriptionRepository.save(toSave);
-        return getFormationOut(saved);
+        return getInscriptionOut(saved);
     }
 
     public InscriptionOut get(Long id) {
@@ -81,8 +78,8 @@ public class InscriptionServiceImpl implements InscriptionService {
     private static InscriptionOut getInscriptionOut(Inscription inscription) {
         return InscriptionOut.builder()
                 .inscription_id(inscription.getInscription_id())
-                .formation_id(inscription.getInscription_id())
-                .formation_id(inscription.getInscription_id())
+                .student_id(inscription.getStudent_id())
+                .formation_id(inscription.getFormation_id())
 
                 .build();
     }
@@ -91,15 +88,15 @@ public class InscriptionServiceImpl implements InscriptionService {
         inscriptionRepository.deleteById(id);
     }
 
-    @Override
-    public List<InscriptionOut> listbyUser(Long user) {
-        List<Inscription> inscriptionRepositoryAll = inscriptionRepository.findByUser(user);
-
-        List<InscriptionOut> inscriptionOuts = inscriptionRepositoryAll
-                .stream()
-                .map(formation -> getInscriptionOut(inscription))
-                .collect(Collectors.toList());
-
-        return inscriptionOuts;
-    }
+//    @Override
+//    public List<InscriptionOut> listbyUser(Long user) {
+//        List<Inscription> inscriptionRepositoryAll = inscriptionRepository.findByUser(user);
+//
+//        List<InscriptionOut> inscriptionOuts = inscriptionRepositoryAll
+//                .stream()
+//                .map(formation -> getInscriptionOut(inscription))
+//                .collect(Collectors.toList());
+//
+//        return inscriptionOuts;
+//    }
 }

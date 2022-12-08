@@ -11,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface InscriptionRepository extends JpaRepository<Inscription, Long> {
-    List<Inscription> findByUser(Long user);
+    //List<Inscription> findByUser(Long user);
 }

@@ -17,5 +17,5 @@ public interface InscriptionService {
 
     void delete(Long id);
 
-    List<InscriptionOut> listbyUser(Long id);
+    //List<InscriptionOut> listbyUser(Long id);
 }
