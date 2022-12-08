@@ -31,19 +31,19 @@
             <td>[[${inscription.student_id}]]</td>
             <td>[[${inscription.formation_id}]]</td>
             <td>
-                <a th:href="@{'/admin/inscription/update/' + ${inscription.inscription_id}}">edit</a>
+                <a th:href="@{'/student/inscription/update/' + ${inscription.inscription_id}}">edit</a>
 
             </td>
             <td>
-                <a th:href="@{'/admin/inscription/delete/' + ${inscription.inscription_id}}">delete</a>
+                <a th:href="@{'/student/inscription/delete/' + ${inscription.inscription_id}}">delete</a>
             </td>
             </tr>
         </th:block>
 
         </tbody>
     </table>
-    <div class="add-formation">
-        <a th:href="@{/admin/inscription/create}">
+    <div class="add-inscription">
+        <a th:href="@{/student/inscription/create}">
             <button type="button"> Ajouter une inscription</button>
         </a>
     </div>

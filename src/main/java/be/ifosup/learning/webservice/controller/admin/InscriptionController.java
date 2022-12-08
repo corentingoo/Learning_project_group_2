@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/admin/inscription")
+@RequestMapping("/student/inscription")
 public class InscriptionController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class InscriptionController {
     @GetMapping()
     public String inscriptionpage(Model model) {
         model.addAttribute("inscriptions", inscriptionservice.listAll());
-        return "admin/inscription/index";
+        return "student/inscription/index";
     }
 
     @GetMapping("/create")
@@ -45,7 +45,7 @@ public class InscriptionController {
         model.addAttribute("inscriptions", new InscriptionIn());
         model.addAttribute("eleves", userservice.listAllbyRole("STUDENT"));
         model.addAttribute("formations", formationservice.listAll());
-        return "/admin/inscription/create.html";
+        return "/student/inscription/create.html";
     }
 
     @PostMapping("/create")
@@ -57,10 +57,10 @@ public class InscriptionController {
         }
 
         catch(Exception e){
-            return "redirect:/admin/inscription/create.html";
+            return "redirect:/student/inscription/create.html";
         }
 
-        return "redirect:/admin/inscription/";
+        return "redirect:/student/inscription/";
     }
 
     @GetMapping("/delete/{id}")
@@ -71,7 +71,7 @@ public class InscriptionController {
 
         }
 
-        return "redirect:/admin/inscription/";
+        return "redirect:/student/inscription/";
     }
 
     @GetMapping("/update/{id}")
@@ -79,7 +79,7 @@ public class InscriptionController {
         model.addAttribute("inscriptions", inscriptionservice.get(Long.valueOf(id)));
         model.addAttribute("eleves", userservice.listAllbyRole("STUDENT"));
 
-        return "/admin/inscription/update";
+        return "/student/inscription/update";
     }
 
     @PostMapping("/update/{id}")
@@ -89,16 +89,16 @@ public class InscriptionController {
 
         }
         catch(Exception e){
-            return "redirect:/admin/inscription/";
+            return "redirect:/student/inscription/";
         }
 
-        return "redirect:/admin/inscription/";
+        return "redirect:/student/inscription/";
     }
 
     @GetMapping("/teacher")
     public String teacherpage(Model model) {
         model.addAttribute("teachers", userservice.listAllbyRole("TEACHER"));
-        return "admin/inscription/teacher/index.html";
+        return "student/inscription/teacher/index.html";
     }
 
 
