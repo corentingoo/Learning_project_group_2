@@ -41,7 +41,6 @@ public class FormationServiceImpl implements FormationService {
         List<FormationOut> formationOuts1 = new ArrayList<>();
         for (Formation formation :formationRepositoryAll) {
             formationOuts1.add(getFormationOut(formation));
-            //usersOuts1.add(userRepository.findById(formation.getTeacher()));
         }
 
 

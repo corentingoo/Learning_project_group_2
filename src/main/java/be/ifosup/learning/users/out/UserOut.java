@@ -22,14 +22,17 @@ import java.util.Collection;
 public class UserOut {
     public Long id;
 
-
     public String username;
 
     public String lastname;
 
     public String firstname;
 
+    public String email;
+
     public Collection<RoleEnum> roles;
+
+    public String role;
 
 
 }

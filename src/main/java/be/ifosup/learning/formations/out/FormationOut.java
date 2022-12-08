@@ -19,4 +19,5 @@ public class FormationOut {
     public Date date_debut;
     public Date date_fin;
     public Long teacher;
+
 }

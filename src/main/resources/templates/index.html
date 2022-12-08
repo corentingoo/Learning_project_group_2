@@ -1,43 +1,37 @@
-<!-- IFOSUP Wavre | Cours IPID avec Mr Sebastien LEJEUNE | Année académique: 2022 - 2023 -->
-<!-- Groupe: Learning Project -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>LP: Accueil</title>
-        <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.png}" />
-        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"> </script>
+<header th:insert="fragments/header :: header"></header>
+<body>
 
-        <script th:src="@{/js/scripts.js}" type="text/javascript"></script>
-        <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css" />
+<nav th:insert="fragments/nav :: nav"></nav>
 
-        <!-- font-awesome : Ajouts de fonts libres de droits -->
-        <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.15.4/css/all.css}" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-    </head>
-    <body>
-        <!-- 1er parametre: le nom du template | 2e parametre: le selecteur -->
-        <header th:insert="fragments/header :: header"></header>
-        <nav th:insert="fragments/nav :: nav"></nav>
+<aside th:insert="fragments/sidebarvisitor :: sidebarvisitor"></aside>
+<main id="main" class="main">
+    <div class="">
+        <h1>Learning Project</h1>
 
-        <section>
-            <div id="bienvenue">
-                Bienvenue sur LP, la plateforme de gestion de formations.
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bienvenue</h5>
+                        <p>Bienvenue dans l'application web pour la gestion des formations</p>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="row">
-                <div class="divParent">
-                    <img id="img2" th:src="@{/img/LProject_Accueil_Pexels_Fin.jpg}" alt="LP Compteur de formations finies" />
-                </div>
-                <div class="divEnfant">
-                    A ce jour, 3 formations se sont terminées via notre site.
-                </div>
-                <div id="news" class="col">
-                    <strong>News:</strong> 16/12/2022: Soirée Alumni avec les anciens élèves et professeurs.
-                </div>
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- 1er parametre: le nom du template | 2e parametre: le selecteur -->
-        <footer th:insert="fragments/footer :: footer"></footer>
-    </body>
+
+</main><!-- End #main -->
+
+
+<footer th:insert="fragments/footer :: footer"></footer>
+
+</body>
 </html>
