@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:insert="fragments/header :: header"></header>
+<body>
+
+<nav th:insert="fragments/nav :: nav"></nav>
+
+<aside th:insert="fragments/sidebarteacher :: sidebarteacher"></aside>
+<main id="main" class="main">
+    <div class="">
+        <h1>Bienvenue</h1>
+
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Professeur</h5>
+                        <p>Vous êtes connecté en tant que professeur sur la plateforme Learning Project</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+</main><!-- End #main -->
+
+
+<footer th:insert="fragments/footer :: footer"></footer>
+
+</body>
+</html>
