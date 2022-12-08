@@ -10,6 +10,7 @@ import be.ifosup.learning.formations.entities.Formation;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
+import be.ifosup.learning.inscriptions.entities.Inscription;
 import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,4 +111,6 @@ public class FormationServiceImpl implements FormationService {
 
         return formationOuts;
     }
+
+
 }

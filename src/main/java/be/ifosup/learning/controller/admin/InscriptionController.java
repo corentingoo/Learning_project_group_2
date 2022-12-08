@@ -17,7 +17,7 @@ import javax.validation.Valid;
 
 
 @Controller
-@RequestMapping("/student/inscription")
+@RequestMapping("/admin/inscription")
 public class InscriptionController {
 
     @Autowired
@@ -74,26 +74,6 @@ public class InscriptionController {
         return "redirect:/student/inscription/";
     }
 
-    @GetMapping("/update/{id}")
-    public String update(@PathVariable("id") String id, Model model) {
-        model.addAttribute("inscriptions", inscriptionservice.get(Long.valueOf(id)));
-        model.addAttribute("eleves", userservice.listAllbyRole("STUDENT"));
-
-        return "/student/inscription/update";
-    }
-
-    @PostMapping("/update/{id}")
-    public String updateInscription(@Valid @ModelAttribute("inscriptions") InscriptionIn inscriptionIn, @PathVariable("id") Long id , Model model) {
-        try {
-            inscriptionservice.update(id, inscriptionIn);
-
-        }
-        catch(Exception e){
-            return "redirect:/student/inscription/";
-        }
-
-        return "redirect:/student/inscription/";
-    }
 
     @GetMapping("/teacher")
     public String teacherpage(Model model) {

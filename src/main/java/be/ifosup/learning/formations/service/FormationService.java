@@ -18,4 +18,5 @@ public interface FormationService {
     void delete(Long id);
 
     List<FormationOut> listbyTeacher(Long id);
+
 }

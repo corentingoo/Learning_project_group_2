@@ -14,6 +14,7 @@ import java.sql.Date;
 @AllArgsConstructor
 public class InscriptionOut {
     public Long inscription_id;
-    public Long student_id;
-    public Long formation_id;
+    public String username;
+    public String titre;
+    public String date;
 }

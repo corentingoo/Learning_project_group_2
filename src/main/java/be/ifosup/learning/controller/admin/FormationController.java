@@ -36,6 +36,7 @@ public class FormationController {
         return "admin/formation/index";
     }
 
+
     @GetMapping("/create")
     public String formationcreatepage(Model model) {
         model.addAttribute("formations", new FormationIn());
