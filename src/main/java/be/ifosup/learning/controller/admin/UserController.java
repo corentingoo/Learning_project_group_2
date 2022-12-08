@@ -91,7 +91,7 @@ public class UserController {
         return "/admin/user/update";
     }
     @PostMapping("/update/{id}")
-    public String updateFormation(@Valid @ModelAttribute("formations") UserIn userIn, @PathVariable("id") Long id , Model model) {
+    public String updateFormation(@Valid @ModelAttribute("users") UserIn userIn, @PathVariable("id") Long id , Model model) {
         try {
             userservice.update(id, userIn);
         }
