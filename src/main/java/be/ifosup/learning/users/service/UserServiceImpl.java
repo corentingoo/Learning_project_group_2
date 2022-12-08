@@ -136,6 +136,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 .username(userIn.getUsername() == null ? user.getUsername() : userIn.getUsername())
                 .lastname(userIn.getLastname() == null ? user.getLastname() : userIn.getLastname())
                 .firstname(userIn.getFirstname() == null ? user.getFirstname() : userIn.getFirstname())
+                .password(user.getPassword() == null ? user.getPassword() : user.getPassword())
                 .email(userIn.getEmail() == null ? user.getEmail() : userIn.getEmail())
                 .roles(userIn.getRoles() == null ? user.getRoles() : userIn.getRoles())
                 .build();

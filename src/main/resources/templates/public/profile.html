@@ -5,9 +5,6 @@
 
 <nav th:insert="fragments/nav :: nav"></nav>
 
-<nav th:insert="fragments/sidebaradmin :: sidebaradmin"></nav>
-
-
 <main id="main" class="main">
 
   <div class="pagetitle">
@@ -44,27 +41,27 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Username</div>
-                  <div class="col-lg-9 col-md-8" ></div>
+                  <div class="col-lg-9 col-md-8" th:text="${#authentication.principal.username}"></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Nom de famille</div>
-                  <div class="col-lg-9 col-md-8"></div>
+                  <div class="col-lg-9 col-md-8" th:text="${#authentication.principal.lastname}"></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Prénom</div>
-                  <div class="col-lg-9 col-md-8"></div>
+                  <div class="col-lg-9 col-md-8" th:text="${#authentication.principal.firstname}"></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8"></div>
+                  <div class="col-lg-9 col-md-8" th:text="${#authentication.principal.email}"></div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Role</div>
-                  <div class="col-lg-9 col-md-8"></div>
+                  <div class="col-lg-9 col-md-8" th:text="${#authentication.principal.roles}"></div>
                 </div>
 
               </div>
@@ -109,10 +106,7 @@
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                   </div>
                 </form><!-- End Profile Edit Form -->
-
               </div>
-
-
 
               <div class="tab-pane fade pt-3" id="profile-change-password">
                 <!-- Change Password Form -->
@@ -143,14 +137,10 @@
                     <button type="submit" class="btn btn-primary">Change Password</button>
                   </div>
                 </form><!-- End Change Password Form -->
-
               </div>
-
             </div><!-- End Bordered Tabs -->
-
           </div>
         </div>
-
       </div>
     </div>
   </section>
