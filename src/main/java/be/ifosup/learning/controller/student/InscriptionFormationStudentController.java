@@ -1,4 +1,4 @@
-package be.ifosup.learning.controller.teacher;
+package be.ifosup.learning.controller.student;
 
 
 import be.ifosup.learning.formations.repositories.FormationRepository;
@@ -9,32 +9,34 @@ import be.ifosup.learning.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-@RequestMapping("/teacher/formation")
-public class FormationTeacherController {
+@RequestMapping("/student/inscription/formation")
+public class InscriptionFormationStudentController {
 
     @Autowired
-    private FormationService formationservice;
+    private FormationService formationService;
     @Autowired
     private UserService userservice;
 
     @Autowired
-    public FormationTeacherController(FormationRepository formationRepository, UserRepository userRepository) {
+    public InscriptionFormationStudentController(FormationRepository formationRepository, UserRepository userRepository) {
         formationRepository = formationRepository;
         userRepository = userRepository;
     }
 
     // Methods for Retrieval operations
     @GetMapping()
-    public String formationteacherpage(Model model) {
+    public String inscriptionformationstudentpage(Model model) {
         User user = userservice.getCurrentUser();
         Long id = user.getId();
 
-        model.addAttribute("formations", formationservice.listbyTeacher(id));
-        return "teacher/formation/index";
+        model.addAttribute("formations", formationService.listAll());
+        model.addAttribute("user", userservice.getCurrentUser().getId());
+        return "student/inscription/formation";
     }
 
 
