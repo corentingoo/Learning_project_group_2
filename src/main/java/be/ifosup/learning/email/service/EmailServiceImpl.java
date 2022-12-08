@@ -26,6 +26,7 @@ public class EmailServiceImpl implements EmailService{
             String content = text;
             helper.setSubject(subject);
             helper.setText(content, true);
+            System.out.println(message);
             emailSender.send(message);
         } catch (Exception e) {
             System.out.print(e);
