@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>INDEX</title>
-</head>
+<header th:insert="fragments/header :: header"></header>
 <body>
-    <h1>INDEX</h1>
-    <a th:href="@{/login}">Login page</a>
+
+<nav th:insert="fragments/nav :: nav"></nav>
+
+<aside th:insert="fragments/sidebarvisitor :: sidebarvisitor"></aside>
+<main id="main" class="main">
+    <div class="">
+        <h1>Learning Project</h1>
+
+    </div><!-- End Page Title -->
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-6">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Bienvenue</h5>
+                        <p>Bienvenue dans l'application web pour la gestion des formations</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+</main><!-- End #main -->
+
+
+<footer th:insert="fragments/footer :: footer"></footer>
+
 </body>
 </html>

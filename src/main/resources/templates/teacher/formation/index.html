@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<header th:insert="fragments/header :: header"></header>
+<body>
+
+<nav th:insert="fragments/nav :: nav"></nav>
+
+<aside th:insert="fragments/sidebarteacher :: sidebarteacher"></aside>
+<main id="main" class="main">
+    <div class="formationtitle">
+        <h1>Liste des formations données par vous</h1>
+
+    </div><!-- End Page Title -->
+
+    <section class="section">
+
+        <div class="row">
+            <div class="col-lg-15">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Liste des formations</h5>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th scope="col"> Titre</th>
+                                <th scope="col"> Nombre maximum d'élèves</th>
+                                <th scope="col"> Date de début</th>
+                                <th scope="col"> Date de fin</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <th:block th:each="formation: ${formations}">
+                                <td>[[${formation.titre}]]</td>
+                                <td>[[${formation.num_eleve}]]</td>
+                                <td>[[${formation.date_debut}]]</td>
+                                <td>[[${formation.date_fin}]]</td>
+                                </tr>
+                            </th:block>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+</main><!-- End #main -->
+
+
+<footer th:insert="fragments/footer :: footer"></footer>
+
+</body>
+</html>
