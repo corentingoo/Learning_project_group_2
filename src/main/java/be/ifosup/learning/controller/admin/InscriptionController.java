@@ -1,4 +1,4 @@
-package be.ifosup.learning.webservice.controller.admin;
+package be.ifosup.learning.controller.admin;
 
 
 import be.ifosup.learning.formations.repositories.FormationRepository;

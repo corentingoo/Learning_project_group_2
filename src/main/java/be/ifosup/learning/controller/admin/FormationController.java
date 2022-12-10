@@ -47,15 +47,12 @@ public class FormationController {
     @PostMapping("/create")
     public String createFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, Model model) {
 
-
         try {
             formationservice.save(formationIn);
         }
-
         catch(Exception e){
             return "redirect:/admin/formation/create.html";
         }
-
         return "redirect:/admin/formation/";
     }
 
