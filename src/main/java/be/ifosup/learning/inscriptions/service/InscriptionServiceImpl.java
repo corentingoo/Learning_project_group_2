@@ -47,7 +47,6 @@ public class InscriptionServiceImpl implements InscriptionService {
         List<InscriptionOut> inscriptionOuts1 = new ArrayList<>();
         for (Inscription inscription :inscriptionRepositoryAll) {
             inscriptionOuts1.add(getInscriptionOut(inscription));
-            //usersOuts1.add(userRepository.findById(formation.getTeacher()));
         }
 
 
@@ -87,12 +86,14 @@ public class InscriptionServiceImpl implements InscriptionService {
     private InscriptionOut getInscriptionOut(Inscription inscription) {
         String username = userService.get(inscription.getStudent_id()).getUsername();
         String titre = formationService.get(inscription.getFormation_id()).getTitre();
-        Date date = formationService.get(inscription.getFormation_id()).getDate_debut();
+        Date date_debut = formationService.get(inscription.getFormation_id()).getDate_debut();
+        Date date_fin = formationService.get(inscription.getFormation_id()).getDate_fin();
         return InscriptionOut.builder()
                 .inscription_id(inscription.getInscription_id())
                 .username(username)
                 .titre(titre)
-                .date(date != null ? date.toString() : "")
+                .date_debut(date_debut != null ? date_debut.toString() : "")
+                .date_fin(date_fin != null ? date_fin.toString() : "")
                 .build();
     }
 
@@ -111,4 +112,5 @@ public class InscriptionServiceImpl implements InscriptionService {
 
             return formationOuts;
         }
+
 }

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<header th:insert="fragments/header :: header"></header>
+<body>
+
+<nav th:insert="fragments/nav :: nav"></nav>
+
+<aside th:insert="fragments/sidebarstudent :: sidebarstudent"></aside>
+
+<main id="main" class="main">
+    <div class="formationtitle">
+        <h1>Ajouter une inscription</h1>
+
+    </div><!-- End Page Title -->
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Confirmation d'inscription</h5>
+                            <form th:action="@{/student/formation/create}" th:object="${inscriptions}" method="post">
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Formation</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" aria-label="Default select example" th:field="*{formation_id}" id="formations">
+                                            <option type="text" th:each="formation: ${formations}" th:value="${formation.formation_id}"
+                                                    th:text="${formation.titre}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Eleve</label>
+                                    <div class="col-sm-10">
+                                        <select class="form-select" aria-label="Default select example" th:field="*{student_id}" id="uses">
+                                            <option type="text" th:each="user: ${users}" th:value="${user.id}"
+                                                    th:text="${user.username}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <br>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Confirmation</label>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Envoie</button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+<footer th:insert="fragments/footer :: footer"></footer>
+
+</body>
+</html>

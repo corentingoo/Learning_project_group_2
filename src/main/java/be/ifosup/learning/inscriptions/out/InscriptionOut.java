@@ -16,5 +16,6 @@ public class InscriptionOut {
     public Long inscription_id;
     public String username;
     public String titre;
-    public String date;
+    public String date_debut;
+    public String date_fin;
 }

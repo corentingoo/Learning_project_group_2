@@ -18,4 +18,5 @@ public interface InscriptionService {
 
     List<InscriptionOut> findAllByStudentId(Long id);
 
+
 }
