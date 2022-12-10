@@ -28,6 +28,7 @@ public class FormationServiceImpl implements FormationService {
         this.userRepository = userRepository;
     }
 
+    @Override
     public List<FormationOut> listAll() {
         List<Formation> formationRepositoryAll = formationRepository.findAll();
 
@@ -47,11 +48,11 @@ public class FormationServiceImpl implements FormationService {
         return formationOuts1;
     }
 
+    @Override
     public FormationOut save(FormationIn formationIn) {
 
         Formation formation = Formation.builder()
-                        .titre(formationIn
-                        .getTitre())
+                        .titre(formationIn.getTitre())
                         .num_eleve(formationIn.getNum_eleve())
                         .date_debut(formationIn.getDate_debut())
                         .date_fin(formationIn.getDate_fin())
@@ -78,6 +79,7 @@ public class FormationServiceImpl implements FormationService {
         return getFormationOut(saved);
     }
 
+    @Override
     public FormationOut get(Long id) {
         Formation formation = formationRepository.findById(id).get();
         FormationOut formationOut = getFormationOut(formation);
@@ -95,6 +97,7 @@ public class FormationServiceImpl implements FormationService {
                 .build();
     }
 
+    @Override
     public void delete(Long id) {
         formationRepository.deleteById(id);
     }
