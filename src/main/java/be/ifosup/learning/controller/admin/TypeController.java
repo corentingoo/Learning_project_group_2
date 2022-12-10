@@ -24,7 +24,7 @@ public class TypeController {
 
     @GetMapping("/create")
     public String typecreatepage(Model model) {
-        model.addAttribute("types", typeservice.listAll());
+        model.addAttribute("types", new TypeIn());
         return "/admin/type/create.html";
     }
 
