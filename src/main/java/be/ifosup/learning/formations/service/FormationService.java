@@ -1,5 +1,6 @@
 package be.ifosup.learning.formations.service;
 
+import be.ifosup.learning.formations.in.FormationIdIn;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 
@@ -10,7 +11,7 @@ public interface FormationService {
 
     FormationOut save(FormationIn formationIn);
 
-    FormationOut update(Long id, FormationIn formationIn);
+    FormationOut update(Long id, FormationIdIn formationIdIn);
 
     FormationOut get(Long id) ;
 

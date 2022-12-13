@@ -2,6 +2,7 @@ package be.ifosup.learning.users.service;
 
 
 import be.ifosup.learning.users.entities.User;
+import be.ifosup.learning.users.in.UserIdIn;
 import be.ifosup.learning.users.in.UserIn;
 import be.ifosup.learning.users.out.UserOut;
 import be.ifosup.learning.users.repositories.UserRepository;
@@ -128,17 +129,17 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return getUserOut(save);
     }
 
-    public UserOut update(Long id, UserIn userIn) {
+    public UserOut update(Long id, UserIdIn userIdIn) {
         User user = userRepository.findById(id).get();
 
         User toSave = User.builder()
                 .id(user.getId())
-                .username(userIn.getUsername() == null ? user.getUsername() : userIn.getUsername())
-                .lastname(userIn.getLastname() == null ? user.getLastname() : userIn.getLastname())
-                .firstname(userIn.getFirstname() == null ? user.getFirstname() : userIn.getFirstname())
+                .username(userIdIn.getUsername() == null ? user.getUsername() : userIdIn.getUsername())
+                .lastname(userIdIn.getLastname() == null ? user.getLastname() : userIdIn.getLastname())
+                .firstname(userIdIn.getFirstname() == null ? user.getFirstname() : userIdIn.getFirstname())
                 .password(user.getPassword() == null ? user.getPassword() : user.getPassword())
-                .email(userIn.getEmail() == null ? user.getEmail() : userIn.getEmail())
-                .roles(userIn.getRoles() == null ? user.getRoles() : userIn.getRoles())
+                .email(userIdIn.getEmail() == null ? user.getEmail() : userIdIn.getEmail())
+                .roles(userIdIn.getRoles() == null ? user.getRoles() : userIdIn.getRoles())
                 .build();
         User saved = userRepository.save(toSave);
         return getUserOut(saved);

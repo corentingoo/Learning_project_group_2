@@ -15,7 +15,8 @@ import java.sql.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FormationIn {
+public class FormationIdIn {
+    public Long formation_id;
     @NotBlank(message = "Le titre est obligatoire")
     public String titre;
     @NotNull(message = "Le nombre maximum d'élèves est obligatoire")

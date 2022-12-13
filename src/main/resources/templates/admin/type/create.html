@@ -12,6 +12,7 @@
         <h1>Ajouter une matière</h1>
 
     </div><!-- End Page Title -->
+    <div th:insert="fragments/message :: message"></div>
 
     <section class="section">
         <div class="row">
@@ -19,13 +20,20 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Formulaire pour ajouter une nouvelle matière</h5>
-
-                            <form th:action="@{/admin/type/create}" th:object="${types}" method="post">
+                            <br>
+                            <form th:action="@{/admin/type/create}" th:object="${types}" method="post" class="row g-3 needs-validation" novalidate>
+                                <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-triangle me-1"></i>
+                                    <ul>
+                                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                                 <div class="row">
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Titre</label>
                                         <div class="col-sm-10">
-                                        <input type="text" th:field="*{titre}" class="form-control">
+                                            <input type="text" th:field="*{titre}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="row mb-3">

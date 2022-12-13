@@ -7,10 +7,12 @@
 
 <aside th:insert="fragments/sidebaradmin :: sidebaradmin"></aside>
 <main id="main" class="main">
+
     <div class="formationtitle">
         <h1>Gestion des utilisateurs</h1>
 
     </div><!-- End Page Title -->
+    <div th:insert="fragments/message :: message"></div>
 
     <section class="section">
 
@@ -23,7 +25,7 @@
                         <table class="table table-hover">
                             <thead>
                             <tr>
-            <th scope="col"> Username</th>
+            <th scope="col"> Nom d'utilisateur</th>
             <th scope="col"> Nom de famille</th>
             <th scope="col"> Prénom</th>
             <th scope="col"> Email</th>

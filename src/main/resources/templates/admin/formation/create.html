@@ -12,6 +12,7 @@
         <h1>Ajouter une formation</h1>
 
     </div><!-- End Page Title -->
+    <div th:insert="fragments/message :: message"></div>
 
     <section class="section">
         <div class="row">
@@ -21,6 +22,13 @@
                         <h5 class="card-title">Formulaire pour ajouter une nouvelle formation</h5>
 
                             <form th:action="@{/admin/formation/create}" th:object="${formations}" method="post">
+                                <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-triangle me-1"></i>
+                                    <ul>
+                                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                                 <div class="row">
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Titre</label>
@@ -54,7 +62,7 @@
                                         <label class="col-sm-2 col-form-label">Professeur</label>
                                         <div class="col-sm-10">
                                         <select class="form-select" aria-label="Default select example" th:field="*{teacher}" id="teacher">
-                                            <option type="text" th:value="default"> </option>
+                                            <option type="text" th:value="-1"> </option>
                                             <option type="text" th:each="Prof: ${profs}" th:value="${Prof.id}"
                                                     th:text="${Prof.username}"></option>
                                         </select>

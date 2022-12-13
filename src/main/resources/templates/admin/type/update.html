@@ -12,6 +12,7 @@
         <h1>Modifier une matière</h1>
 
     </div><!-- End Page Title -->
+    <div th:insert="fragments/message :: message"></div>
 
     <section class="section">
         <div class="row">
@@ -20,7 +21,14 @@
                     <div class="card-body">
                         <h5 class="card-title">Formulaire pour modifier une matière</h5>
 
-                            <form th:action="@{/admin/type/create}" th:object="${types}" method="post">
+                            <form th:action="@{/admin/type/update/{id}(id = *{type_id}) }" th:object="${types}" method="post">
+                                <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-triangle me-1"></i>
+                                    <ul>
+                                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                                 <div class="row">
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Titre</label>

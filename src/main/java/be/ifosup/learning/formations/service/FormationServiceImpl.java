@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 import be.ifosup.learning.formations.entities.Formation;
+import be.ifosup.learning.formations.in.FormationIdIn;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
@@ -14,6 +15,7 @@ import be.ifosup.learning.inscriptions.entities.Inscription;
 import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -64,16 +66,16 @@ public class FormationServiceImpl implements FormationService {
     }
 
     @Override
-    public FormationOut update(Long id, FormationIn formationIn) {
+    public FormationOut update(Long id, FormationIdIn formationIdIn) {
         Formation formation = formationRepository.findById(id).get();
 
         Formation toSave = Formation.builder()
                 .formation_id(formation.getFormation_id())
-                .num_eleve(formationIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIn.getNum_eleve())
-                .titre(formationIn.getTitre() == null ? formation.getTitre() : formationIn.getTitre())
-                .date_debut(formationIn.getDate_debut() == null ? formation.getDate_debut() : formationIn.getDate_debut())
-                .date_fin(formationIn.getDate_fin() == null ? formation.getDate_fin() : formationIn.getDate_fin())
-                .teacher(formationIn.getTeacher() == null ? formation.getTeacher() : formationIn.getTeacher())
+                .num_eleve(formationIdIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIdIn.getNum_eleve())
+                .titre(formationIdIn.getTitre() == null ? formation.getTitre() : formationIdIn.getTitre())
+                .date_debut(formationIdIn.getDate_debut() == null ? formation.getDate_debut() : formationIdIn.getDate_debut())
+                .date_fin(formationIdIn.getDate_fin() == null ? formation.getDate_fin() : formationIdIn.getDate_fin())
+                .teacher(formationIdIn.getTeacher() == null ? formation.getTeacher() : formationIdIn.getTeacher())
                 .build();
 
         Formation saved = formationRepository.save(toSave);

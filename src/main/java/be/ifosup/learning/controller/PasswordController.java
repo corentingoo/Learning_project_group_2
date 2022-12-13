@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.mail.MessagingException;
@@ -38,7 +39,7 @@ public class PasswordController {
     }
 
     @PostMapping("/reset")
-    public String resetPasswordFormPage(HttpServletRequest request) {
+    public String resetPasswordFormPage(HttpServletRequest request, RedirectAttributes attributes) {
         String email = request.getParameter("email");
         String token = RandomString.make(50);
         String appUrl = ServletUriComponentsBuilder.fromRequestUri(request)
@@ -50,9 +51,11 @@ public class PasswordController {
 
             String Link = appUrl + "/password/resetpassword?token=" + token;
             sendEmail(email, Link);
+            attributes.addFlashAttribute("messagepos", "Le mail pour réinitialiser le mot de passe a bien été envoyé");
 
         } catch (Exception e) {
             System.out.print(e);
+            attributes.addFlashAttribute("messageneg", "Impossible d'envoyer le mail pour réinitialiser le mot de passe");
         }
         return "redirect:/";
     }
@@ -84,13 +87,15 @@ public class PasswordController {
     }
 
     @PostMapping("/resetpassword")
-    public String updatePass(@RequestParam("password") String password, @RequestParam("token") String token, Model model) {
+    public String updatePass(@RequestParam("password") String password, @RequestParam("token") String token, RedirectAttributes attributes) {
         User user = userservice.findByToken(token);
         try {
             userservice.updatePassword(user.getId(), password);
+            attributes.addFlashAttribute("messagepos", "Succès pour le mot de passe");
         }
         catch(Exception e){
             System.out.print(e);
+            attributes.addFlashAttribute("messageneg", "Erreur pour le mot de passe");
         }
         return "/login.html";
     }

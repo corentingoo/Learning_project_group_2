@@ -1,5 +1,6 @@
 package be.ifosup.learning.controller.admin;
 
+import be.ifosup.learning.users.in.UserIdIn;
 import be.ifosup.learning.users.in.UserIn;
 import be.ifosup.learning.users.service.UserService;
 import net.bytebuddy.utility.RandomString;
@@ -7,10 +8,13 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import be.ifosup.learning.constants.RoleEnum;
 import org.springframework.ui.Model;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -20,11 +24,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 @Controller
+@Component
 @RequestMapping("/admin/user")
 public class UserController {
     @Autowired
     private UserService userservice;
-
     @Autowired
     private JavaMailSender mailSender;
 
@@ -41,7 +45,10 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String createUser(@Valid @ModelAttribute("users") UserIn userIn, HttpServletRequest request) {
+    public String createUser(@Valid @ModelAttribute("users") UserIn userIn, BindingResult result, HttpServletRequest request, RedirectAttributes attributes) {
+        if (result.hasErrors()) {
+            return "/admin/user/create";
+        }
         UserIn.roles = new ArrayList<>();
         String role = userIn.getRole();
 
@@ -61,25 +68,32 @@ public class UserController {
                     .replacePath(null)
                     .build()
                     .toUriString();
+            attributes.addFlashAttribute("messagepos", "L'utilisateur a bien été ajouté");
             try {
                 userservice.updateResetPassword(token, email);
                 String link = appUrl + "/password/resetpassword?token=" + token;
                 sendRegisterEmail(email, link);
+                attributes.addFlashAttribute("messagepos", "Le mail d'enregistrement a bien été envoyé");
             }
             catch (Exception e) {
+                attributes.addFlashAttribute("messageneg", "Impossible pour l'envoie du mail");
                 System.out.print(e);
-        }
+            }
         } catch (Exception e) {
+            attributes.addFlashAttribute("messageneg", "Impossible de créer l'utilisateur");
             return "redirect:/admin/user/create.html";
         }
+
         return "redirect:/admin/user/";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteFormation(@PathVariable("id") Long id) {
+    public String deleteFormation(@PathVariable("id") Long id, RedirectAttributes attributes) {
         try {
             userservice.delete(id);
+            attributes.addFlashAttribute("messagepos", "L'utilisateur a bien été supprimé");
         } catch (Exception e) {
+            attributes.addFlashAttribute("messageneg", "Impossible de supprimer l'utilisateur");
             System.out.print(e);
         }
         return "redirect:/admin/user/";
@@ -91,17 +105,24 @@ public class UserController {
         return "/admin/user/update";
     }
     @PostMapping("/update/{id}")
-    public String updateFormation(@Valid @ModelAttribute("users") UserIn userIn, @PathVariable("id") Long id , Model model) {
+    public String updateUser(@Valid @PathVariable("id") Long id, @ModelAttribute("users") UserIdIn userIdIn, BindingResult result, RedirectAttributes attributes) {
+        if (result.hasErrors()) {
+            return "/admin/user/update.html";
+        }
+
         try {
-            userservice.update(id, userIn);
+            userservice.update(id, userIdIn);
+            attributes.addFlashAttribute("messagepos", "L'utilisateur a bien été modifié");
         }
         catch(Exception e){
+            System.out.print(e);
+            attributes.addFlashAttribute("messageneg", "Impossible de modifier l'utilisateur");
         }
+
         return "redirect:/admin/user/";
     }
 
     private void sendRegisterEmail(String email, String resetPasswordLink) throws MessagingException, UnsupportedEncodingException, MailSendException {
-
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 

@@ -1,6 +1,7 @@
 package be.ifosup.learning.types.service;
 
 import be.ifosup.learning.types.entities.Type;
+import be.ifosup.learning.types.in.TypeIdIn;
 import be.ifosup.learning.types.in.TypeIn;
 import be.ifosup.learning.types.out.TypeOut;
 import be.ifosup.learning.types.repositories.TypeRepository;
@@ -42,14 +43,12 @@ public class TypeServiceImpl implements TypeService{
     }
 
     @Override
-    public TypeOut update(Long id, TypeIn typeIn) {
-
+    public TypeOut update(Long id, TypeIdIn typeIdIn) {
         Type type = typeRepository.findById(id).get();
-
         Type toSave = Type.builder()
                 .type_id(type.getType_id())
-                .titre(typeIn.getTitre() == null ? type.getTitre() : typeIn.getTitre())
-                .description(typeIn.getDescription() == null ? type.getDescription() : typeIn.getDescription())
+                .titre(typeIdIn.getTitre() == null ? type.getTitre() : typeIdIn.getTitre())
+                .description(typeIdIn.getDescription() == null ? type.getDescription() : typeIdIn.getDescription())
                 .build();
 
         Type saved = typeRepository.save(toSave);
