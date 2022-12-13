@@ -11,11 +11,11 @@ public class V1_4_1__AddType extends BaseJavaMigration {
         Statement statement = context.getConnection().createStatement();
         statement.execute(
                 "INSERT INTO types " +
-                        "(inscription_id, titre, description) values " +
+                        "(type_id, titre, description) values " +
                         "(1, 'Informatique', 'Formations pour informatiques')");
         statement.execute(
                 "INSERT INTO types " +
-                        "(inscription_id, titre, description) values " +
+                        "(type_id, titre, description) values " +
                         "(2, 'Langues', 'Formations pour apprendre des langues')");
 
 
