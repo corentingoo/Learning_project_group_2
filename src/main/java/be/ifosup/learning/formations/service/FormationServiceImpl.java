@@ -19,7 +19,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
 public class FormationServiceImpl implements FormationService {
     @Autowired
     private final FormationRepository formationRepository;

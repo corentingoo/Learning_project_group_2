@@ -8,6 +8,7 @@ import be.ifosup.learning.users.out.UserOut;
 import be.ifosup.learning.users.repositories.UserRepository;
 import be.ifosup.learning.utils.BCryptManagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -20,7 +21,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserDetailsService, UserService {
     @Autowired
     private final UserRepository userRepository;
@@ -137,7 +137,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 .username(userIdIn.getUsername() == null ? user.getUsername() : userIdIn.getUsername())
                 .lastname(userIdIn.getLastname() == null ? user.getLastname() : userIdIn.getLastname())
                 .firstname(userIdIn.getFirstname() == null ? user.getFirstname() : userIdIn.getFirstname())
-                .password(user.getPassword() == null ? user.getPassword() : user.getPassword())
+                .password(user.getPassword())
                 .email(userIdIn.getEmail() == null ? user.getEmail() : userIdIn.getEmail())
                 .roles(userIdIn.getRoles() == null ? user.getRoles() : userIdIn.getRoles())
                 .build();

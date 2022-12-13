@@ -41,8 +41,9 @@ public class ProfileController {
             System.out.print(e);
             attributes.addFlashAttribute("messagepos", "Vos informations de profile n'ont pas pu été changé");
         }
-
-        model.addAttribute("users", userservice.get(Long.valueOf(id)));
+        User user = userservice.getCurrentUser();
+        Long iduser = user.getId();
+        model.addAttribute("users", userservice.get(Long.valueOf(iduser)));
         return "public/profile.html";
     }
 
