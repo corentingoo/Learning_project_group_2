@@ -37,7 +37,7 @@ public class FormationController {
         model.addAttribute("formations", new FormationIn());
         model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
         model.addAttribute("types", typeService.listAll());
-        return "/admin/formation/create.html";
+        return "/admin/formation/create";
     }
 
     @PostMapping("/create")
@@ -46,7 +46,7 @@ public class FormationController {
         if (result.hasErrors()) {
             model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
             model.addAttribute("types", typeService.listAll());
-            return "redirect:/admin/formation/create";
+            return "admin/formation/create.html";
         }
         try {
             formationservice.save(formationIn);
@@ -78,16 +78,16 @@ public class FormationController {
         model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
         model.addAttribute("types", typeService.listAll());
 
-        return "/admin/formation/update";
+        return "/admin/formation/update.html";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping("/update")
     public String updateFormation(@Valid @ModelAttribute("formations") FormationIdIn formationIdIn, BindingResult result, RedirectAttributes attributes, Model model) {
         Long id = formationIdIn.getFormation_id();;
         if (result.hasErrors()) {
             model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
             model.addAttribute("types", typeService.listAll());
-            return "redirect:/admin/formation/update/" + id;
+            return "/admin/formation/update.html";
         }
         try {
             formationservice.update(id, formationIdIn);

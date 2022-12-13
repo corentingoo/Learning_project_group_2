@@ -35,7 +35,7 @@ public class TypeController {
     @PostMapping("/create")
     public String createType(@Valid @ModelAttribute("types") TypeIn typeIn, BindingResult result, RedirectAttributes attributes ) {
         if (result.hasErrors()) {
-            return "redirect:/admin/type/create";
+            return "admin/type/create.html";
         }
 
         try {
@@ -70,7 +70,7 @@ public class TypeController {
     public String updateFormation(@Valid @ModelAttribute("types") TypeIdIn typeIdIn, BindingResult result, RedirectAttributes attributes) {
        Long id = typeIdIn.getType_id();
         if (result.hasErrors()) {
-            return "redirect:/admin/type/update/" + id;
+            return "admin/type/update.html";
         }
         try {
             typeservice.update(id, typeIdIn);

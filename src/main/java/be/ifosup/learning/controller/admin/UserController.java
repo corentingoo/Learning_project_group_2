@@ -47,10 +47,10 @@ public class UserController {
     @PostMapping("/create")
     public String createUser(@Valid @ModelAttribute("users") UserIn userIn, BindingResult result, HttpServletRequest request, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return "redirect:/admin/user/create";
+            return "admin/user/create.html";
         } else if (userservice.usernamexist(userIn.getUsername())) {
             attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
-            return "redirect:/admin/user/create";
+            return "admin/user/create.html";
         }
 
         UserIn.roles = new ArrayList<>();
@@ -113,7 +113,7 @@ public class UserController {
         Long id = userIdIn.getId();
         if (result.hasErrors()) {
             attributes.addFlashAttribute("messageneg", "Tous les champs doivent être remplis");
-            return "redirect:/admin/user/update/" + id;
+            return "admin/user/update.html";
         }
         else if (userservice.usernamexist(userIdIn.getUsername())) {
             attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");

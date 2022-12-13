@@ -29,12 +29,20 @@ public class ProfileController {
 
     @PostMapping("/update")
     public String updateProfile(@Valid @ModelAttribute("users") UserIdIn userIdIn, BindingResult result, Model model, RedirectAttributes attributes) {
+        User user = userservice.getCurrentUser();
+        String oldusername = user.getUsername();
+        String newusername = userIdIn.getUsername();
+
         if (result.hasErrors()) {
             attributes.addFlashAttribute("messageneg", "Tous les champs doivent être remplis");
             return "redirect:/profile";
-        } else if (userservice.usernamexist(userIdIn.getUsername())) {
-            attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
-            return "redirect:/profile";
+        } else if (!oldusername.equals(newusername)) {
+             if (userservice.usernamexist(userIdIn.getUsername())) {
+                attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
+                return "redirect:/profile";
+
+            }
+
         }
         try {
             userservice.update(userIdIn.getId(), userIdIn);
@@ -45,7 +53,6 @@ public class ProfileController {
             attributes.addFlashAttribute("messageneg", "Erreur pour changer vos informations de profile");
         }
 
-        User user = userservice.getCurrentUser();
         Long id = user.getId();
         model.addAttribute("users", userservice.get(Long.valueOf(id)));
 
@@ -65,7 +72,7 @@ public class ProfileController {
         } else if (!passwordEncoder.matches(password, user.getPassword())) {
             attributes.addFlashAttribute("messageneg", "Le mot de passe actuel est incorrect");
             return "redirect:/profile";
-        } else if (newpassword.equals(renewpassword)) {
+        } else if (!newpassword.equals(renewpassword)) {
             attributes.addFlashAttribute("messageneg", "Le nouveau mot de passe et celui de confirmation ne correspondent pas");
             return "redirect:/profile";
         } else if (!PasswordValidation.main(newpassword)) {
