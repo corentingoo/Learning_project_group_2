@@ -25,4 +25,5 @@ public class FormationIdIn {
     public Date date_debut;
     public Date date_fin;
     public Long teacher;
+    private Long type;
 }

@@ -1,9 +1,8 @@
 package be.ifosup.learning.controller.admin;
 
 import be.ifosup.learning.formations.in.FormationIdIn;
-import be.ifosup.learning.formations.repositories.FormationRepository;
 import be.ifosup.learning.formations.service.FormationService;
-import be.ifosup.learning.users.repositories.UserRepository;
+import be.ifosup.learning.types.service.TypeService;
 import be.ifosup.learning.users.service.UserService;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
@@ -24,10 +23,7 @@ public class FormationController {
     private UserService userservice;
 
     @Autowired
-    public FormationController(FormationRepository formationRepository, UserRepository userRepository) {
-        formationRepository = formationRepository;
-        userRepository = userRepository;
-    }
+    private TypeService typeService;
 
     @GetMapping()
     public String formationpage(Model model) {
@@ -40,14 +36,17 @@ public class FormationController {
     public String formationcreatepage(Model model) {
         model.addAttribute("formations", new FormationIn());
         model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
+        model.addAttribute("types", typeService.listAll());
         return "/admin/formation/create.html";
     }
 
     @PostMapping("/create")
 
-    public String createFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, BindingResult result, RedirectAttributes attributes) {
+    public String createFormation(@Valid @ModelAttribute("formations") FormationIn formationIn, BindingResult result, RedirectAttributes attributes, Model model) {
         if (result.hasErrors()) {
-            return "/admin/formation/create.html";
+            model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
+            model.addAttribute("types", typeService.listAll());
+            return "redirect:/admin/formation/create";
         }
         try {
             formationservice.save(formationIn);
@@ -55,7 +54,7 @@ public class FormationController {
         }
         catch(Exception e){
             attributes.addFlashAttribute("messageneg", "Impossible de créer la formation.");
-            return "redirect:/admin/formation/create.html";
+            return "redirect:/admin/formation/create";
         }
 
         return "redirect:/admin/formation/";
@@ -77,14 +76,18 @@ public class FormationController {
     public String update(@PathVariable("id") String id, Model model) {
         model.addAttribute("formations", formationservice.get(Long.valueOf(id)));
         model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
+        model.addAttribute("types", typeService.listAll());
 
         return "/admin/formation/update";
     }
 
     @PostMapping("/update/{id}")
-    public String updateFormation(@Valid @ModelAttribute("formations") FormationIdIn formationIdIn, BindingResult result, @PathVariable("id") Long id, RedirectAttributes attributes) {
+    public String updateFormation(@Valid @ModelAttribute("formations") FormationIdIn formationIdIn, BindingResult result, RedirectAttributes attributes, Model model) {
+        Long id = formationIdIn.getFormation_id();;
         if (result.hasErrors()) {
-            return "/admin/formation/update.html";
+            model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
+            model.addAttribute("types", typeService.listAll());
+            return "redirect:/admin/formation/update/" + id;
         }
         try {
             formationservice.update(id, formationIdIn);
@@ -92,7 +95,6 @@ public class FormationController {
         }
         catch(Exception e){
             attributes.addFlashAttribute("messageneg", "Impossible de modifier la formation.");
-            return "redirect:/admin/formation/";
         }
 
         return "redirect:/admin/formation/";

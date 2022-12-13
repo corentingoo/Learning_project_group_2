@@ -38,6 +38,9 @@ public class Formation {
     @Column(name = "teacher")
     private Long teacher;
 
+    @Column(name = "type")
+    private Long type;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getFormation_id() {

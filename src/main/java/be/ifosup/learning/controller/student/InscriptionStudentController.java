@@ -56,17 +56,13 @@ public class InscriptionStudentController {
     }
 
     @PostMapping("/create")
-    public String createFormation(@Valid @ModelAttribute("inscriptions") InscriptionIn inscriptionIn, BindingResult result, RedirectAttributes attributes) {
-        if (result.hasErrors()) {
-            return "/student/formation/create";
-        }
+    public String createFormation(@Valid @ModelAttribute("inscriptions") InscriptionIn inscriptionIn, RedirectAttributes attributes) {
         try {
             inscriptionservice.save(inscriptionIn);
             attributes.addFlashAttribute("messagepos", "Votre inscription a bien été ajoutée");
         }
         catch(Exception e){
             attributes.addFlashAttribute("messageneg", "Impossible de vous inscrire à cette formation");
-            return "redirect:/student/formation/";
         }
         return "redirect:/student/formation/";
     }

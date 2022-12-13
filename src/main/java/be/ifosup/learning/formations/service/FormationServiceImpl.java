@@ -59,6 +59,7 @@ public class FormationServiceImpl implements FormationService {
                         .date_debut(formationIn.getDate_debut())
                         .date_fin(formationIn.getDate_fin())
                         .teacher(formationIn.getTeacher())
+                        .type(formationIn.getType())
                         .build();
         Formation save = formationRepository.save(formation);
         return getFormationOut(save);
@@ -75,6 +76,7 @@ public class FormationServiceImpl implements FormationService {
                 .date_debut(formationIdIn.getDate_debut() == null ? formation.getDate_debut() : formationIdIn.getDate_debut())
                 .date_fin(formationIdIn.getDate_fin() == null ? formation.getDate_fin() : formationIdIn.getDate_fin())
                 .teacher(formationIdIn.getTeacher() == null ? formation.getTeacher() : formationIdIn.getTeacher())
+                .type(formationIdIn.getType() == null ? formation.getType() : formationIdIn.getType())
                 .build();
 
         Formation saved = formationRepository.save(toSave);
@@ -96,6 +98,7 @@ public class FormationServiceImpl implements FormationService {
                 .date_debut(formation.getDate_debut())
                 .date_fin(formation.getDate_fin())
                 .teacher(formation.getTeacher())
+                .type(formation.getType())
                 .build();
     }
 

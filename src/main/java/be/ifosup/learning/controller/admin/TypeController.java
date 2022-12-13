@@ -35,7 +35,7 @@ public class TypeController {
     @PostMapping("/create")
     public String createType(@Valid @ModelAttribute("types") TypeIn typeIn, BindingResult result, RedirectAttributes attributes ) {
         if (result.hasErrors()) {
-            return "/admin/type/create.html";
+            return "redirect:/admin/type/create";
         }
 
         try {
@@ -44,7 +44,6 @@ public class TypeController {
         }
         catch(Exception e){
             attributes.addFlashAttribute("messageneg", "Impossible dé créer une nouvelle matière.");
-            return "redirect:/admin/type/";
         }
 
         return "redirect:/admin/type/";
@@ -56,7 +55,7 @@ public class TypeController {
             typeservice.delete(id);
             attributes.addFlashAttribute("messagepos", "La matière a été supprimée.");
         } catch (Exception e) {
-            attributes.addFlashAttribute("messageneg", "Impossible dé supprimer une matière.");
+            attributes.addFlashAttribute("messageneg", "Impossible dé supprimer cette matière.");
         }
         return "redirect:/admin/type/";
     }
@@ -64,14 +63,14 @@ public class TypeController {
     @GetMapping("/update/{id}")
     public String update(@PathVariable("id") String id, Model model) {
         model.addAttribute("types", typeservice.get(Long.valueOf(id)));
-
         return "/admin/type/update";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateFormation(@Valid @ModelAttribute("types") TypeIdIn typeIdIn, BindingResult result, @PathVariable("id") Long id, RedirectAttributes attributes) {
+    @PostMapping("/update")
+    public String updateFormation(@Valid @ModelAttribute("types") TypeIdIn typeIdIn, BindingResult result, RedirectAttributes attributes) {
+       Long id = typeIdIn.getType_id();
         if (result.hasErrors()) {
-            return "/admin/type/update.html";
+            return "redirect:/admin/type/update/" + id;
         }
         try {
             typeservice.update(id, typeIdIn);
@@ -79,7 +78,6 @@ public class TypeController {
         }
         catch(Exception e){
             attributes.addFlashAttribute("messageneg", "Impossible de modifier la matière.");
-            return "redirect:/admin/type/";
         }
 
         return "redirect:/admin/type/";

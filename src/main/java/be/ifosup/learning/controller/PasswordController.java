@@ -2,6 +2,7 @@ package be.ifosup.learning.controller;
 
 import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.service.UserService;
+import be.ifosup.learning.utils.PasswordValidation;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +34,6 @@ public class PasswordController {
 
     @GetMapping
     public String resetPasswordPage() {
-
         return "public/requestpassword.html";
     }
 
@@ -87,8 +86,21 @@ public class PasswordController {
     }
 
     @PostMapping("/resetpassword")
-    public String updatePass(@RequestParam("password") String password, @RequestParam("token") String token, RedirectAttributes attributes) {
+    public String updatePass(@RequestParam("password") String password, @RequestParam("matchingpassword") String matchingpassword,@RequestParam("token") String token, RedirectAttributes attributes) {
         User user = userservice.findByToken(token);
+        if(user == null){
+            attributes.addFlashAttribute("messageneg", "Demande de réinitialisation de mot de passe non valide");
+            return "redirect:/";
+        } else if(password.isEmpty() || matchingpassword.isEmpty()) {
+            attributes.addFlashAttribute("messageneg", "Tous les champs doivent être remplis");
+            return "redirect:/resetpassword";
+        } else if (!PasswordValidation.main(password)) {
+            attributes.addFlashAttribute("messageneg", "Le mot de passe doit contenir au moins 1 majuscule, 1 miniscule, 1 chiffre et 1 caractère spécial");
+            return "redirect:/profile";
+        }else if (password.equals(matchingpassword)) {
+            attributes.addFlashAttribute("messageneg", "Les deux mots de passe ne correspondent pas");
+            return "redirect:/profile";
+        }
         try {
             userservice.updatePassword(user.getId(), password);
             attributes.addFlashAttribute("messagepos", "Succès pour le mot de passe");

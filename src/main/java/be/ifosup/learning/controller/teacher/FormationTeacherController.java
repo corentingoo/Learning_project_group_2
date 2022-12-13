@@ -27,12 +27,10 @@ public class FormationTeacherController {
         userRepository = userRepository;
     }
 
-    // Methods for Retrieval operations
     @GetMapping()
     public String formationteacherpage(Model model) {
         User user = userservice.getCurrentUser();
         Long id = user.getId();
-
         model.addAttribute("formations", formationservice.listbyTeacher(id));
         return "teacher/formation/index";
     }

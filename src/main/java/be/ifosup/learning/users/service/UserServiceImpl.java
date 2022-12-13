@@ -128,21 +128,17 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         User save = userRepository.save(user);
         return getUserOut(save);
     }
-
+    @Override
     public UserOut update(Long id, UserIdIn userIdIn) {
-        User user = userRepository.findById(id).get();
-
-        User toSave = User.builder()
-                .id(user.getId())
-                .username(userIdIn.getUsername() == null ? user.getUsername() : userIdIn.getUsername())
-                .lastname(userIdIn.getLastname() == null ? user.getLastname() : userIdIn.getLastname())
-                .firstname(userIdIn.getFirstname() == null ? user.getFirstname() : userIdIn.getFirstname())
-                .password(user.getPassword())
-                .email(userIdIn.getEmail() == null ? user.getEmail() : userIdIn.getEmail())
-                .roles(userIdIn.getRoles() == null ? user.getRoles() : userIdIn.getRoles())
-                .build();
-        User saved = userRepository.save(toSave);
-        return getUserOut(saved);
+        userRepository.updateUser(
+                userIdIn.getUsername(),
+                userIdIn.getFirstname(),
+                userIdIn.getLastname(),
+                userIdIn.getEmail(),
+                id
+        );
+        User userEntity = userRepository.getById(id);
+        return getUserOut(userEntity);
     }
 
     public void delete(Long id) {
@@ -172,7 +168,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return getUserOut(userEntity);
     }
 
-
+    @Override
+    public Boolean usernamexist(String username) {
+        boolean exists = userRepository.existsByUsername(username);
+        return exists;
+    }
 
 
 }

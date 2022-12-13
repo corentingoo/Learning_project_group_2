@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Formulaire pour ajouter un nouveau utilisateur</h5>
 
-                        <form th:action="@{/admin/user/update/{id}(id = *{id})}" th:object="${users}" method="post" role="form">
+                        <form th:action="@{/admin/user/update/}" th:object="${users}" method="post" role="form">
                             <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
                                 <i class="bi bi-exclamation-triangle me-1"></i>
                                 <ul>
@@ -28,6 +28,7 @@
                                 </ul>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+                            <div><input type="hidden" th:field="*{id}"></div>
                             <div class="row">
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" th:field="#{username}">Nom d'utilisateur</label>

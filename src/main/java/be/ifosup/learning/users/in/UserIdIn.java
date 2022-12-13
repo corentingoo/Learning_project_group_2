@@ -27,16 +27,11 @@ public class UserIdIn {
     public String firstname;
 
     @NotBlank(message = "Email obligatoire")
-    @Email
     public String email;
 
     public String role;
 
     public static Collection<RoleEnum> roles;
-
-    public static void addRole(RoleEnum role) {
-        roles.add(role);
-    }
 
     public static Collection<RoleEnum> getRoles() {
         return roles;

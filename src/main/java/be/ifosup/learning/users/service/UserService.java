@@ -29,4 +29,6 @@ public interface UserService {
     User findByToken(String token);
 
     UserOut updatePassword(Long id,String password);
+
+    Boolean usernamexist(String username);
 }

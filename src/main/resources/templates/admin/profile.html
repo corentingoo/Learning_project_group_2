@@ -4,7 +4,7 @@
 <body>
 
 <nav th:insert="fragments/nav :: nav"></nav>
-
+<aside th:insert="fragments/sidebaradmin :: sidebaradmin"></aside>
 <main id="main" class="main">
 
   <div class="pagetitle">
@@ -13,12 +13,13 @@
   <div th:insert="fragments/message :: message"></div>
 
   <section class="section profile">
+    <div th:insert="fragments/message :: message"></div>
     <div class="row">
 
       <div class="col-xl-8">
 
         <div class="card">
-
+          <div th:insert="fragments/message :: message"></div>
           <div class="card-body pt-3">
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered">

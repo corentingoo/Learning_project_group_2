@@ -47,8 +47,12 @@ public class UserController {
     @PostMapping("/create")
     public String createUser(@Valid @ModelAttribute("users") UserIn userIn, BindingResult result, HttpServletRequest request, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return "/admin/user/create";
+            return "redirect:/admin/user/create";
+        } else if (userservice.usernamexist(userIn.getUsername())) {
+            attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
+            return "redirect:/admin/user/create";
         }
+
         UserIn.roles = new ArrayList<>();
         String role = userIn.getRole();
 
@@ -81,7 +85,7 @@ public class UserController {
             }
         } catch (Exception e) {
             attributes.addFlashAttribute("messageneg", "Impossible de créer l'utilisateur");
-            return "redirect:/admin/user/create.html";
+            return "redirect:/admin/user/create";
         }
 
         return "redirect:/admin/user/";
@@ -104,11 +108,18 @@ public class UserController {
         model.addAttribute("users", userservice.get(Long.valueOf(id)));
         return "/admin/user/update";
     }
-    @PostMapping("/update/{id}")
-    public String updateUser(@Valid @PathVariable("id") Long id, @ModelAttribute("users") UserIdIn userIdIn, BindingResult result, RedirectAttributes attributes) {
+    @PostMapping("/update")
+    public String updateUser(@Valid @ModelAttribute("users") UserIdIn userIdIn, BindingResult result, RedirectAttributes attributes) {
+        Long id = userIdIn.getId();
         if (result.hasErrors()) {
-            return "/admin/user/update.html";
+            attributes.addFlashAttribute("messageneg", "Tous les champs doivent être remplis");
+            return "redirect:/admin/user/update/" + id;
         }
+        else if (userservice.usernamexist(userIdIn.getUsername())) {
+            attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
+            return "redirect:/admin/user/update/" + id;
+        }
+
 
         try {
             userservice.update(id, userIdIn);
@@ -138,4 +149,8 @@ public class UserController {
 
         mailSender.send(message);
     }
+
+
+    
+
 }

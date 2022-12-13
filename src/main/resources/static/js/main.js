@@ -317,4 +317,22 @@
     }, 200);
   }
 
+
+
 })();
+
+$(document).ready(function () {
+  $('#datatable').DataTable();
+
+});
+$.extend( DataTable.ext.classes, {
+  "sTable": "dataTable",
+  "sNoFooter": "no-footer",
+
+  /* Paging buttons */
+  sPageButton: paginate_button,
+  "sPageButtonActive": "current",
+  "sPageButtonDisabled": "disabled",
+
+} );
+
