@@ -19,12 +19,24 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Formulaire pour modifier une formation</h5>
-
     <form th:action="@{/admin/formation/update}" th:object="${formations}" method="post" role="form">
         <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
             <i class="bi bi-exclamation-triangle me-1"></i>
+
             <ul>
-                <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                <p th:if="${#fields.hasErrors('titre')}">Le titre est obligatoire</p>
+            </ul>
+            <ul>
+                <p th:if="${#fields.hasErrors('num_eleve')}">Le nombre maximum d'élèves est obligatoire</p>
+            </ul>
+            <ul>
+                <p th:if="${#fields.hasErrors('date_debut')}">La date de début est obligatoire</p>
+            </ul>
+            <ul>
+                <p th:if="${#fields.hasErrors('date_debut')}">La date de fin est obligatoire</p>
+            </ul>
+            <ul>
+                <p th:if="${#fields.hasErrors('teacher')}">Le professeur est obligatoire</p>
             </ul>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>

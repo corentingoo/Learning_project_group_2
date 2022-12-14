@@ -38,12 +38,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByEmail(String email);
 
     @Modifying
+    @Transactional
     @Query("update User u set u.token=?1 where u.id=?2")
     int updateToken(String token, Long id);
 
     User findByToken(String token);
 
     @Modifying
+    @Transactional
     @Query("update User u set u.password=?2 where u.id=?1")
     int updatePassword(Long id, String password);
 

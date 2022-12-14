@@ -79,8 +79,12 @@ public class PasswordController {
     }
 
     @GetMapping("/resetpassword")
-    public String showResetPasswordForm(@Param(value = "token") String token, Model model) {
+    public String showResetPasswordForm(@Param(value = "token") String token, Model model, RedirectAttributes attributes) {
         User user = userservice.findByToken(token);
+        if (user == null) {
+            attributes.addFlashAttribute("messageneg", "Il n'y a pas de changement de mot de passe associé avec ce token");
+            return "redirect:/";
+        }
         model.addAttribute("token", token);
         return "/public/resetpassword.html";
     }
@@ -93,13 +97,13 @@ public class PasswordController {
             return "redirect:/";
         } else if(password.isEmpty() || matchingpassword.isEmpty()) {
             attributes.addFlashAttribute("messageneg", "Tous les champs doivent être remplis");
-            return "redirect:/resetpassword";
+            return "redirect:/password/resetpassword?token="+token;
         } else if (!PasswordValidation.main(password)) {
             attributes.addFlashAttribute("messageneg", "Le mot de passe doit contenir au moins 1 majuscule, 1 miniscule, 1 chiffre et 1 caractère spécial");
-            return "redirect:/profile";
-        }else if (password.equals(matchingpassword)) {
+            return "redirect:/password/resetpassword?token="+token;
+        }else if (!password.equals(matchingpassword)) {
             attributes.addFlashAttribute("messageneg", "Les deux mots de passe ne correspondent pas");
-            return "redirect:/profile";
+            return "redirect:/password/resetpassword?token="+token;
         }
         try {
             userservice.updatePassword(user.getId(), password);

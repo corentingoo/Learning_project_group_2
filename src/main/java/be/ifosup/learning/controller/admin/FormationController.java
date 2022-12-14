@@ -46,6 +46,7 @@ public class FormationController {
         if (result.hasErrors()) {
             model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
             model.addAttribute("types", typeService.listAll());
+            attributes.addFlashAttribute("messagevalidation", "Tous les champs nécessaires ne sont pas remplis");
             return "admin/formation/create.html";
         }
         try {
@@ -87,6 +88,7 @@ public class FormationController {
         if (result.hasErrors()) {
             model.addAttribute("profs", userservice.listAllbyRole("TEACHER"));
             model.addAttribute("types", typeService.listAll());
+            attributes.addFlashAttribute("messagevalidation", "Tous les champs nécessaires ne sont pas remplis");
             return "/admin/formation/update.html";
         }
         try {

@@ -12,6 +12,11 @@
     [[${messageneg}]]
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
+  <div th:if="${messagevalidation}" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="bi bi-exclamation-octagon me-1"></i>
+    [[${messagevalidation}]]
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 
 </div>
 </body>

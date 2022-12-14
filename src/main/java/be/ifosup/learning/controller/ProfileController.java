@@ -84,8 +84,7 @@ public class ProfileController {
             attributes.addFlashAttribute("messageneg", "Votre mot de passe a bien été modifiée");
         }
         catch(Exception e){
-            System.out.print(e);
-            attributes.addFlashAttribute("messageneg", "Erreur pour modifier votre mot de passe");
+
         }
         model.addAttribute("users", userservice.get(Long.valueOf(id)));
         return "redirect:/profile";

@@ -35,7 +35,7 @@ public class UserIn {
     @NotBlank(message = "Le prénom est obligatoire")
     public String firstname;
 
-    @NotBlank(message = "L'émail est obligatoire")
+    @NotBlank(message = "Email obligatoire")
     @Email
     public String email;
 

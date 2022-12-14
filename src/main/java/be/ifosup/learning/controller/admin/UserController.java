@@ -1,7 +1,9 @@
 package be.ifosup.learning.controller.admin;
 
+import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.in.UserIdIn;
 import be.ifosup.learning.users.in.UserIn;
+import be.ifosup.learning.users.out.UserOut;
 import be.ifosup.learning.users.service.UserService;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.beans.factory.annotation.*;
@@ -111,13 +113,20 @@ public class UserController {
     @PostMapping("/update")
     public String updateUser(@Valid @ModelAttribute("users") UserIdIn userIdIn, BindingResult result, RedirectAttributes attributes) {
         Long id = userIdIn.getId();
+        UserOut userOut = userservice.get(id);
+        String oldusername = userOut.getUsername();
+        String newusername = userIdIn.getUsername();
+
         if (result.hasErrors()) {
             attributes.addFlashAttribute("messageneg", "Tous les champs doivent être remplis");
             return "admin/user/update.html";
-        }
-        else if (userservice.usernamexist(userIdIn.getUsername())) {
-            attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
-            return "redirect:/admin/user/update/" + id;
+        } else if (!oldusername.equals(newusername)) {
+            if (userservice.usernamexist(userIdIn.getUsername())) {
+                attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
+                return "redirect:/admin/user/update/" + id;
+
+            }
+
         }
 
 

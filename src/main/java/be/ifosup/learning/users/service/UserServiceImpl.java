@@ -162,10 +162,10 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public UserOut updatePassword(Long id, String password) {
         String passwordCrypt = BCryptManagerUtil.passwordEncoder().encode(password);
         userRepository.updatePassword(id, passwordCrypt);
-        User userEntity = userRepository.getById(id);
+        User user = userRepository.getById(id);
         userRepository.updateToken(null, id);
 
-        return getUserOut(userEntity);
+        return getUserOut(user);
     }
 
     @Override
