@@ -74,6 +74,7 @@
                 <label class="col-sm-2 col-form-label">Professeur</label>
                 <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" th:field="*{teacher}" id="teacher">
+                        <option type="text" th:value="null"> </option>
                         <option type="text" th:each="Prof: ${profs}" th:value="${Prof.id}"
                                 th:text="${Prof.username}"></option>
                     </select>
@@ -83,7 +84,7 @@
                 <label class="col-sm-2 col-form-label">Matière</label>
                 <div class="col-sm-10">
                     <select class="form-select" aria-label="Default select example" th:field="*{type}" id="type">
-                        <option type="text" th:value="-1"> </option>
+                        <option type="text" th:value="null"> </option>
                         <option type="text" th:each="type: ${types}" th:value="${type.type_id}"
                                 th:text="${type.titre}"></option>
                     </select>
