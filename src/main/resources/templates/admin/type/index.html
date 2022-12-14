@@ -33,10 +33,10 @@
                                         <td>[[${type.titre}]]</td>
                                         <td>[[${type.description}]]</td>
                                         <td>
-                                            <a th:href="@{'/admin/type/update/' + ${type.type_id}}">edit</a>
+                                            <a th:href="@{'/admin/type/update/' + ${type.type_id}}"><i class="bi bi-pen "></i></a>
                                         </td>
                                         <td>
-                                            <a th:href="@{'/admin/type/delete/' + ${type.type_id}}">delete</a>
+                                            <a th:href="@{'/admin/type/delete/' + ${type.type_id}}"><i class="bi bi-trash"></i></a>
                                         </td>
                                         </tr>
                                     </th:block>

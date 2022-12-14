@@ -45,11 +45,11 @@
                                         <td>[[${formation.teachername}]]</td>
                                         <td>[[${formation.typename}]]</td>
                                         <td>
-                                            <a th:href="@{'/admin/formation/update/' + ${formation.formation_id}}">edit</a>
+                                            <a th:href="@{'/admin/formation/update/' + ${formation.formation_id}}"><i class="bi bi-pen "></i></a>
 
                                         </td>
                                         <td>
-                                            <a th:href="@{'/admin/formation/delete/' + ${formation.formation_id}}">delete</a>
+                                            <a th:href="@{'/admin/formation/delete/' + ${formation.formation_id}}"><i class="bi bi-trash"></i></a>
                                         </td>
                                         </tr>
                                     </th:block>

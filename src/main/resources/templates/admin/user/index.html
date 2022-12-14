@@ -42,11 +42,11 @@
                                 <td>[[${user.email}]]</td>
                                 <td>[[${user.roles}]]</td>
                                 <td>
-                                    <a th:href="@{'/admin/user/update/' + ${user.id}}">Edit</a>
+                                    <a th:href="@{'/admin/user/update/' + ${user.id}}"><i class="bi bi-pen "></i></a>
 
                                 </td>
                                 <td>
-                                    <a th:href="@{'/admin/user/delete/' + ${user.id}}">Delete</a>
+                                    <a th:href="@{'/admin/user/delete/' + ${user.id}}"><i class="bi bi-trash"></i></a>
                                 </td>
                                 </tr>
                             </th:block>
