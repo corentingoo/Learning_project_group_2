@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
-
 import be.ifosup.learning.inscriptions.entities.Inscription;
 import be.ifosup.learning.inscriptions.in.InscriptionIn;
 import be.ifosup.learning.inscriptions.out.InscriptionOut;
@@ -111,5 +109,15 @@ public class InscriptionServiceImpl implements InscriptionService {
 
             return formationOuts;
         }
+
+    @Override
+    public boolean inscriptionExist(Long student_id, Long formation_id) {
+        Inscription inscription = inscriptionRepository.findByStudent_idAndFormation_id(student_id, formation_id);
+        if(inscription == null){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

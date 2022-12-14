@@ -11,6 +11,9 @@ import java.util.List;
 
 @Repository
 public interface InscriptionRepository extends JpaRepository<Inscription, Long> {
+
+    @Query("select i from Inscription i where i.student_id = ?1 and i.formation_id = ?2")
+    Inscription findByStudent_idAndFormation_id(Long student_id, Long formation_id);
     @Query("select i from Inscription i where i.student_id = ?1")
     List<Inscription> findAllByStudentId(Long studentId);
 

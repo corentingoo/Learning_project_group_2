@@ -2,6 +2,7 @@ package be.ifosup.learning.controller.student;
 
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.service.FormationService;
+import be.ifosup.learning.inscriptions.entities.Inscription;
 import be.ifosup.learning.inscriptions.in.InscriptionIn;
 import be.ifosup.learning.inscriptions.service.InscriptionService;
 import be.ifosup.learning.users.entities.User;
@@ -48,10 +49,14 @@ public class InscriptionStudentController {
         return "student/formation/inscription";
     }
     @GetMapping("/create/{id}")
-    public String inscriptioncreatepage(@PathVariable("id") Long id, Model model) {
+    public String inscriptioncreatepage(@PathVariable("id") Long id, Model model, RedirectAttributes attributes) {
         model.addAttribute("inscriptions", new InscriptionIn());
         model.addAttribute("users", userservice.getCurrentUser());
         model.addAttribute("formations", formationservice.get(id));
+        if (inscriptionservice.inscriptionExist(userservice.getCurrentUser().getId(),id)) {
+            attributes.addFlashAttribute("messageneg", "Vous êtes déjà inscris à cette formation");
+            return "redirect:/student/formation/";
+        }
         return "student/formation/create";
     }
 
