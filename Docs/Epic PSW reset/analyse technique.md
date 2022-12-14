@@ -1,6 +1,6 @@
 # Analyse technique 
 ## Table
-'reset_password_token' ajouté à la table 'users' - varchar(30)
+'token' ajouté à la table 'users' - varchar(50)
 
 ## Plugin
 Spring Mail dependency
