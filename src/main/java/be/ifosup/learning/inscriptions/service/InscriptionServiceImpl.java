@@ -126,9 +126,9 @@ public class InscriptionServiceImpl implements InscriptionService {
 
     @Override
     public boolean inscriptionPossible(Long formation_id) {
-        Integer numInscrit = inscriptionRepository.countByFormation_id(formation_id);
-        Integer numPossible = formationService.get(formation_id).getNum_eleve();
-        if(numPossible == numInscrit){
+        Integer numinscrit = inscriptionRepository.countByFormation_id(formation_id);
+        Integer numpossible = formationService.get(formation_id).getNum_eleve();
+        if(numpossible >= numinscrit){
             return false;
         } else {
             return true;

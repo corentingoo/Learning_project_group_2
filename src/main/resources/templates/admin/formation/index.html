@@ -26,8 +26,11 @@
                                 <tr>
                                     <th scope="col"> Titre</th>
                                     <th scope="col"> Nombre maximum d'élèves</th>
+                                    <th scope="col"> Nombre d'élèves inscrits</th>
                                     <th scope="col"> Date de début</th>
                                     <th scope="col"> Date de fin</th>
+                                    <th scope="col"> Professeur</th>
+                                    <th scope="col"> Matière</th>
                                     <th scope="col"> Mise à jour</th>
                                     <th scope="col"> Supprimer</th>
                                 </tr>
@@ -36,8 +39,11 @@
                                     <th:block th:each="formation: ${formations}">
                                         <td>[[${formation.titre}]]</td>
                                         <td>[[${formation.num_eleve}]]</td>
+                                        <td>[[${formation.num_inscrit}]]</td>
                                         <td>[[${formation.date_debut}]]</td>
                                         <td>[[${formation.date_fin}]]</td>
+                                        <td>[[${formation.teachername}]]</td>
+                                        <td>[[${formation.typename}]]</td>
                                         <td>
                                             <a th:href="@{'/admin/formation/update/' + ${formation.formation_id}}">edit</a>
 

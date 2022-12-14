@@ -324,16 +324,6 @@
 $(document).ready(function () {
   $('#datatable').DataTable();
   $("#datepicker").datepicker({dateFormat:"yy-mm-dd"});
-
 });
-$.extend( DataTable.ext.classes, {
-  "sTable": "dataTable",
-  "sNoFooter": "no-footer",
 
-  /* Paging buttons */
-  sPageButton: paginate_button,
-  "sPageButtonActive": "current",
-  "sPageButtonDisabled": "disabled",
-
-} );
 

@@ -17,6 +17,9 @@ public class FormationOut {
     public Date date_debut;
     public Date date_fin;
     public Long teacher;
-    private Long type;
+    public Long type;
+    public String teachername;
+    public String typename;
+    public Integer num_inscrit;
 
 }

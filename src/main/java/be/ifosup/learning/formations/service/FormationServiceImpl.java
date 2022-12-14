@@ -12,6 +12,9 @@ import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
 import be.ifosup.learning.inscriptions.entities.Inscription;
+import be.ifosup.learning.inscriptions.repositories.InscriptionRepository;
+import be.ifosup.learning.types.entities.Type;
+import be.ifosup.learning.types.repositories.TypeRepository;
 import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +25,21 @@ import org.springframework.stereotype.Service;
 public class FormationServiceImpl implements FormationService {
     @Autowired
     private final FormationRepository formationRepository;
+    @Autowired
     private final UserRepository userRepository;
 
     @Autowired
-    public FormationServiceImpl(FormationRepository formationRepository, UserRepository userRepository) {
+    private final TypeRepository typeRepository;
+
+    @Autowired
+    private final InscriptionRepository inscriptionRepository;
+
+    @Autowired
+    public FormationServiceImpl(FormationRepository formationRepository, UserRepository userRepository, TypeRepository typeRepository, InscriptionRepository inscriptionRepository) {
         this.formationRepository = formationRepository;
         this.userRepository = userRepository;
+        this.typeRepository = typeRepository;
+        this.inscriptionRepository = inscriptionRepository;
     }
 
     @Override
@@ -90,7 +102,10 @@ public class FormationServiceImpl implements FormationService {
         return formationOut;
     }
 
-    private static FormationOut getFormationOut(Formation formation) {
+    private FormationOut getFormationOut(Formation formation) {
+        User user = userRepository.getById(formation.getTeacher());
+        Type type = typeRepository.getOne(formation.getType());
+        Integer inscrit = inscriptionRepository.countByFormation_id(formation.getFormation_id());
         return FormationOut.builder()
                 .formation_id(formation.getFormation_id())
                 .num_eleve(formation.getNum_eleve())
@@ -99,6 +114,9 @@ public class FormationServiceImpl implements FormationService {
                 .date_fin(formation.getDate_fin())
                 .teacher(formation.getTeacher())
                 .type(formation.getType())
+                .teachername(user.getUsername())
+                .typename(type.getTitre())
+                .num_inscrit(inscrit)
                 .build();
     }
 
