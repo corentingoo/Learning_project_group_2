@@ -56,6 +56,9 @@ public class InscriptionStudentController {
         if (inscriptionservice.inscriptionExist(userservice.getCurrentUser().getId(),id)) {
             attributes.addFlashAttribute("messageneg", "Vous êtes déjà inscris à cette formation");
             return "redirect:/student/formation/";
+        } else if (inscriptionservice.inscriptionPossible(id)) {
+            attributes.addFlashAttribute("messageneg", "Le nombre maximum pour les inscriptions est atteint");
+            return "redirect:/student/formation/";
         }
         return "student/formation/create";
     }

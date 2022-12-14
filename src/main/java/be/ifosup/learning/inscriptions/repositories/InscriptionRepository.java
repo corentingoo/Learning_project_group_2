@@ -17,5 +17,11 @@ public interface InscriptionRepository extends JpaRepository<Inscription, Long> 
     @Query("select i from Inscription i where i.student_id = ?1")
     List<Inscription> findAllByStudentId(Long studentId);
 
+    @Query("select count(i) from Inscription i where i.formation_id = ?1")
+    int countByFormation_id(Long formation_id);
+
+
+
+
 
 }
