@@ -24,6 +24,7 @@
                             <tr>
                                 <th scope="col"> Titre</th>
                                 <th scope="col"> Nombre maximum d'élèves</th>
+                                <th scope="col"> Nombre d'élèves inscrits</th>
                                 <th scope="col"> Date de début</th>
                                 <th scope="col"> Date de fin</th>
                                 <th scope="col"> Matière</th>
@@ -33,6 +34,7 @@
                             <th:block th:each="formation: ${formations}">
                                 <td>[[${formation.titre}]]</td>
                                 <td>[[${formation.num_eleve}]]</td>
+                                <td>[[${formation.num_inscrit}]]</td>
                                 <td>[[${formation.date_debut}]]</td>
                                 <td>[[${formation.date_fin}]]</td>
                                 <td>[[${formation.typename}]]</td>
