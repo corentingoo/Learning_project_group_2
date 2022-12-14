@@ -8,10 +8,11 @@
 <aside th:insert="fragments/sidebaradmin :: sidebaradmin"></aside>
 
 <main id="main" class="main">
-    <div th:insert="fragments/message :: message"></div>
+
     <div class="formationtitle">
         <h1>Ajouter un utilisateur</h1>
     </div><!-- End Page Title -->
+
     <section class="section">
         <div class="row">
             <div class="col-lg-10">
@@ -20,6 +21,7 @@
                         <h5 class="card-title">Formulaire pour ajouter un nouveau utilisateur</h5>
 
         <form th:action="@{/admin/user/create}" th:object="${users}" method="post" role="form" enctype="utf8">
+            <div th:insert="fragments/message :: message"></div>
             <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
                 <i class="bi bi-exclamation-triangle me-1"></i>
                 <ul>

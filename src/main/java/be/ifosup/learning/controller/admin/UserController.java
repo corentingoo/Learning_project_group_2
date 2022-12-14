@@ -52,7 +52,7 @@ public class UserController {
             return "admin/user/create.html";
         } else if (userservice.usernamexist(userIn.getUsername())) {
             attributes.addFlashAttribute("messageneg", "le nom d'utilisateur existe déjà");
-            return "admin/user/create.html";
+            return "redirect:/admin/user/create";
         }
 
         UserIn.roles = new ArrayList<>();
@@ -69,6 +69,7 @@ public class UserController {
         try {
             userservice.save(userIn);
             String email = userIn.getEmail();
+            String username = userIn.getUsername();
             String token = RandomString.make(50);
             String appUrl = ServletUriComponentsBuilder.fromRequestUri(request)
                     .replacePath(null)
@@ -78,7 +79,8 @@ public class UserController {
             try {
                 userservice.updateResetPassword(token, email);
                 String link = appUrl + "/password/resetpassword?token=" + token;
-                sendRegisterEmail(email, link);
+
+                sendRegisterEmail(email, link, username);
                 attributes.addFlashAttribute("messagepos", "Le mail d'enregistrement a bien été envoyé");
             }
             catch (Exception e) {
@@ -142,7 +144,7 @@ public class UserController {
         return "redirect:/admin/user/";
     }
 
-    private void sendRegisterEmail(String email, String resetPasswordLink) throws MessagingException, UnsupportedEncodingException, MailSendException {
+    private void sendRegisterEmail(String email, String resetPasswordLink, String username) throws MessagingException, UnsupportedEncodingException, MailSendException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message);
 
@@ -151,8 +153,9 @@ public class UserController {
         String subject = "Enregistrement pour Learning Project";
         String content = "<p>Bonjour,</p>"
                 + "<p>Un compte a été créé dans la plateforme Learning Project</p>"
+                + "<p>Votre nom d'utilisateur est " + username + " </p>"
                 + "<p>Cliquez sur le lien ci-dessous pour créer votre mot de passe: </p>"
-                + "<p><b><a href=\"" + resetPasswordLink + "\" > Changer mon mot de passe</a></b></p>";
+                + "<p><b><a href=\"" + resetPasswordLink + "\" > Création de mon mot de passe</a></b></p>";
         helper.setSubject(subject);
         helper.setText(content, true);
 
