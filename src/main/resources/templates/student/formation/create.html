@@ -21,13 +21,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Confirmation d'inscription</h5>
                             <form th:action="@{/student/formation/create}" th:object="${inscriptions}" method="post">
-                                <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
-                                    <i class="bi bi-exclamation-triangle me-1"></i>
-                                    <ul>
-                                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
-                                    </ul>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Formation</label>
                                     <div class="col-sm-10">

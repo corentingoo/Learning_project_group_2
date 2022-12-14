@@ -16,9 +16,9 @@ import java.sql.Date;
 @NoArgsConstructor
 
 public class InscriptionIn {
-    @NotBlank(message = "L'étudiant' est obligatoire")
+
     public Long student_id;
-    @NotBlank(message = "La formation est obligatoire")
+
     public Long formation_id;
 
 }
