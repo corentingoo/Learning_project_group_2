@@ -17,7 +17,7 @@ public class PasswordValidation {
         List<Rule> rules = new ArrayList<>();
         //Rule 1: Password length should be in between
         //8 and 16 characters
-        rules.add(new LengthRule(10, 20));
+        rules.add(new LengthRule(10, 50));
         //Rule 3.a: At least one Upper-case character
         rules.add(new CharacterRule(EnglishCharacterData.UpperCase, 1));
         //Rule 3.b: At least one Lower-case character

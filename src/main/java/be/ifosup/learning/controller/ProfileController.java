@@ -24,7 +24,18 @@ public class ProfileController {
         User user = userservice.getCurrentUser();
         Long id = user.getId();
         model.addAttribute("users", userservice.get(Long.valueOf(id)));
-        return "public/profile.html";
+        String role = user.getRoles().toString();
+        System.out.print(role);
+
+        if (role.equals("[TEACHER]")) {
+            return "/teacher/profile.html";
+        } else if (role.equals("[STUDENT]")){
+            return "/student/profile.html";
+        } else if (role.equals("[ADMIN]")) {
+            return "/admin/profile.html";
+        } else {
+            return "/public/profile.html";
+        }
     }
 
     @PostMapping("/update")
@@ -76,7 +87,7 @@ public class ProfileController {
             attributes.addFlashAttribute("messageneg", "Le nouveau mot de passe et celui de confirmation ne correspondent pas");
             return "redirect:/profile";
         } else if (!PasswordValidation.main(newpassword)) {
-            attributes.addFlashAttribute("messageneg", "Le mot de passe doit contenir au moins 1 majuscule, 1 miniscule, 1 chiffre et 1 caractère spécial");
+            attributes.addFlashAttribute("messageneg", "Le mot de passe doit contenir au moins 1 majuscule, 1 miniscule, 1 chiffre, 1 caractère spécial et être entre 10 et 50 caractères");
             return "redirect:/profile";
         }
         try {
