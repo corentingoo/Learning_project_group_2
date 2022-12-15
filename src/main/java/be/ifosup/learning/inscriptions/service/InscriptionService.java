@@ -18,5 +18,9 @@ public interface InscriptionService {
 
     List<InscriptionOut> findAllByStudentId(Long id);
 
+    boolean inscriptionExist(Long student_id, Long formation_id);
+
+    boolean inscriptionPossible(Long formation_id);
+
 
 }

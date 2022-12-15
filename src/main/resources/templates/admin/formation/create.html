@@ -12,6 +12,7 @@
         <h1>Ajouter une formation</h1>
 
     </div><!-- End Page Title -->
+    <div th:insert="fragments/message :: message"></div>
 
     <section class="section">
         <div class="row">
@@ -19,8 +20,27 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Formulaire pour ajouter une nouvelle formation</h5>
-
                             <form th:action="@{/admin/formation/create}" th:object="${formations}" method="post">
+                                <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-triangle me-1"></i>
+
+                                    <ul>
+                                        <p th:if="${#fields.hasErrors('titre')}">Le titre est obligatoire</p>
+                                    </ul>
+                                    <ul>
+                                        <p th:if="${#fields.hasErrors('num_eleve')}">Le nombre maximum d'élèves est obligatoire</p>
+                                    </ul>
+                                    <ul>
+                                        <p th:if="${#fields.hasErrors('date_debut')}">La date de début est obligatoire</p>
+                                    </ul>
+                                    <ul>
+                                        <p th:if="${#fields.hasErrors('date_debut')}">La date de fin est obligatoire</p>
+                                    </ul>
+                                    <ul>
+                                        <p th:if="${#fields.hasErrors('teacher')}">Le professeur est obligatoire</p>
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                                 <div class="row">
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Titre</label>
@@ -39,14 +59,14 @@
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Date de début</label>
                                         <div class="col-sm-10">
-                                        <input type="date" th:field="*{date_debut}" class="form-control">
+                                        <input type="date" th:field="*{date_debut}" class="form-control" id="datepicker">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label class="col-sm-2 col-form-label">Date de fin</label>
                                         <div class="col-sm-10">
-                                        <input type="date" th:field="*{date_fin}" class="form-control">
+                                        <input type="date" th:field="*{date_fin}" class="form-control" id="datepicker">
                                         </div>
                                     </div>
 
@@ -54,10 +74,20 @@
                                         <label class="col-sm-2 col-form-label">Professeur</label>
                                         <div class="col-sm-10">
                                         <select class="form-select" aria-label="Default select example" th:field="*{teacher}" id="teacher">
-                                            <option type="text" th:value="default"> </option>
+                                            <option type="text" th:value="null"> </option>
                                             <option type="text" th:each="Prof: ${profs}" th:value="${Prof.id}"
                                                     th:text="${Prof.username}"></option>
                                         </select>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Matière</label>
+                                        <div class="col-sm-10">
+                                            <select class="form-select" aria-label="Default select example" th:field="*{type}" id="type">
+                                                <option type="text" th:value="null"> </option>
+                                                <option type="text" th:each="type: ${types}" th:value="${type.type_id}"
+                                                        th:text="${type.titre}"></option>
+                                            </select>
                                         </div>
                                     </div>
 

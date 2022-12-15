@@ -8,9 +8,10 @@
 <aside th:insert="fragments/sidebarstudent :: sidebarstudent"></aside>
 <main id="main" class="main">
     <div class="formationtitle">
-        <h1>Liste des formations données par vous</h1>
+        <h1>Formations</h1>
 
     </div><!-- End Page Title -->
+    <div th:insert="fragments/message :: message"></div>
 
     <section class="section">
 
@@ -20,12 +21,14 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Liste des formations</h5>
-                        <table class="table table-hover">
+                        <table id="datatable" class="table table-hover">
                             <thead>
                             <tr>
                                 <th scope="col"> Titre</th>
                                 <th scope="col"> Date de début</th>
                                 <th scope="col"> Date de fin</th>
+                                <th scope="col"> Professeur</th>
+                                <th scope="col"> Matière</th>
                                 <th scope="col"> S'inscrire</th>
                             </tr>
                             </thead>
@@ -34,6 +37,8 @@
                                 <td>[[${formation.titre}]]</td>
                                 <td>[[${formation.date_debut}]]</td>
                                 <td>[[${formation.date_fin}]]</td>
+                                <td>[[${formation.teachername}]]</td>
+                                <td>[[${formation.typename}]]</td>
                                 <td>
                                     <a th:href="@{'/student/formation/create/' + ${formation.formation_id}}">Inscription</a>
                                 </td>

@@ -2,11 +2,13 @@ package be.ifosup.learning.users.service;
 
 
 import be.ifosup.learning.users.entities.User;
+import be.ifosup.learning.users.in.UserIdIn;
 import be.ifosup.learning.users.in.UserIn;
 import be.ifosup.learning.users.out.UserOut;
 import be.ifosup.learning.users.repositories.UserRepository;
 import be.ifosup.learning.utils.BCryptManagerUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -19,7 +21,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserDetailsService, UserService {
     @Autowired
     private final UserRepository userRepository;
@@ -127,21 +128,17 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         User save = userRepository.save(user);
         return getUserOut(save);
     }
-
-    public UserOut update(Long id, UserIn userIn) {
-        User user = userRepository.findById(id).get();
-
-        User toSave = User.builder()
-                .id(user.getId())
-                .username(userIn.getUsername() == null ? user.getUsername() : userIn.getUsername())
-                .lastname(userIn.getLastname() == null ? user.getLastname() : userIn.getLastname())
-                .firstname(userIn.getFirstname() == null ? user.getFirstname() : userIn.getFirstname())
-                .password(user.getPassword() == null ? user.getPassword() : user.getPassword())
-                .email(userIn.getEmail() == null ? user.getEmail() : userIn.getEmail())
-                .roles(userIn.getRoles() == null ? user.getRoles() : userIn.getRoles())
-                .build();
-        User saved = userRepository.save(toSave);
-        return getUserOut(saved);
+    @Override
+    public UserOut update(Long id, UserIdIn userIdIn) {
+        userRepository.updateUser(
+                userIdIn.getUsername(),
+                userIdIn.getFirstname(),
+                userIdIn.getLastname(),
+                userIdIn.getEmail(),
+                id
+        );
+        User userEntity = userRepository.getById(id);
+        return getUserOut(userEntity);
     }
 
     public void delete(Long id) {
@@ -165,13 +162,17 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public UserOut updatePassword(Long id, String password) {
         String passwordCrypt = BCryptManagerUtil.passwordEncoder().encode(password);
         userRepository.updatePassword(id, passwordCrypt);
-        User userEntity = userRepository.getById(id);
+        User user = userRepository.getById(id);
         userRepository.updateToken(null, id);
 
-        return getUserOut(userEntity);
+        return getUserOut(user);
     }
 
-
+    @Override
+    public Boolean usernamexist(String username) {
+        boolean exists = userRepository.existsByUsername(username);
+        return exists;
+    }
 
 
 }

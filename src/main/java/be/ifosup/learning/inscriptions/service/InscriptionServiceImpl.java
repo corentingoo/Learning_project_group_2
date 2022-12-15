@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.transaction.Transactional;
-
+import be.ifosup.learning.formations.entities.Formation;
+import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.inscriptions.entities.Inscription;
 import be.ifosup.learning.inscriptions.in.InscriptionIn;
 import be.ifosup.learning.inscriptions.out.InscriptionOut;
@@ -17,12 +17,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
 public class InscriptionServiceImpl implements InscriptionService {
     @Autowired
     private InscriptionRepository inscriptionRepository;
 
+    @Autowired
     private UserService userService;
+    @Autowired
     private FormationService formationService;
 
 
@@ -112,5 +113,26 @@ public class InscriptionServiceImpl implements InscriptionService {
 
             return formationOuts;
         }
+
+    @Override
+    public boolean inscriptionExist(Long student_id, Long formation_id) {
+        Inscription inscription = inscriptionRepository.findByStudent_idAndFormation_id(student_id, formation_id);
+        if(inscription == null){
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    @Override
+    public boolean inscriptionPossible(Long formation_id) {
+        Integer numinscrit = inscriptionRepository.countByFormation_id(formation_id);
+        Integer numpossible = formationService.get(formation_id).getNum_eleve();
+        if(numpossible >= numinscrit){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
 }

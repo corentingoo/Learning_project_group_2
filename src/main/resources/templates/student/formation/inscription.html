@@ -8,9 +8,10 @@
 <aside th:insert="fragments/sidebarstudent :: sidebarstudent"></aside>
 <main id="main" class="main">
   <div class="formationtitle">
-    <h1>Liste des formations données par vous</h1>
+    <h1>Inscriptions</h1>
 
   </div><!-- End Page Title -->
+  <div th:insert="fragments/message :: message"></div>
 
   <section class="section">
 
@@ -20,7 +21,7 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Liste des inscriptions</h5>
-            <table class="table table-hover">
+            <table id="datatable" class="table table-hover">
               <thead>
               <tr>
                 <th scope="col"> Titre</th>

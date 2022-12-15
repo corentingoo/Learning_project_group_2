@@ -7,26 +7,39 @@ import java.util.stream.Collectors;
 
 import javax.transaction.Transactional;
 import be.ifosup.learning.formations.entities.Formation;
+import be.ifosup.learning.formations.in.FormationIdIn;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.repositories.FormationRepository;
 import be.ifosup.learning.inscriptions.entities.Inscription;
+import be.ifosup.learning.inscriptions.repositories.InscriptionRepository;
+import be.ifosup.learning.types.entities.Type;
+import be.ifosup.learning.types.repositories.TypeRepository;
 import be.ifosup.learning.users.entities.User;
 import be.ifosup.learning.users.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
 public class FormationServiceImpl implements FormationService {
     @Autowired
     private final FormationRepository formationRepository;
+    @Autowired
     private final UserRepository userRepository;
 
     @Autowired
-    public FormationServiceImpl(FormationRepository formationRepository, UserRepository userRepository) {
+    private final TypeRepository typeRepository;
+
+    @Autowired
+    private final InscriptionRepository inscriptionRepository;
+
+    @Autowired
+    public FormationServiceImpl(FormationRepository formationRepository, UserRepository userRepository, TypeRepository typeRepository, InscriptionRepository inscriptionRepository) {
         this.formationRepository = formationRepository;
         this.userRepository = userRepository;
+        this.typeRepository = typeRepository;
+        this.inscriptionRepository = inscriptionRepository;
     }
 
     @Override
@@ -58,22 +71,24 @@ public class FormationServiceImpl implements FormationService {
                         .date_debut(formationIn.getDate_debut())
                         .date_fin(formationIn.getDate_fin())
                         .teacher(formationIn.getTeacher())
+                        .type(formationIn.getType())
                         .build();
         Formation save = formationRepository.save(formation);
         return getFormationOut(save);
     }
 
     @Override
-    public FormationOut update(Long id, FormationIn formationIn) {
+    public FormationOut update(Long id, FormationIdIn formationIdIn) {
         Formation formation = formationRepository.findById(id).get();
 
         Formation toSave = Formation.builder()
                 .formation_id(formation.getFormation_id())
-                .num_eleve(formationIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIn.getNum_eleve())
-                .titre(formationIn.getTitre() == null ? formation.getTitre() : formationIn.getTitre())
-                .date_debut(formationIn.getDate_debut() == null ? formation.getDate_debut() : formationIn.getDate_debut())
-                .date_fin(formationIn.getDate_fin() == null ? formation.getDate_fin() : formationIn.getDate_fin())
-                .teacher(formationIn.getTeacher() == null ? formation.getTeacher() : formationIn.getTeacher())
+                .num_eleve(formationIdIn.getNum_eleve() == null ? formation.getNum_eleve() : formationIdIn.getNum_eleve())
+                .titre(formationIdIn.getTitre() == null ? formation.getTitre() : formationIdIn.getTitre())
+                .date_debut(formationIdIn.getDate_debut() == null ? formation.getDate_debut() : formationIdIn.getDate_debut())
+                .date_fin(formationIdIn.getDate_fin() == null ? formation.getDate_fin() : formationIdIn.getDate_fin())
+                .teacher(formationIdIn.getTeacher() == null ? formation.getTeacher() : formationIdIn.getTeacher())
+                .type(formationIdIn.getType() == null ? formation.getType() : formationIdIn.getType())
                 .build();
 
         Formation saved = formationRepository.save(toSave);
@@ -87,7 +102,10 @@ public class FormationServiceImpl implements FormationService {
         return formationOut;
     }
 
-    private static FormationOut getFormationOut(Formation formation) {
+    private FormationOut getFormationOut(Formation formation) {
+        User user = userRepository.getById(formation.getTeacher());
+        Type type = typeRepository.getOne(formation.getType());
+        Integer inscrit = inscriptionRepository.countByFormation_id(formation.getFormation_id());
         return FormationOut.builder()
                 .formation_id(formation.getFormation_id())
                 .num_eleve(formation.getNum_eleve())
@@ -95,6 +113,10 @@ public class FormationServiceImpl implements FormationService {
                 .date_debut(formation.getDate_debut())
                 .date_fin(formation.getDate_fin())
                 .teacher(formation.getTeacher())
+                .type(formation.getType())
+                .teachername(user.getUsername())
+                .typename(type.getTitre())
+                .num_inscrit(inscrit)
                 .build();
     }
 

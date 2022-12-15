@@ -8,23 +8,14 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.util.Collection;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
-/**
- * càd dans le sens de mon Front-End vers le Back-End
- */
-
-/**
- * Uniquement pour le rôle ADMIN
- */
-public class UserIn {
+public class UserIdIn {
+    public Long id;
 
     @NotBlank(message = "Le pseudo est obligatoire")
     public String username;
@@ -36,23 +27,17 @@ public class UserIn {
     public String firstname;
 
     @NotBlank(message = "Email obligatoire")
-    @Email
     public String email;
 
-    @NotBlank(message = "Le role est obligatoire")
     public String role;
 
     public static Collection<RoleEnum> roles;
-
-    public static void addRole(RoleEnum role) {
-        roles.add(role);
-    }
 
     public static Collection<RoleEnum> getRoles() {
         return roles;
     }
 
     public static void setRoles(Collection<RoleEnum> roles) {
-        UserIn.roles = roles;
+        UserIdIn.roles = roles;
     }
 }

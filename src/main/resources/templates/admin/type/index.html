@@ -9,9 +9,8 @@
 <main id="main" class="main">
     <div class="formationtitle">
         <h1>Gestion des formations</h1>
-
     </div><!-- End Page Title -->
-
+    <div th:insert="fragments/message :: message"></div>
     <section class="section">
 
         <div class="row">
@@ -20,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Liste des matières</h5>
-                            <table class="table table-hover">
+                            <table id="datatable" class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th scope="col"> Titre</th>
@@ -34,10 +33,10 @@
                                         <td>[[${type.titre}]]</td>
                                         <td>[[${type.description}]]</td>
                                         <td>
-                                            <a th:href="@{'/admin/type/update/' + ${type.type_id}}">edit</a>
+                                            <a th:href="@{'/admin/type/update/' + ${type.type_id}}"><i class="bi bi-pen "></i></a>
                                         </td>
                                         <td>
-                                            <a th:href="@{'/admin/type/delete/' + ${type.type_id}}">delete</a>
+                                            <a th:href="@{'/admin/type/delete/' + ${type.type_id}}"><i class="bi bi-trash"></i></a>
                                         </td>
                                         </tr>
                                     </th:block>
