@@ -4,25 +4,25 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
-
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class FormationIn {
-    @NotNull
+    @NotBlank(message = "Le titre est obligatoire")
     public String titre;
-    @NotNull
+    @NotNull(message = "Le nombre maximum d'élèves est obligatoire")
+    @Min(value = 1, message= "Au moins une personne doit suivre la formation")
     public Integer num_eleve;
-    @NotNull
     public Date date_debut;
-    @NotNull
     public Date date_fin;
-    @NotNull
     public Long teacher;
+    private Long type;
 }

@@ -1,6 +1,7 @@
 package be.ifosup.learning.users.service;
 
 import be.ifosup.learning.users.entities.User;
+import be.ifosup.learning.users.in.UserIdIn;
 import be.ifosup.learning.users.in.UserIn;
 import be.ifosup.learning.users.out.UserOut;
 
@@ -19,7 +20,7 @@ public interface UserService {
 
     UserOut save(UserIn userIn);
 
-    UserOut update(Long id, UserIn userIn);
+    UserOut update(Long id, UserIdIn userIdIn);
 
     void delete(Long id);
 
@@ -28,4 +29,6 @@ public interface UserService {
     User findByToken(String token);
 
     UserOut updatePassword(Long id,String password);
+
+    Boolean usernamexist(String username);
 }

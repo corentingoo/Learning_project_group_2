@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
 @Builder
@@ -19,5 +17,9 @@ public class FormationOut {
     public Date date_debut;
     public Date date_fin;
     public Long teacher;
+    public Long type;
+    public String teachername;
+    public String typename;
+    public Integer num_inscrit;
 
 }

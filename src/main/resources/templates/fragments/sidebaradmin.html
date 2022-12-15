@@ -2,13 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <body>
     <div th:fragment="sidebaradmin">
+
         <!-- ======= Sidebar ======= -->
         <aside id="sidebar" class="sidebar">
             <ul class="sidebar-nav" id="sidebar-nav">
                 <li class="nav-item">
                     <a class="nav-link collapsed" th:href="@{/admin}">
                         <i class="bi bi-grid"></i>
-                        <span>Home</span>
+                        <span>Acceuil</span>
                     </a>
                 </li><!-- End Home Nav -->
                 <li class="nav-item">
@@ -52,12 +53,12 @@
                     </a>
                     <ul id="charts-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="charts-chartjs.html">
+                            <a th:href="@{/admin/type}">
                                 <i class="bi bi-circle"></i><span>Liste des matières</span>
                             </a>
                         </li>
                         <li>
-                            <a href="charts-apexcharts.html">
+                            <a th:href="@{/admin/type/create}">
                                 <i class="bi bi-circle"></i><span>Ajouter une matière</span>
                             </a>
                         </li>
@@ -73,7 +74,7 @@
                 <li class="nav-item">
                     <a class="nav-link collapsed" th:href="@{/logout}">
                         <i class="bi bi-box-arrow-right"></i>
-                        <span>Sign Out</span>
+                        <span>Se déconnecter</span>
                     </a>
                 </li><!-- End Sign Out Page Nav -->
             </ul>

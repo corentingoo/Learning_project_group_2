@@ -317,4 +317,13 @@
     }, 200);
   }
 
+
+
 })();
+
+$(document).ready(function () {
+  $('#datatable').DataTable();
+  $("#datepicker").datepicker({dateFormat:"yy-mm-dd"});
+});
+
+

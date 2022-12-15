@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Collection;
 
 @Data
@@ -24,14 +26,20 @@ import java.util.Collection;
  */
 public class UserIn {
 
+    @NotBlank(message = "Le pseudo est obligatoire")
     public String username;
 
+    @NotBlank(message = "Le nom de famille est obligatoire")
     public String lastname;
 
+    @NotBlank(message = "Le prénom est obligatoire")
     public String firstname;
 
+    @NotBlank(message = "Email obligatoire")
+    @Email
     public String email;
 
+    @NotBlank(message = "Le role est obligatoire")
     public String role;
 
     public static Collection<RoleEnum> roles;

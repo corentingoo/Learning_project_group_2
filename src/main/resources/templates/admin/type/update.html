@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<header th:insert="fragments/header :: header"></header>
+<body>
+
+<nav th:insert="fragments/nav :: nav"></nav>
+
+<aside th:insert="fragments/sidebaradmin :: sidebaradmin"></aside>
+
+<main id="main" class="main">
+    <div class="formationtitle">
+        <h1>Modifier une matière</h1>
+
+    </div><!-- End Page Title -->
+    <div th:insert="fragments/message :: message"></div>
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Formulaire pour modifier une matière</h5>
+
+                            <form th:action="@{/admin/type/update}" th:object="${types}" method="post">
+                                <div th:if="${#fields.hasAnyErrors()}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <i class="bi bi-exclamation-triangle me-1"></i>
+                                    <ul>
+                                        <li th:each="err : ${#fields.allErrors()}" th:text="${err}" />
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <div><input type="hidden" th:field="*{type_id}"></div>
+                                <div class="row">
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Titre</label>
+                                        <div class="col-sm-10">
+                                        <input type="text" th:field="*{titre}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-2 col-form-label">Description</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" th:field="*{description}" class="form-control">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <br>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Confirmation</label>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary">Envoie</button>
+                                    </div>
+                                </div>
+                            </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+<footer th:insert="fragments/footer :: footer"></footer>
+
+</body>
+</html>

@@ -2,6 +2,7 @@ package be.ifosup.learning.controller.webservice;
 
 import java.util.*;
 
+import be.ifosup.learning.formations.in.FormationIdIn;
 import be.ifosup.learning.formations.in.FormationIn;
 import be.ifosup.learning.formations.out.FormationOut;
 import be.ifosup.learning.formations.service.FormationService;
@@ -44,7 +45,7 @@ public class FormationWSController {
     // REST API method for Update operation
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@RequestBody FormationIn formation, @PathVariable Long id) {
+    public ResponseEntity<?> update(@RequestBody FormationIdIn formation, @PathVariable Long id) {
         try {
             FormationOut save = formationservice.update(id, formation);
             return new ResponseEntity<>(save, HttpStatus.OK);

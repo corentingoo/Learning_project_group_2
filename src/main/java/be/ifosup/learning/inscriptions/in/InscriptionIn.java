@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.sql.Date;
 
@@ -15,9 +16,9 @@ import java.sql.Date;
 @NoArgsConstructor
 
 public class InscriptionIn {
-    @NotNull
+
     public Long student_id;
-    @NotNull
+
     public Long formation_id;
 
 }
